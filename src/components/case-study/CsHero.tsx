@@ -1,15 +1,21 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
-import { useGsap } from "@/hooks/use-gsap";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import type { CaseStudy } from "@/types/project";
 
 type CsHeroProps = Pick<CaseStudy, "title" | "subtitle" | "category" | "heroImage" | "metrics">;
 
 export function CsHero({ title, subtitle, category, heroImage, metrics }: CsHeroProps) {
-  const containerRef = useGsap((gsap, ScrollTrigger) => {
+  const containerRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
+
+  useGSAP(() => {
+    if (reducedMotion) return;
     const isMobile = window.innerWidth < 768;
 
     gsap.fromTo("[data-hero-text]", { y: 40, opacity: 0 }, {
@@ -32,7 +38,7 @@ export function CsHero({ title, subtitle, category, heroImage, metrics }: CsHero
         },
       });
     }
-  });
+  }, { scope: containerRef });
 
   return (
     <section ref={containerRef} className="relative min-h-screen">

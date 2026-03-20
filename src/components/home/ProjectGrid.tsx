@@ -1,12 +1,18 @@
 "use client";
 
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { ProjectCard } from "@/components/home/ProjectCard";
-import { useGsap } from "@/hooks/use-gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import type { ProjectSummary } from "@/types/project";
 
 export function ProjectGrid({ projects }: { projects: ProjectSummary[] }) {
-  const containerRef = useGsap((gsap, ScrollTrigger) => {
+  const containerRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
+
+  useGSAP(() => {
+    if (reducedMotion) return;
     ScrollTrigger.batch("[data-project-card]", {
       onEnter: (elements) => {
         gsap.fromTo(elements, { y: 30, opacity: 0 }, {
@@ -20,7 +26,7 @@ export function ProjectGrid({ projects }: { projects: ProjectSummary[] }) {
       start: "top 85%",
       once: true,
     });
-  });
+  }, { scope: containerRef });
 
   return (
     <section ref={containerRef} id="projects" className="py-section">

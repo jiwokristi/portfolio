@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { gsap, useGSAP } from "@/lib/gsap";
 import { useReducedMotion } from "./use-reduced-motion";
 
 export function useCounter(end: number, duration = 2) {
@@ -8,43 +9,24 @@ export function useCounter(end: number, duration = 2) {
   const ref = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useGSAP(() => {
     if (reducedMotion) {
       setValue(end);
       return;
     }
-
-    const el = ref.current;
-    if (!el) return;
-
-    let ctx: ReturnType<typeof import("gsap").default.context>;
-
-    (async () => {
-      const { default: gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      const obj = { val: 0 };
-      ctx = gsap.context(() => {
-        gsap.to(obj, {
-          val: end,
-          duration,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-            once: true,
-          },
-          onUpdate: () => setValue(Math.round(obj.val)),
-        });
-      }, el);
-    })();
-
-    return () => {
-      ctx?.revert();
-    };
-  }, [end, duration, reducedMotion]);
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: end,
+      duration,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ref.current,
+        start: "top 80%",
+        once: true,
+      },
+      onUpdate: () => setValue(Math.round(obj.val)),
+    });
+  }, { scope: ref, dependencies: [end, duration, reducedMotion] });
 
   return { value, ref };
 }

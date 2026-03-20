@@ -1,12 +1,18 @@
 "use client";
 
+import { useRef } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
-import { useGsap } from "@/hooks/use-gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import type { ProjectFeature } from "@/types/project";
 
 export function CsFeatures({ features }: { features: ProjectFeature[] }) {
-  const containerRef = useGsap((gsap, ScrollTrigger) => {
+  const containerRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
+
+  useGSAP(() => {
+    if (reducedMotion) return;
     ScrollTrigger.batch("[data-feature-card]", {
       onEnter: (elements) => {
         gsap.fromTo(elements, { y: 30, opacity: 0 }, {
@@ -20,7 +26,7 @@ export function CsFeatures({ features }: { features: ProjectFeature[] }) {
       start: "top 85%",
       once: true,
     });
-  });
+  }, { scope: containerRef });
 
   return (
     <section ref={containerRef} className="bg-bg-secondary py-section">

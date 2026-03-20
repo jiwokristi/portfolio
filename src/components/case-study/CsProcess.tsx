@@ -1,11 +1,17 @@
 "use client";
 
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
-import { useGsap } from "@/hooks/use-gsap";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import type { ProcessPhase } from "@/types/project";
 
 export function CsProcess({ process }: { process: ProcessPhase[] }) {
-  const containerRef = useGsap((gsap) => {
+  const containerRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
+
+  useGSAP(() => {
+    if (reducedMotion) return;
     gsap.utils.toArray<HTMLElement>("[data-process-item]").forEach((el, i) => {
       gsap.fromTo(el, { y: 40, opacity: 0 }, {
         y: 0,
@@ -19,7 +25,7 @@ export function CsProcess({ process }: { process: ProcessPhase[] }) {
         },
       });
     });
-  });
+  }, { scope: containerRef });
 
   return (
     <section ref={containerRef} className="py-section">
