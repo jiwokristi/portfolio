@@ -16,10 +16,30 @@ function MetricCard({ metric }: { metric: ProjectMetric }) {
           {after.value}
           {metric.unit ?? ""}
         </span>
-        <span className="mb-1 text-sm text-text-muted line-through">
-          {before.value}
-          {metric.unit ?? ""}
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span className="mb-1 text-sm text-text-muted line-through">
+            {before.value}
+            {metric.unit ?? ""}
+          </span>
+          {(() => {
+            const pct = Math.round(
+              ((metric.after - metric.before) / Math.max(metric.before, 1)) * 100,
+            );
+            if (pct === 0) return null;
+            const isPositive = pct > 0;
+            return (
+              <span
+                className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                  isPositive
+                    ? "bg-success/10 text-success"
+                    : "bg-error/10 text-error"
+                }`}
+              >
+                {isPositive ? "↑" : "↓"} {Math.abs(pct)}%
+              </span>
+            );
+          })()}
+        </div>
       </div>
       <div className="mb-3 h-2 overflow-hidden rounded-full bg-bg">
         <div
