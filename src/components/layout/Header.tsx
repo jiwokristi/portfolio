@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Container } from "@/components/ui/Container";
+import Link from 'next/link';
+import { Container } from '@/components/ui/Container';
 
 export function Header() {
   return (
@@ -9,14 +9,11 @@ export function Header() {
           Dylan
         </Link>
         <nav className="flex items-center gap-8">
-          <Link
-            href="/#projects"
-            className="text-sm text-text-secondary transition-colors hover:text-text-primary"
-          >
+          <Link href="/#projects" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
             Projects
           </Link>
           <Link
-            href="mailto:hello@example.com"
+            href="mailto:priyadijiwo@gmail.com"
             className="text-sm text-text-secondary transition-colors hover:text-text-primary"
           >
             Contact
