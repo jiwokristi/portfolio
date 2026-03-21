@@ -2,7 +2,7 @@ import type { CaseStudy } from '@/types/project';
 
 export const apexSupps: CaseStudy = {
   slug: 'apex-peptides',
-  title: 'Apex Peptides Website Revamp',
+  title: 'Apex Peptides E-Commerce Platform Revamp',
   subtitle: 'Revamped a low-performance e-commerce site into a fast, modern, and fully responsive experience.',
   description:
     "A complete redesign and rebuild of Apex Peptides' e-commerce platform, focusing on performance, conversion optimization, and brand storytelling.",

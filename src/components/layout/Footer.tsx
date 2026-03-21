@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border py-12">
       <Container className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <p className="text-sm text-text-muted">&copy; {new Date().getFullYear()} Dylan. All rights reserved.</p>
+        <p className="text-sm text-text-muted">&copy; {new Date().getFullYear()} Jiwo Kristi</p>
         <div className="flex items-center gap-6">
           <a
             href="https://github.com/jiwokristi"

@@ -3,7 +3,7 @@ import type { ProjectSummary } from '@/types/project';
 export const projects: ProjectSummary[] = [
   {
     slug: 'apex-peptides',
-    title: 'Apex Peptides Website Revamp',
+    title: 'Apex Peptides E-Commerce Platform Revamp',
     subtitle: 'Revamped a low-performance e-commerce site into a fast, modern, and fully responsive experience.',
     description:
       "A complete redesign and rebuild of Apex Peptides' e-commerce platform, focusing on performance, conversion optimization, and brand storytelling.",
@@ -22,9 +22,22 @@ export const projects: ProjectSummary[] = [
       height: 1080,
     },
     metrics: [
-      { label: 'Load Time', after: 1.4 },
-      { label: 'Conversion', after: 3.8 },
-      { label: 'Lighthouse', after: 98 },
+      {
+        label: 'Mobile Performance',
+        after: 79,
+      },
+      {
+        label: 'Desktop Performance',
+        after: 98,
+      },
+      {
+        label: 'Accessibility',
+        after: 87,
+      },
+      {
+        label: 'Best Practices',
+        after: 100,
+      },
     ],
   },
 ];

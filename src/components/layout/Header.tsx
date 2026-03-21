@@ -6,7 +6,7 @@ export function Header() {
     <header className="fixed top-0 z-50 w-full border-b border-border/50 bg-bg/80 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="text-lg font-semibold tracking-tight">
-          Dylan
+          Jiwo Kristi
         </Link>
         <nav className="flex items-center gap-8">
           <Link href="/#projects" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
