@@ -12,6 +12,9 @@ export function Header() {
           <Link href="/#projects" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
             Projects
           </Link>
+          <Link href="/about" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
+            About
+          </Link>
           <Link
             href="mailto:priyadijiwo@gmail.com"
             className="text-sm text-text-secondary transition-colors hover:text-text-primary"
