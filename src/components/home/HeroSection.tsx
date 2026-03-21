@@ -20,7 +20,7 @@ export function HeroSection() {
           </p>
           <div className="flex gap-4 pt-2">
             <Button href="#projects">View Projects</Button>
-            <Button href="mailto:priyadijiwo@gmail.com" variant="secondary">
+            <Button href="mailto:priyadijiwo@gmail.com" variant="outlined" color="default">
               Get in Touch
             </Button>
           </div>

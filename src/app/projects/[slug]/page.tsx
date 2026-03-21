@@ -49,7 +49,6 @@ export default async function CaseStudyPage({
         subtitle={project.subtitle}
         category={project.category}
         heroImage={project.heroImage}
-        metrics={project.metrics}
       />
       <CsOverview
         problem={project.problem}
