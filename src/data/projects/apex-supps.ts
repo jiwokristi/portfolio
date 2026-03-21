@@ -56,47 +56,49 @@ export const apexSupps: CaseStudy = {
   ],
   process: [
     {
-      title: 'Discovery & Audit',
+      title: 'Discovery & UX Audit',
       description:
-        'Conducted a comprehensive audit of the existing site, analyzing performance bottlenecks, user flows, and conversion funnels. Interviewed stakeholders and reviewed analytics data to identify the highest-impact areas for improvement.',
+        'Evaluated the existing storefront to identify issues in performance, visual hierarchy, and user flow—especially on mobile.',
       highlights: [
-        'Performance audit revealed 4.2MB initial page weight',
-        'Heatmap analysis showed 73% of users never scrolled past the fold',
-        'Competitor analysis across 8 supplement brands',
-        'Defined KPIs: load time, conversion rate, bounce rate',
+        'Identified poor visual hierarchy affecting readability and navigation',
+        'Lighthouse audit revealed low performance (25 mobile, 27 desktop)',
+        'Analyzed category structure (14 categories) and identified overload on homepage',
+        'Defined key focus areas: performance, mobile UX, and conversion clarity',
       ],
     },
     {
-      title: 'Design System & Prototyping',
+      title: 'UX Strategy & Information Architecture',
       description:
-        'Created a comprehensive design system in Figma with reusable components, typography scales, and color tokens. Built interactive prototypes for key user flows and validated them with A/B testing concepts.',
+        'Restructured the user experience to improve clarity, reduce cognitive load, and guide users toward conversion-focused actions.',
       highlights: [
-        '40+ reusable Figma components',
-        'Dark-first design language matching brand energy',
-        'Mobile-first responsive layouts',
-        'Interactive prototype for product → cart → checkout flow',
+        'Reduced homepage complexity by featuring 4 key categories instead of all 14',
+        'Introduced dedicated category page for full product exploration',
+        'Designed URL-based filtering system for better usability and shareability',
+        'Improved CTA hierarchy to guide users through product discovery',
       ],
     },
     {
-      title: 'Development & Integration',
+      title: 'Interaction & Experience Design',
       description:
-        'Built the headless storefront with Next.js App Router, integrating the Shopify Storefront API for product data and cart management. Implemented ISR for product pages, edge caching for API responses, and optimistic UI updates for cart interactions.',
+        'Designed a differentiated interaction system where animations support storytelling on the homepage and remain subtle and conversion-focused across other pages.',
       highlights: [
-        'Headless Shopify architecture with GraphQL',
-        'ISR with 60-second revalidation for product pages',
-        'Edge middleware for geo-based pricing',
-        'Optimistic cart updates with error recovery',
+        'Planned immersive scroll-based storytelling for homepage experience',
+        'Used subtle micro-interactions on product and category pages to maintain performance',
+        'Implemented stacking animation for featured categories to reduce visual overload',
+        'Designed animated newsletter section with text-split effect for engagement',
+        'Added global scroll progress indicator for user feedback and navigation awareness',
+        'Created progressive footer reveal interaction to enhance page depth and engagement',
       ],
     },
     {
-      title: 'Testing & Launch',
+      title: 'Frontend Development',
       description:
-        'Ran comprehensive cross-browser and device testing, load testing, and a staged rollout with A/B traffic splitting. Monitored Core Web Vitals throughout the launch period and iterated on performance bottlenecks.',
+        'Built a high-fidelity frontend implementation using React and TypeScript, focusing on performance, responsiveness, and maintainable architecture.',
       highlights: [
-        'Tested across 12 device/browser combinations',
-        'Load tested to 10,000 concurrent users',
-        'Staged rollout: 10% → 50% → 100% over 2 weeks',
-        'Zero downtime migration from old theme',
+        'Implemented reusable component-based architecture',
+        'Ensured responsiveness across multiple breakpoints',
+        'Optimized rendering and asset loading for better performance',
+        'Improved Lighthouse scores (25 → 79 mobile, 27 → 98 desktop)',
       ],
     },
   ],
