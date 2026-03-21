@@ -1,16 +1,21 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-bg: #0a0a0a;
-  --color-bg-secondary: #141414;
-  --color-surface: #1a1a1a;
-  --color-border: #2a2a2a;
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a0a0a0;
-  --color-text-muted: #666666;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #2563eb;
-  --color-success: #22c55e;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f5f5f5;
+  --color-surface: #e5e5e5;
+  --color-border: #d4d4d4;
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: #525252;
+  --color-text-muted: #737373;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+  --color-warning: #ca8a04;
+  --color-muted: #737373;
 
   --text-display: 4.5rem;
   --text-h1: 3rem;
@@ -26,6 +31,22 @@
   --font-mono: var(--font-jetbrains-mono);
 }
 
+.dark {
+  --color-bg: #0a0a0a;
+  --color-bg-secondary: #141414;
+  --color-surface: #1a1a1a;
+  --color-border: #2a2a2a;
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #666666;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #eab308;
+  --color-muted: #666666;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -39,4 +60,52 @@ body {
 ::selection {
   background-color: var(--color-accent);
   color: white;
+}
+
+@media print {
+  @page {
+    margin: 0 0.2in;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  header:has(nav),
+  footer {
+    display: none !important;
+  }
+
+  .resume-document {
+    max-width: none !important;
+    padding: 0 !important;
+    font-size: 0.75rem;
+  }
+
+  .resume-document h1 {
+    color: black !important;
+    font-size: 1.25rem;
+  }
+
+  .resume-document h2 {
+    color: black !important;
+    font-size: 0.85rem;
+    border-color: #d1d5db !important;
+  }
+
+  .resume-document p,
+  .resume-document li,
+  .resume-document span {
+    color: #1f2937 !important;
+  }
+
+  .resume-document a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .resume-entry {
+    break-inside: avoid;
+  }
 }
