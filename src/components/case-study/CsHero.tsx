@@ -8,9 +8,9 @@ import { gsap, useGSAP } from '@/lib/gsap';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import type { CaseStudy } from '@/types/project';
 
-type CsHeroProps = Pick<CaseStudy, 'title' | 'subtitle' | 'category' | 'heroImage' | 'metrics'>;
+type CsHeroProps = Pick<CaseStudy, 'title' | 'subtitle' | 'category' | 'heroImage'>;
 
-export function CsHero({ title, subtitle, category, heroImage, metrics }: CsHeroProps) {
+export function CsHero({ title, subtitle, category, heroImage }: CsHeroProps) {
   const containerRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
 
@@ -60,18 +60,6 @@ export function CsHero({ title, subtitle, category, heroImage, metrics }: CsHero
           <p data-hero-text className="max-w-2xl text-h3 text-text-secondary max-lg:text-body">
             {subtitle}
           </p>
-        </div>
-
-        <div data-hero-text className="mb-12 flex flex-wrap gap-8">
-          {metrics.slice(0, 4).map(m => (
-            <div key={m.label} className="flex flex-col">
-              <span className="text-2xl font-bold text-accent">
-                {m.after}
-                {m.unit ?? ''}
-              </span>
-              <span className="text-sm text-text-muted">{m.label}</span>
-            </div>
-          ))}
         </div>
       </Container>
 
