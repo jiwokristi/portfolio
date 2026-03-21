@@ -2,11 +2,11 @@ import type { ProjectSummary } from '@/types/project';
 
 export const projects: ProjectSummary[] = [
   {
-    slug: 'apex-supps',
-    title: 'Apex Supps Website Revamp',
+    slug: 'apex-peptides',
+    title: 'Apex Peptides Website Revamp',
     subtitle: 'Revamped a low-performance e-commerce site into a fast, modern, and fully responsive experience.',
     description:
-      "A complete redesign and rebuild of Apex Supplements' e-commerce platform, focusing on performance, conversion optimization, and brand storytelling.",
+      "A complete redesign and rebuild of Apex Peptides' e-commerce platform, focusing on performance, conversion optimization, and brand storytelling.",
     category: 'E-Commerce',
     role: 'Lead Developer & Designer',
     timeline: '8 weeks',
@@ -16,8 +16,8 @@ export const projects: ProjectSummary[] = [
     featured: true,
     order: 1,
     heroImage: {
-      src: '/images/projects/apex-supps/hero.jpg',
-      alt: 'Apex Supps website redesign shown on multiple devices',
+      src: '/images/projects/apex-peptides/hero.jpg',
+      alt: 'Apex Peptides website redesign shown on multiple devices',
       width: 1920,
       height: 1080,
     },

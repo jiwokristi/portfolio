@@ -1,11 +1,11 @@
 import type { CaseStudy } from '@/types/project';
 
 export const apexSupps: CaseStudy = {
-  slug: 'apex-supps',
-  title: 'Apex Supps Website Revamp',
+  slug: 'apex-peptides',
+  title: 'Apex Peptides Website Revamp',
   subtitle: 'Revamped a low-performance e-commerce site into a fast, modern, and fully responsive experience.',
   description:
-    "A complete redesign and rebuild of Apex Supplements' e-commerce platform, focusing on performance, conversion optimization, and brand storytelling.",
+    "A complete redesign and rebuild of Apex Peptides' e-commerce platform, focusing on performance, conversion optimization, and brand storytelling.",
   category: 'E-Commerce',
   role: 'Lead Developer & Designer',
   timeline: '8 weeks',
@@ -15,13 +15,13 @@ export const apexSupps: CaseStudy = {
   featured: true,
   order: 1,
   heroImage: {
-    src: '/images/projects/apex-supps/hero.jpg',
-    alt: 'Apex Supps website redesign shown on multiple devices',
+    src: '/images/projects/apex-peptides/hero.jpg',
+    alt: 'Apex Peptides website redesign shown on multiple devices',
     width: 1920,
     height: 1080,
   },
   problem:
-    'Apex Supplements’ existing storefront, built with Blazor, lacked a cohesive visual identity and suffered from poor mobile experience, slow performance, and unclear product navigation. The site did not reflect the brand’s premium positioning, and key user journeys—especially on mobile—were inefficient and difficult to navigate, limiting overall engagement and conversion potential.',
+    'Apex Peptides’ existing storefront, built with Blazor, lacked a cohesive visual identity and suffered from poor mobile experience, slow performance, and unclear product navigation. The site did not reflect the brand’s premium positioning, and key user journeys—especially on mobile—were inefficient and difficult to navigate, limiting overall engagement and conversion potential.',
   solution:
     'I redesigned and built a modern frontend experience using React and TypeScript, serving as a high-fidelity reference implementation for a planned migration back into Blazor. The new system introduced a mobile-first layout, clearer product navigation across all categories, and a premium visual direction aligned with the brand’s identity. I implemented an immersive homepage scroll experience using GSAP, while keeping all other pages clean, fast, and conversion-focused with subtle micro-interactions. The result is a scalable, framework-agnostic frontend foundation that improves usability, perceived performance, and design consistency—while being structured for efficient reimplementation in a production Blazor environment. This approach allowed rapid iteration and creative flexibility, while ensuring the final system could be translated into the existing Blazor-based production stack.',
   metrics: [
@@ -148,7 +148,7 @@ export const apexSupps: CaseStudy = {
   ],
   results: {
     summary:
-      'The redesigned Apex Supps frontend significantly improved performance, usability, and visual consistency. The new experience establishes a strong foundation for a faster, more engaging, and conversion-oriented e-commerce journey.',
+      'The redesigned Apex Peptides frontend significantly improved performance, usability, and visual consistency. The new experience establishes a strong foundation for a faster, more engaging, and conversion-oriented e-commerce journey.',
 
     outcomes: [
       'Improved Lighthouse performance (25 → 79 mobile, 27 → 98 desktop), resulting in a noticeably faster and smoother user experience',

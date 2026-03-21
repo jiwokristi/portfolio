@@ -1,8 +1,8 @@
-import type { CaseStudy, ProjectSummary } from "@/types/project";
-import { projects } from "@/data/projects";
+import type { CaseStudy, ProjectSummary } from '@/types/project';
+import { projects } from '@/data/projects';
 
 const projectModules: Record<string, () => Promise<{ [key: string]: CaseStudy }>> = {
-  "apex-supps": () => import("@/data/projects/apex-supps"),
+  'apex-peptides': () => import('@/data/projects/apex-peptides'),
 };
 
 export async function getProject(slug: string): Promise<CaseStudy | null> {
@@ -19,5 +19,5 @@ export function getAllProjects(): ProjectSummary[] {
 }
 
 export function getAllSlugs(): string[] {
-  return projects.map((p) => p.slug);
+  return projects.map(p => p.slug);
 }
