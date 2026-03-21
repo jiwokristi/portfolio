@@ -104,40 +104,46 @@ export const apexSupps: CaseStudy = {
   ],
   features: [
     {
-      title: 'Headless Commerce Architecture',
+      title: 'Scalable Frontend System',
       description:
-        "Decoupled frontend from Shopify's theme engine, enabling full control over the user experience while maintaining Shopify's robust inventory and order management.",
-      tags: ['Next.js', 'Shopify Storefront API', 'GraphQL'],
+        'Built a high-fidelity frontend using React and TypeScript with a reusable, component-based structure designed for scalability and future integration into a production environment.',
+      tags: ['React', 'TypeScript', 'Component Architecture'],
     },
     {
-      title: 'Smart Product Filtering',
+      title: 'Structured Product Navigation',
       description:
-        'Multi-faceted filtering system with URL state management, allowing users to find products by goal, ingredient, flavor, and price range — all with instant results.',
-      tags: ['React', 'URL State', 'Search'],
+        'Improved product discovery by simplifying the homepage to highlight 4 key categories while providing a dedicated page for all 14 categories, reducing cognitive load and improving usability.',
+      tags: ['UX Strategy', 'Navigation', 'Information Architecture'],
     },
     {
-      title: 'Performance-First Images',
+      title: 'URL-Based Filtering System',
       description:
-        'Automated image pipeline with responsive srcsets, AVIF/WebP format negotiation, and blur-up placeholders. Hero images load in under 200ms on fast connections.',
-      tags: ['Next/Image', 'CDN', 'WebP/AVIF'],
+        'Designed product filtering to persist in the URL, allowing users to share filtered views and maintain state across navigation for a more consistent browsing experience.',
+      tags: ['React Router', 'State Management', 'UX'],
     },
     {
-      title: 'Animated Product Showcases',
+      title: 'Performance-Focused Implementation',
       description:
-        'Scroll-triggered product reveals with staggered animations, 3D card tilts on hover, and smooth transitions between product variants.',
-      tags: ['GSAP', 'ScrollTrigger', 'CSS Transforms'],
+        'Optimized rendering and asset usage to significantly improve Lighthouse performance scores (25 → 79 mobile, 27 → 98 desktop), ensuring a faster and smoother experience.',
+      tags: ['Performance', 'Optimization', 'Lighthouse'],
     },
     {
-      title: 'Conversion-Optimized Checkout',
+      title: 'Purposeful Animation System',
       description:
-        'Streamlined cart drawer with upsell recommendations, progress indicators, and trust signals. Reduced checkout abandonment by 23%.',
-      tags: ['Shopify Checkout', 'A/B Testing', 'UX'],
+        'Designed distinct animation strategies: immersive, scroll-based storytelling on the homepage and subtle micro-interactions on other pages to support usability without compromising performance.',
+      tags: ['GSAP', 'UX Motion', 'Interaction Design'],
     },
     {
-      title: 'Real-Time Inventory',
+      title: 'Enhanced UI Interactions',
       description:
-        'Live stock indicators and back-in-stock notifications powered by Shopify webhooks and server-sent events. No more overselling.',
-      tags: ['Webhooks', 'SSE', 'Real-Time'],
+        'Implemented refined UI details including stacking category animations, animated newsletter section, scroll progress indicator, and progressive footer reveal to create a more engaging and polished experience.',
+      tags: ['Micro-interactions', 'GSAP', 'UI Polish'],
+    },
+    {
+      title: 'Interactive Particle Animation',
+      description:
+        'Built an interactive bubble-based animation where cursor movement influences particle behavior, including collision and fluid-like blending effects between particles. Used selectively on secondary pages (login, register, contact) to enhance engagement without affecting core conversion flows.',
+      tags: ['CSS', 'DOM', 'Interaction Design'],
     },
   ],
   results: {
