@@ -148,20 +148,23 @@ export const apexSupps: CaseStudy = {
   ],
   results: {
     summary:
-      'The revamped Apex Supps website delivered measurable improvements across every key metric. The headless architecture provided the performance foundation, while the redesigned UX drove significant conversion gains.',
+      'The redesigned Apex Supps frontend significantly improved performance, usability, and visual consistency. The new experience establishes a strong foundation for a faster, more engaging, and conversion-oriented e-commerce journey.',
+
     outcomes: [
-      'Page load time reduced from 6.2s to 1.4s (77% improvement)',
-      'Mobile conversion rate increased from 1.2% to 3.8% (217% increase)',
-      'Bounce rate dropped from 68% to 34% (50% reduction)',
-      'Lighthouse performance score improved from 42 to 98',
-      'Average session duration increased by 45%',
-      'Revenue per visitor increased by 62%',
+      'Improved Lighthouse performance (25 → 79 mobile, 27 → 98 desktop), resulting in a noticeably faster and smoother user experience',
+      'Best practices score increased from 50 → 100, reflecting improved code quality and standards',
+      'Accessibility score improved from 76 → 87, enhancing usability across devices',
+      'Reduced visual clutter and improved hierarchy for clearer product discovery',
+      'Simplified navigation by restructuring category access and reducing homepage overload',
+      'Introduced a consistent, scalable UI system for future development and integration',
     ],
+
     lessonsLearned: [
-      'Headless commerce adds complexity — ensure the team can maintain it before committing',
-      'Incremental Static Regeneration is ideal for product catalogs with frequent updates',
-      'Performance gains directly correlate with conversion improvements on mobile',
-      'A staged rollout dramatically reduces launch risk for revenue-critical sites',
+      'Performance and animation must be balanced — expressive UI should never compromise usability',
+      'Reducing cognitive load (e.g. limiting visible categories) improves clarity and user flow',
+      'Different pages require different interaction strategies — storytelling vs conversion',
+      'URL-based state improves user experience by preserving context across navigation',
+      'Strong visual hierarchy is critical for guiding users toward key actions',
     ],
   },
 };
