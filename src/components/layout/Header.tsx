@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
+import { ThemeSwitcher } from '@/components/theme/ThemeSwitcher';
 
 export function Header() {
   return (
@@ -24,6 +25,8 @@ export function Header() {
           >
             Contact
           </Link>
+          <div className="h-4 border-l border-border" />
+          <ThemeSwitcher />
         </nav>
       </Container>
     </header>
