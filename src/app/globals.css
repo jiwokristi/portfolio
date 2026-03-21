@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-bg: #0a0a0a;
@@ -42,4 +42,52 @@ body {
 ::selection {
   background-color: var(--color-accent);
   color: white;
+}
+
+@media print {
+  @page {
+    margin: 0 0.2in;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  header:has(nav),
+  footer {
+    display: none !important;
+  }
+
+  .resume-document {
+    max-width: none !important;
+    padding: 0 !important;
+    font-size: 0.75rem;
+  }
+
+  .resume-document h1 {
+    color: black !important;
+    font-size: 1.25rem;
+  }
+
+  .resume-document h2 {
+    color: black !important;
+    font-size: 0.85rem;
+    border-color: #d1d5db !important;
+  }
+
+  .resume-document p,
+  .resume-document li,
+  .resume-document span {
+    color: #1f2937 !important;
+  }
+
+  .resume-document a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .resume-entry {
+    break-inside: avoid;
+  }
 }
