@@ -44,7 +44,7 @@ export function CsHero({ title, subtitle, category, heroImage, metrics }: CsHero
     <section ref={containerRef} className="relative min-h-screen">
       <Container className="pb-12 pt-24 lg:pt-32">
         <div className="mb-8 flex flex-col gap-6">
-          <Badge data-hero-text>{category}</Badge>
+          <Badge data-hero-text className="self-start">{category}</Badge>
           <h1
             data-hero-text
             className="max-w-4xl text-display font-bold leading-[1.05] tracking-tight max-lg:text-h1"
@@ -72,8 +72,9 @@ export function CsHero({ title, subtitle, category, heroImage, metrics }: CsHero
         </div>
       </Container>
 
-      <div className="relative aspect-video w-full overflow-hidden" data-hero-image>
+      <div className="relative aspect-video w-full overflow-hidden">
         <Image
+          data-hero-image
           src={heroImage.src}
           alt={heroImage.alt}
           width={heroImage.width}

@@ -13,9 +13,10 @@ export function CsFeatures({ features }: { features: ProjectFeature[] }) {
 
   useGSAP(() => {
     if (reducedMotion) return;
+    gsap.set("[data-feature-card]", { y: 30, opacity: 0 });
     ScrollTrigger.batch("[data-feature-card]", {
       onEnter: (elements) => {
-        gsap.fromTo(elements, { y: 30, opacity: 0 }, {
+        gsap.to(elements, {
           y: 0,
           opacity: 1,
           duration: 0.6,

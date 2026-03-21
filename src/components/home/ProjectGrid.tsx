@@ -13,9 +13,10 @@ export function ProjectGrid({ projects }: { projects: ProjectSummary[] }) {
 
   useGSAP(() => {
     if (reducedMotion) return;
+    gsap.set("[data-project-card]", { y: 30, opacity: 0 });
     ScrollTrigger.batch("[data-project-card]", {
       onEnter: (elements) => {
-        gsap.fromTo(elements, { y: 30, opacity: 0 }, {
+        gsap.to(elements, {
           y: 0,
           opacity: 1,
           duration: 0.6,
