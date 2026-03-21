@@ -15,6 +15,9 @@ export function Header() {
           <Link href="/about" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
             About
           </Link>
+          <Link href="/resume" className="text-sm text-text-secondary transition-colors hover:text-text-primary">
+            Resume
+          </Link>
           <Link
             href="mailto:priyadijiwo@gmail.com"
             className="text-sm text-text-secondary transition-colors hover:text-text-primary"
