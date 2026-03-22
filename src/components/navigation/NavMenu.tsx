@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { gsap, useGSAP } from '@/lib/gsap';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
@@ -8,11 +8,16 @@ import { useFocusTrap } from '@/hooks/use-focus-trap';
 import { MenuButton } from './MenuButton';
 import { NavOverlay } from './NavOverlay';
 
-type NavMenuProps = {
-  onOpenChange?: (open: boolean) => void;
+export type NavMenuHandle = {
+  close: () => void;
 };
 
-export function NavMenu({ onOpenChange }: NavMenuProps) {
+type NavMenuProps = {
+  onOpenChange?: (open: boolean) => void;
+  ref?: React.Ref<NavMenuHandle>;
+};
+
+export function NavMenu({ onOpenChange, ref }: NavMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const pathname = usePathname();
@@ -122,6 +127,9 @@ export function NavMenu({ onOpenChange }: NavMenuProps) {
     if (isOpen) close();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+
+  // Expose close to parent
+  useImperativeHandle(ref, () => ({ close }), [close]);
 
   return (
     <>

@@ -1,15 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Container } from '@/components/ui/Container';
 import { ThemeSwitcher } from '@/components/theme/ThemeSwitcher';
-import { NavMenu } from '@/components/navigation/NavMenu';
+import { NavMenu, type NavMenuHandle } from '@/components/navigation/NavMenu';
 import { navItems } from '@/data/navigation';
 
 export function Header() {
   const [navOpen, setNavOpen] = useState(false);
+  const navMenuRef = useRef<NavMenuHandle>(null);
 
   return (
     <header
@@ -19,7 +20,11 @@ export function Header() {
       )}
     >
       <Container className="relative z-[70] flex h-16 items-center justify-between">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
+        <Link
+          href="/"
+          onClick={() => { if (navOpen) navMenuRef.current?.close(); }}
+          className="text-lg font-semibold tracking-tight"
+        >
           Jiwo Kristi
         </Link>
         <nav className="flex items-center gap-6">
@@ -38,7 +43,7 @@ export function Header() {
 
           {/* Mobile overlay menu — hidden on md+ */}
           <div className="md:hidden">
-            <NavMenu onOpenChange={setNavOpen} />
+            <NavMenu ref={navMenuRef} onOpenChange={setNavOpen} />
           </div>
 
           <div className="h-4 border-l border-border" />
