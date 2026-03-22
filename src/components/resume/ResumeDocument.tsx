@@ -59,7 +59,7 @@ export function ResumeDocument() {
           <div className="space-y-3">
             {experience.map(exp => (
               <div key={exp.company} className="resume-entry">
-                <div className="flex flex-col gap-0.5 md:flex-row md:items-baseline md:justify-between md:gap-4">
+                <div className="resume-inline flex flex-col gap-0.5 md:flex-row md:items-baseline md:justify-between md:gap-4">
                   <p className="text-sm md:text-base">
                     <span className="font-bold">{exp.company}</span>
                     <span className="mx-1 text-text-muted">·</span>
@@ -92,7 +92,7 @@ export function ResumeDocument() {
           <div className="space-y-2">
             {education.map(edu => (
               <div key={edu.institution}>
-                <div className="flex flex-col gap-0.5 md:flex-row md:items-baseline md:justify-between md:gap-4">
+                <div className="resume-inline flex flex-col gap-0.5 md:flex-row md:items-baseline md:justify-between md:gap-4">
                   <h3 className="text-sm font-semibold md:text-base">
                     {edu.institution}
                     {edu.location && <span className="font-normal text-text-secondary"> — {edu.location}</span>}
