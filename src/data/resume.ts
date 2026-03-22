@@ -61,7 +61,7 @@ export const experience: Experience[] = [
     // Indonesia's 2nd largest bank by assets ($126B), serving ~30 million retail customers through 8,600+ branches. State-owned, MSME-focused, $31B market cap, 82,000+ employees.
     context: 'Worked with early-stage SaaS startups, agencies, and solo founders.',
     highlights: [
-      'Redesigned and rebuilt an e-commerce storefront, boosting mobile Lighthouse performance by 216% (25 → 79) and desktop by 263% (27 → 98) by leveraging React, TypeScript, Vite, GSAP, and Material UI.',
+      'Redesigned and rebuilt an e-commerce storefront, boosting **mobile Lighthouse performance by 216%** (25 → 79) and **desktop by 263%** (27 → 98) by leveraging **React, TypeScript, Vite, GSAP, and Material UI**.',
     ],
   },
   {
