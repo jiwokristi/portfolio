@@ -52,7 +52,8 @@ export function ResumeDocument() {
             ·{' '}
             <a href={contact.github} target="_blank" rel="noopener noreferrer" className="underline hover:text-accent">
               GitHub
-            </a>
+            </a>{' '}
+            ·{' '}
             <a
               href={contact.portfolio}
               target="_blank"
