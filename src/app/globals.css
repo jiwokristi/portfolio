@@ -81,29 +81,53 @@ body {
   .resume-document {
     max-width: none !important;
     padding: 0 !important;
-    font-size: 0.75rem;
   }
 
   .resume-document h1 {
     color: black !important;
-    font-size: 1.25rem;
+    font-size: 1rem !important;
   }
 
   .resume-document h2 {
     color: black !important;
-    font-size: 0.85rem;
+    font-size: 0.8rem !important;
     border-color: #d1d5db !important;
+  }
+
+  .resume-document h3 {
+    font-size: 0.7rem !important;
+    color: #1f2937 !important;
   }
 
   .resume-document p,
   .resume-document li,
-  .resume-document span {
+  .resume-document span,
+  .resume-document a,
+  .resume-document div:not([class*="space-y"]) {
+    font-size: 0.7rem !important;
+  }
+
+  .resume-document ul {
+    font-size: 0.7rem !important;
+  }
+
+  .resume-document p,
+  .resume-document li,
+  .resume-document span,
+  .resume-document div {
     color: #1f2937 !important;
   }
 
   .resume-document a {
     color: inherit !important;
     text-decoration: none !important;
+  }
+
+  .resume-inline {
+    flex-direction: row !important;
+    align-items: baseline !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
   }
 
   .resume-entry {
