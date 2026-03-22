@@ -16,7 +16,7 @@ export function NavCard({ title, description, href, index, onClick }: NavCardPro
     >
       <span className="font-mono text-sm text-text-muted">{String(index + 1).padStart(2, '0')}</span>
       <div className="mt-auto">
-        <h2 className="text-h2 font-bold transition-colors group-hover:text-accent md:text-h1">{title}</h2>
+        <span className="block text-h2 font-bold transition-colors group-hover:text-accent md:text-h1">{title}</span>
         <p className="mt-2 text-text-secondary">{description}</p>
       </div>
     </Link>
