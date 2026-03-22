@@ -32,11 +32,11 @@ export function ResumeDocument() {
 
   return (
     <>
-      <div ref={containerRef} className="resume-document mx-auto w-full max-w-4xl px-6 pt-32 pb-20 lg:px-8">
+      <div ref={containerRef} className="resume-document mx-auto w-full max-w-4xl px-6 pt-24 pb-16 md:pt-32 md:pb-20 lg:px-8">
         {/* Header */}
         <header data-resume-section className="mb-4">
-          <h1 className="text-h3 font-bold text-accent">{contact.name}</h1>
-          <p className="mt-1 text-text-secondary">
+          <h1 className="text-xl font-bold text-accent md:text-h3">{contact.name}</h1>
+          <p className="mt-1 text-sm text-text-secondary md:text-base">
             {contact.location} · {contact.email} · {contact.phone} ·{' '}
             <a
               href={contact.linkedin}
@@ -55,25 +55,25 @@ export function ResumeDocument() {
 
         {/* Experience */}
         <section data-resume-section className="mb-4">
-          <h2 className="mb-2 border-b border-border pb-1 text-lg font-bold text-accent">Work Experience</h2>
+          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">Work Experience</h2>
           <div className="space-y-3">
             {experience.map(exp => (
               <div key={exp.company} className="resume-entry">
-                <div className="flex items-baseline justify-between gap-4">
-                  <p>
+                <div className="flex flex-col gap-0.5 md:flex-row md:items-baseline md:justify-between md:gap-4">
+                  <p className="text-sm md:text-base">
                     <span className="font-bold">{exp.company}</span>
                     <span className="mx-1 text-text-muted">·</span>
                     <span className="text-text-secondary">{exp.role}</span>
                   </p>
-                  <p className="shrink-0 text-text-muted">
+                  <p className="text-sm text-text-muted md:shrink-0 md:text-base">
                     {exp.location}
                     <span className="mx-1">·</span>
                     {exp.period}
                   </p>
                 </div>
-                {exp.context && <p className="text-text-secondary">{exp.context}</p>}
+                {exp.context && <p className="text-sm text-text-secondary md:text-base">{exp.context}</p>}
                 {exp.highlights.length > 0 && (
-                  <ul className="mt-1 list-disc space-y-0.5 pl-5 text-text-secondary">
+                  <ul className="mt-1 list-disc space-y-0.5 pl-5 text-sm text-text-secondary md:text-base">
                     {exp.highlights.map((h, i) => (
                       <li key={i}>{renderBold(h)}</li>
                     ))}
@@ -86,22 +86,22 @@ export function ResumeDocument() {
 
         {/* Education */}
         <section data-resume-section className="mb-4">
-          <h2 className="mb-2 border-b border-border pb-1 text-lg font-bold text-accent">
+          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">
             Education and Certifications
           </h2>
           <div className="space-y-2">
             {education.map(edu => (
               <div key={edu.institution}>
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-semibold">
+                <div className="flex flex-col gap-0.5 md:flex-row md:items-baseline md:justify-between md:gap-4">
+                  <h3 className="text-sm font-semibold md:text-base">
                     {edu.institution}
                     {edu.location && <span className="font-normal text-text-secondary"> — {edu.location}</span>}
                   </h3>
-                  <span className="shrink-0 text-text-muted">{edu.period}</span>
+                  <span className="text-sm text-text-muted md:shrink-0 md:text-base">{edu.period}</span>
                 </div>
-                <p className="italic text-text-secondary">{edu.credential}</p>
+                <p className="text-sm italic text-text-secondary md:text-base">{edu.credential}</p>
                 {edu.highlights && edu.highlights.length > 0 && (
-                  <ul className="mt-1 list-disc space-y-0.5 pl-5 text-text-secondary">
+                  <ul className="mt-1 list-disc space-y-0.5 pl-5 text-sm text-text-secondary md:text-base">
                     {edu.highlights.map((h, i) => (
                       <li key={i}>{h}</li>
                     ))}
@@ -114,10 +114,10 @@ export function ResumeDocument() {
 
         {/* Projects */}
         <section data-resume-section className="mb-4">
-          <h2 className="mb-2 border-b border-border pb-1 text-lg font-bold text-accent">Projects & Achievements</h2>
+          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">Projects & Achievements</h2>
           <div className="space-y-2">
             {projects.map(proj => (
-              <div key={proj.name}>
+              <div key={proj.name} className="text-sm md:text-base">
                 {proj.url ? (
                   <a href={proj.url} target="_blank" rel="noopener noreferrer" className="font-semibold underline hover:text-accent">
                     {proj.name}
@@ -134,7 +134,7 @@ export function ResumeDocument() {
 
         {/* Skills */}
         <section data-resume-section className="mb-4">
-          <p className="text-text-secondary">
+          <p className="text-sm text-text-secondary md:text-base">
             <strong>Skills:</strong> {skills.join(' · ')}
           </p>
         </section>

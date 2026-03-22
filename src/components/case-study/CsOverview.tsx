@@ -54,7 +54,7 @@ export function CsOverview({
               </div>
             </div>
             {liveUrl && (
-              <Button href={liveUrl} className="w-full">
+              <Button href={liveUrl} className="w-full" newTab>
                 View Live Site
               </Button>
             )}

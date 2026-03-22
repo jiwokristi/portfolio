@@ -41,14 +41,10 @@ export function CsProcess({ process }: { process: ProcessPhase[] }) {
               <div
                 key={phase.title}
                 data-process-item
-                className={`relative grid gap-8 lg:grid-cols-2 ${
-                  i % 2 === 1 ? "lg:direction-rtl" : ""
-                }`}
+                className="relative grid gap-8 lg:grid-cols-2"
               >
-                <div className={`space-y-4 ${i % 2 === 1 ? "lg:col-start-2 lg:text-left lg:direction-ltr" : "lg:text-right lg:direction-ltr"}`}>
-                  <div className="flex items-center gap-3 lg:justify-end"
-                    style={i % 2 === 1 ? { justifyContent: "flex-start" } : undefined}
-                  >
+                <div className={`space-y-4 ${i % 2 === 1 ? "lg:col-start-2" : "lg:text-right"}`}>
+                  <div className={`flex items-center gap-3 ${i % 2 === 0 ? "lg:justify-end" : ""}`}>
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
                       {i + 1}
                     </span>
@@ -61,7 +57,7 @@ export function CsProcess({ process }: { process: ProcessPhase[] }) {
                   </p>
                 </div>
 
-                <div className={`${i % 2 === 1 ? "lg:col-start-1 lg:row-start-1 lg:direction-ltr" : "lg:direction-ltr"}`}>
+                <div className={i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
                   {phase.highlights && (
                     <ul className="space-y-2 rounded-2xl border border-border bg-surface p-6">
                       {phase.highlights.map((h) => (

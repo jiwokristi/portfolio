@@ -22,7 +22,7 @@ export function ProjectCard({ project }: { project: ProjectSummary }) {
         <Badge className="mb-4">{project.category}</Badge>
         <h3 className="mb-2 text-xl font-semibold transition-colors group-hover:text-accent">{project.title}</h3>
         <p className="mb-8 text-sm text-text-secondary line-clamp-2">{project.description}</p>
-        <div className="flex gap-6">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {project.metrics.map(m => (
             <div key={m.label} className="flex flex-col">
               <span className="text-sm font-bold text-accent">{m.after}</span>

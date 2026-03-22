@@ -44,6 +44,8 @@ export function ThemeSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-haspopup="true"
         className="cursor-pointer text-text-secondary transition-colors hover:text-text-primary"
         aria-label="Toggle theme"
       >
@@ -51,10 +53,11 @@ export function ThemeSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-36 rounded-lg border border-border bg-surface py-1 shadow-lg">
+        <div role="menu" className="absolute right-0 z-50 mt-2 w-36 rounded-lg border border-border bg-surface py-1 shadow-lg">
           {themes.map(({ value, label, icon: Icon }) => (
             <button
               key={value}
+              role="menuitem"
               onClick={() => {
                 setTheme(value);
                 setOpen(false);
