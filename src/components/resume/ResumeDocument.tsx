@@ -32,7 +32,10 @@ export function ResumeDocument() {
 
   return (
     <>
-      <div ref={containerRef} className="resume-document mx-auto w-full max-w-4xl px-6 pt-24 pb-16 md:pt-32 md:pb-20 lg:px-8">
+      <div
+        ref={containerRef}
+        className="resume-document mx-auto w-full max-w-4xl px-6 pt-24 pb-16 md:pt-32 md:pb-20 lg:px-8"
+      >
         {/* Header */}
         <header data-resume-section className="mb-4">
           <h1 className="text-xl font-bold text-accent md:text-h3">{contact.name}</h1>
@@ -55,7 +58,9 @@ export function ResumeDocument() {
 
         {/* Experience */}
         <section data-resume-section className="mb-4">
-          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">Work Experience</h2>
+          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">
+            Work Experience
+          </h2>
           <div className="space-y-3">
             {experience.map(exp => (
               <div key={exp.company} className="resume-entry">
@@ -66,8 +71,8 @@ export function ResumeDocument() {
                     <span className="text-text-secondary">{exp.role}</span>
                   </p>
                   <p className="text-sm text-text-muted md:shrink-0 md:text-base">
-                    {exp.location}
-                    <span className="mx-1">·</span>
+                    {exp?.location}
+                    {exp.location && <span className="mx-1">·</span>}
                     {exp.period}
                   </p>
                 </div>
@@ -114,12 +119,19 @@ export function ResumeDocument() {
 
         {/* Projects */}
         <section data-resume-section className="mb-4">
-          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">Projects & Achievements</h2>
+          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">
+            Projects & Achievements
+          </h2>
           <div className="space-y-2">
             {projects.map(proj => (
               <div key={proj.name} className="text-sm md:text-base">
                 {proj.url ? (
-                  <a href={proj.url} target="_blank" rel="noopener noreferrer" className="font-semibold underline hover:text-accent">
+                  <a
+                    href={proj.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold underline hover:text-accent"
+                  >
                     {proj.name}
                   </a>
                 ) : (
