@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://jiwokristi.dev'),
+  metadataBase: new URL('https://jiwokristi.vercel.app'),
   title: {
     default: 'Jiwo Kristi | Portfolio',
     template: '%s | Jiwo Kristi',
