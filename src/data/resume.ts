@@ -4,6 +4,7 @@ export type ContactInfo = {
   email: string;
   linkedin: string;
   github: string;
+  portfolio: string;
   location: string;
 };
 
@@ -37,6 +38,7 @@ export const contact: ContactInfo = {
   email: 'priyadijiwo@gmail.com',
   linkedin: 'https://www.linkedin.com/in/jiwokristi/',
   github: 'https://github.com/jiwokristi',
+  portfolio: 'https://jiwokristi.vercel.app',
   location: 'Tangerang, Indonesia',
 };
 
@@ -87,7 +89,7 @@ export const experience: Experience[] = [
     highlights: [],
   },
   {
-    company: 'PT. Infosys Solusi Terpadu',
+    company: 'PT Infosys Solusi Terpadu',
     location: 'Yogyakarta, Indonesia',
     role: 'Frontend Developer',
     period: 'Aug 2022 - Aug 2023',

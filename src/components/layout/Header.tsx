@@ -42,7 +42,7 @@ export function Header() {
           </div>
 
           {/* Mobile overlay menu — hidden on md+ */}
-          <div className="md:hidden">
+          <div className="flex items-center md:hidden">
             <NavMenu ref={navMenuRef} onOpenChange={setNavOpen} />
           </div>
 
