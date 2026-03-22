@@ -89,7 +89,7 @@ export const experience: Experience[] = [
     highlights: [],
   },
   {
-    company: 'PT. Infosys Solusi Terpadu',
+    company: 'PT Infosys Solusi Terpadu',
     location: 'Yogyakarta, Indonesia',
     role: 'Frontend Developer',
     period: 'Aug 2022 - Aug 2023',

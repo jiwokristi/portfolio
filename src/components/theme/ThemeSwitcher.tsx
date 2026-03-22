@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 import { SunIcon, MoonIcon, MonitorIcon } from './ThemeIcons';
@@ -11,13 +11,15 @@ const themes = [
   { value: 'system', label: 'System', icon: MonitorIcon },
 ] as const;
 
+const subscribe = () => () => {};
+const getSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export function ThemeSwitcher() {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!open) return;
@@ -46,7 +48,7 @@ export function ThemeSwitcher() {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-haspopup="true"
-        className="cursor-pointer text-text-secondary transition-colors hover:text-text-primary"
+        className="flex h-4 items-center cursor-pointer text-text-secondary transition-colors hover:text-text-primary"
         aria-label="Toggle theme"
       >
         <ActiveIcon />
