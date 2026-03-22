@@ -4,6 +4,7 @@ export type ContactInfo = {
   email: string;
   linkedin: string;
   github: string;
+  portfolio: string;
   location: string;
 };
 
@@ -37,6 +38,7 @@ export const contact: ContactInfo = {
   email: 'priyadijiwo@gmail.com',
   linkedin: 'https://www.linkedin.com/in/jiwokristi/',
   github: 'https://github.com/jiwokristi',
+  portfolio: 'https://jiwokristi.vercel.app',
   location: 'Tangerang, Indonesia',
 };
 
