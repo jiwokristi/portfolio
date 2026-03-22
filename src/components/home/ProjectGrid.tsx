@@ -44,6 +44,7 @@ export function ProjectGrid({ projects }: { projects: ProjectSummary[] }) {
             <div key={project.slug} data-project-card>
               <ProjectCard
                 project={project}
+                showImage={reducedMotion}
                 onMouseEnter={() => {
                   if (!reducedMotion && project.previewVideo) setActiveVideo(project.previewVideo);
                 }}

@@ -5,12 +5,13 @@ import type { ProjectSummary } from '@/types/project';
 
 type ProjectCardProps = {
   project: ProjectSummary;
+  showImage?: boolean;
   onMouseEnter?: () => void;
   onMouseMove?: (e: React.MouseEvent) => void;
   onMouseLeave?: () => void;
 };
 
-export function ProjectCard({ project, onMouseEnter, onMouseMove, onMouseLeave }: ProjectCardProps) {
+export function ProjectCard({ project, showImage, onMouseEnter, onMouseMove, onMouseLeave }: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -19,7 +20,7 @@ export function ProjectCard({ project, onMouseEnter, onMouseMove, onMouseLeave }
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
-      <div className="relative aspect-video overflow-hidden lg:hidden">
+      <div className={`relative aspect-video overflow-hidden ${showImage ? '' : 'lg:hidden'}`}>
         <Image
           src={project.heroImage.src}
           alt={project.heroImage.alt}
