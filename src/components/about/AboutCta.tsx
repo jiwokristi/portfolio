@@ -13,7 +13,7 @@ export function AboutCta() {
           </p>
           <div className="flex justify-center gap-4">
             <Button href="mailto:priyadijiwo@gmail.com">Get in Touch</Button>
-            <Button href="https://github.com/jiwokristi" variant="outlined" color="default">
+            <Button href="https://github.com/jiwokristi" variant="outlined" color="default" newTab>
               GitHub
             </Button>
           </div>
