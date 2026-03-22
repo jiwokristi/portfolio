@@ -37,8 +37,8 @@ export function NavMenu({ onOpenChange }: NavMenuProps) {
     });
 
     // Overlay slides up
-    tl.set(overlayRef.current, { pointerEvents: 'auto' }, 0);
-    tl.fromTo(overlayRef.current, { yPercent: 100, visibility: 'visible' }, { yPercent: 0, duration: 0.5, ease: 'power4.inOut', immediateRender: false }, 0);
+    tl.set(overlayRef.current, { pointerEvents: 'auto', visibility: 'visible' }, 0);
+    tl.fromTo(overlayRef.current, { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: 'power4.inOut' }, 0);
 
     // Menu text slides up and fades out
     tl.to(menuTextRef.current, { y: -20, opacity: 0, duration: 0.35, ease: 'power3.in' }, 0);
@@ -70,7 +70,7 @@ export function NavMenu({ onOpenChange }: NavMenuProps) {
       }
       gsap.set('[data-nav-card]', { opacity: 1, y: 0 });
     } else {
-      timelineRef.current?.play();
+      timelineRef.current?.restart();
     }
   }, [prefersReducedMotion, onOpenChange]);
 
