@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/Button';
 
 export function HeroSection() {
   return (
-    <section className="flex min-h-[80vh] items-center py-24">
+    <section className="flex items-center py-24 lg:min-h-[80vh]">
       <Container>
         <div className="max-w-3xl space-y-6">
           <p className="text-sm font-medium uppercase tracking-widest text-accent">Full-stack Engineer</p>

@@ -29,7 +29,7 @@ export function AboutHero() {
   );
 
   return (
-    <section ref={containerRef} className="flex min-h-[80vh] items-center py-24">
+    <section ref={containerRef} className="flex items-center py-24 lg:min-h-[80vh]">
       <Container>
         <div className="max-w-3xl space-y-6">
           {/* eslint-disable */}

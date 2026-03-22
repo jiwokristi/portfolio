@@ -48,7 +48,7 @@ export function CsHero({ title, subtitle, category, heroImage }: CsHeroProps) {
   );
 
   return (
-    <section ref={containerRef} className="relative min-h-screen">
+    <section ref={containerRef} className="relative lg:min-h-screen">
       <Container className="pb-12 pt-24 lg:pt-32">
         <div className="mb-8 flex flex-col gap-6">
           <Badge data-hero-text className="self-start">
