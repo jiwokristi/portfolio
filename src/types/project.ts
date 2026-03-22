@@ -39,6 +39,7 @@ export interface ProjectMeta {
   year: number;
   techStack: string[];
   liveUrl?: string;
+  previewVideo?: string;
   featured: boolean;
   order: number;
 }

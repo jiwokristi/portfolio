@@ -12,10 +12,11 @@ export const apexSupps: CaseStudy = {
   year: 2025,
   techStack: ['React', 'TypeScript', 'Vite', 'GSAP', 'Material UI', 'Emotion'],
   liveUrl: 'https://apexsupps.onrender.com',
+  previewVideo: '/videos/projects/apex-peptides/preview.mp4',
   featured: true,
   order: 1,
   heroImage: {
-    src: '/images/projects/apex-peptides/hero.jpg',
+    src: '/images/projects/apex-peptides/hero.webp',
     alt: 'Apex Peptides website redesign shown on multiple devices',
     width: 1920,
     height: 1080,

@@ -1,8 +1,9 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Container } from '@/components/ui/Container';
 import { ProjectCard } from '@/components/home/ProjectCard';
+import { ProjectPreview } from '@/components/home/ProjectPreview';
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import type { ProjectSummary } from '@/types/project';
@@ -10,6 +11,8 @@ import type { ProjectSummary } from '@/types/project';
 export function ProjectGrid({ projects }: { projects: ProjectSummary[] }) {
   const containerRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
   useGSAP(
     () => {
@@ -39,11 +42,21 @@ export function ProjectGrid({ projects }: { projects: ProjectSummary[] }) {
         <div className="grid gap-8 md:grid-cols-2">
           {projects.map(project => (
             <div key={project.slug} data-project-card>
-              <ProjectCard project={project} />
+              <ProjectCard
+                project={project}
+                onMouseEnter={() => {
+                  if (!reducedMotion && project.previewVideo) setActiveVideo(project.previewVideo);
+                }}
+                onMouseMove={(e) => setCursor({ x: e.clientX + 20, y: e.clientY - 100 })}
+                onMouseLeave={() => setActiveVideo(null)}
+              />
             </div>
           ))}
         </div>
       </Container>
+      {!reducedMotion && (
+        <ProjectPreview videoSrc={activeVideo} cursorX={cursor.x} cursorY={cursor.y} />
+      )}
     </section>
   );
 }
