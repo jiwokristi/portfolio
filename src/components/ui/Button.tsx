@@ -40,6 +40,7 @@ const buttonVariants = cva(
 
 type ButtonProps = {
   href?: string;
+  newTab?: boolean;
   className?: string;
   children: React.ReactNode;
 } & VariantProps<typeof buttonVariants> &
@@ -50,6 +51,7 @@ export function Button({
   color,
   size,
   href,
+  newTab,
   className,
   children,
   ...props
@@ -58,7 +60,11 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={styles}>
+      <Link
+        href={href}
+        className={styles}
+        {...(newTab && { target: "_blank", rel: "noopener noreferrer" })}
+      >
         {children}
       </Link>
     );
