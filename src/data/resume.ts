@@ -45,13 +45,25 @@ export const summary =
 
 export const experience: Experience[] = [
   {
-    company: 'PT Bank Rakyat Indonesia (Persero) Tbk',
+    company: 'PT Satkomindo Mediyasa',
     location: 'Jakarta, Indonesia',
     role: 'Frontend Developer',
     period: 'Mar 2026 - Present',
     // Indonesia's 2nd largest bank by assets ($126B), serving ~30 million retail customers through 8,600+ branches. State-owned, MSME-focused, $31B market cap, 82,000+ employees.
-    context: "Indonesia's 2nd largest bank by assets ($126B), 30M+ customers, $31B market cap",
+    context:
+      "Worked on IT projects for Indonesia's 2nd largest bank by assets ($126B), 30M+ customers, $31B market cap.",
     highlights: [],
+  },
+  {
+    company: 'Freelance',
+    location: '',
+    role: 'Full-stack Developer',
+    period: 'Dec 2025 - Present',
+    // Indonesia's 2nd largest bank by assets ($126B), serving ~30 million retail customers through 8,600+ branches. State-owned, MSME-focused, $31B market cap, 82,000+ employees.
+    context: 'Worked with early-stage SaaS startups, agencies, and solo founders.',
+    highlights: [
+      'Redesigned and rebuilt an e-commerce storefront, boosting mobile Lighthouse performance by 216% (25 → 79) and desktop by 263% (27 → 98) by leveraging React, TypeScript, Vite, GSAP, and Material UI.',
+    ],
   },
   {
     company: 'Enboq',
@@ -59,7 +71,7 @@ export const experience: Experience[] = [
     role: 'Full-stack Developer',
     period: 'Apr 2024 - Dec 2025',
     //  Mediq is a healthcare services company with 2,500+ employees across 13 European countries. Brabantia is a well-known Dutch home goods brand (founded 1919).
-    context: 'AI-powered gamified onboarding SaaS, trusted by Mediq and Brabantia',
+    context: 'AI-powered gamified onboarding SaaS, trusted by Mediq and Brabantia.',
     highlights: [
       'Led development of the **marketing site** serving **5,000+ monthly visitors**, driving lead generation and brand awareness through a responsive, SEO-optimized experience built with **Next.js, Material UI, and GSAP**.',
       'Delivered **10+ full-stack features** end-to-end — from UI components to REST APIs and database schemas — using **React, TypeScript, Node.js, Express, and MongoDB**, directly contributing to a scalable onboarding experience used by **1,000+ new hires** across clients.',
@@ -73,17 +85,16 @@ export const experience: Experience[] = [
     location: 'Sleman, Indonesia',
     role: 'Frontend Developer',
     period: 'Aug 2023 - Apr 2024',
-    highlights: [
-      'Led **cross-functional collaboration** with 4 UI/UX designers, PMs, and backend engineers, driving sprint planning, code reviews, and releases through an **Agile workflow using Jira and GitHub CI/CD**.',
-    ],
+    highlights: [],
   },
   {
-    company: 'PT Bank Tabungan Negara (Persero) Tbk',
+    company: 'PT. Infosys Solusi Terpadu',
     location: 'Yogyakarta, Indonesia',
     role: 'Frontend Developer',
     period: 'Aug 2022 - Aug 2023',
     // Indonesia's #1 mortgage bank — 39% market share in home ownership loans, 83% in subsidized segment, 5.5M customers, 470T IDR in assets.
-    context: "Indonesia's #1 mortgage bank — 39% home loan market share, 5.5M customers, 470T IDR in assets",
+    context:
+      "Worked on IT projects for PT Bank Tabungan Negara (Persero) Tbk, Indonesia's #1 mortgage bank — 39% home loan market share, 5.5M customers, 470T IDR in assets.",
     highlights: [],
   },
 ];
