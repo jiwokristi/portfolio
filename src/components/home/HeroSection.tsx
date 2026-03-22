@@ -7,7 +7,7 @@ export function HeroSection() {
       <Container>
         <div className="max-w-3xl space-y-6">
           <p className="text-sm font-medium uppercase tracking-widest text-accent">Full-stack Engineer</p>
-          <h1 className="text-display font-bold leading-[1.05] tracking-tight max-lg:text-h1">
+          <h1 className="text-display font-bold leading-[1.05] tracking-tight max-lg:text-[2.7rem]">
             Crafting digital
             <br />
             experiences that
