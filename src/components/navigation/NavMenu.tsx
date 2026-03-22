@@ -22,6 +22,8 @@ export function NavMenu({ onOpenChange }: NavMenuProps) {
   const closeTextRef = useRef<HTMLSpanElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const onOpenChangeRef = useRef(onOpenChange);
+  onOpenChangeRef.current = onOpenChange;
 
   useFocusTrap(overlayRef, isOpen);
 
@@ -33,6 +35,8 @@ export function NavMenu({ onOpenChange }: NavMenuProps) {
       paused: true,
       onReverseComplete: () => {
         gsap.set(overlayRef.current, { pointerEvents: 'none', visibility: 'hidden' });
+        document.body.style.overflow = '';
+        onOpenChangeRef.current?.(false);
       },
     });
 
@@ -76,10 +80,10 @@ export function NavMenu({ onOpenChange }: NavMenuProps) {
 
   const close = useCallback(() => {
     setIsOpen(false);
-    onOpenChange?.(false);
-    document.body.style.overflow = '';
 
     if (prefersReducedMotion) {
+      onOpenChange?.(false);
+      document.body.style.overflow = '';
       if (overlayRef.current) {
         overlayRef.current.style.visibility = 'hidden';
         overlayRef.current.style.transform = '';
@@ -91,6 +95,7 @@ export function NavMenu({ onOpenChange }: NavMenuProps) {
         closeTextRef.current.style.opacity = '0';
       }
     } else {
+      // scroll + onOpenChange deferred to onReverseComplete
       timelineRef.current?.reverse();
     }
   }, [prefersReducedMotion, onOpenChange]);
