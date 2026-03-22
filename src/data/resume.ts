@@ -9,7 +9,7 @@ export type ContactInfo = {
 
 export type Experience = {
   company: string;
-  location: string;
+  location?: string;
   role: string;
   period: string;
   context?: string;
@@ -18,7 +18,7 @@ export type Experience = {
 
 export type Education = {
   institution: string;
-  location: string;
+  location?: string;
   credential: string;
   period: string;
   highlights?: string[];
@@ -56,13 +56,12 @@ export const experience: Experience[] = [
   },
   {
     company: 'Freelance',
-    location: '',
     role: 'Full-stack Developer',
     period: 'Dec 2025 - Present',
     // Indonesia's 2nd largest bank by assets ($126B), serving ~30 million retail customers through 8,600+ branches. State-owned, MSME-focused, $31B market cap, 82,000+ employees.
     context: 'Worked with early-stage SaaS startups, agencies, and solo founders.',
     highlights: [
-      'Redesigned and rebuilt an e-commerce storefront, boosting mobile Lighthouse performance by 216% (25 → 79) and desktop by 263% (27 → 98) by leveraging React, TypeScript, Vite, GSAP, and Material UI.',
+      'Redesigned and rebuilt an e-commerce storefront, boosting **mobile Lighthouse performance by 216%** (25 → 79) and **desktop by 263%** (27 → 98) by leveraging **React, TypeScript, Vite, GSAP, and Material UI**.',
     ],
   },
   {
@@ -102,14 +101,12 @@ export const experience: Experience[] = [
 export const education: Education[] = [
   {
     institution: 'Universitas Terbuka',
-    location: '',
     credential: 'Bachelor of Information Systems (S.Kom)',
     period: 'Jun 2026 - Present',
   },
   // ! DO NOT DELETE
   // {
   //   institution: 'Hacktiv8 Indonesia',
-  //   location: '',
   //   credential: 'Certificate in Full Stack JavaScript Immersive',
   //   period: 'Feb 2022 - May 2022',
   //   highlights: [

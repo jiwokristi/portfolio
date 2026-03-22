@@ -14,7 +14,7 @@ export const NavOverlay = forwardRef<HTMLDivElement, NavOverlayProps>(function N
       role="dialog"
       aria-modal="true"
       aria-label="Navigation menu"
-      className="pointer-events-none invisible fixed inset-0 -z-10 flex items-center justify-center pt-24 pb-8 bg-bg"
+      className="pointer-events-none invisible fixed top-0 left-0 h-dvh w-full -z-10 flex items-start md:items-center justify-center pt-24 pb-8 overflow-y-auto bg-bg"
     >
       <div className="grid w-full max-w-5xl grid-cols-1 gap-4 px-6 md:grid-cols-2 lg:px-8">
         {navItems.map((item, i) => (
