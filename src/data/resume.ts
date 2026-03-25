@@ -39,7 +39,7 @@ export const contact: ContactInfo = {
   linkedin: 'https://www.linkedin.com/in/jiwokristi/',
   github: 'https://github.com/jiwokristi',
   portfolio: 'https://jiwokristi.vercel.app',
-  location: 'Tangerang, Indonesia',
+  location: 'Tangerang Regency, Indonesia',
 };
 
 export const summary =
@@ -53,7 +53,7 @@ export const experience: Experience[] = [
     period: 'Mar 2026 - Present',
     // Indonesia's 2nd largest bank by assets ($126B), serving ~30 million retail customers through 8,600+ branches. State-owned, MSME-focused, $31B market cap, 82,000+ employees.
     context:
-      "Worked on IT projects for Indonesia's 2nd largest bank by assets ($126B), 30M+ customers, $31B market cap.",
+      "In-house at PT Bank Rakyat Indonesia (Persero) Tbk, Indonesia's 2nd largest bank by assets ($126B), 30M+ customers, $31B market cap.",
     highlights: [],
   },
   {
