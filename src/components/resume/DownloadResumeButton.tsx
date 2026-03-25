@@ -25,7 +25,7 @@ export function DownloadResumeButton() {
   }
 
   return (
-    <div className="fixed right-6 bottom-6 flex gap-2 print:hidden">
+    <div className="sticky top-16 z-50 flex justify-center gap-2 border-b border-border bg-bg/80 px-6 py-3 backdrop-blur-md print:hidden">
       <Button variant="outlined" size="sm" onClick={() => window.print()}>
         Print
       </Button>
