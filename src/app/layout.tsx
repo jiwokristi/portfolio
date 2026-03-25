@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     template: '%s | Jiwo Kristi',
   },
   description: 'Product designer and developer crafting exceptional digital experiences.',
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
