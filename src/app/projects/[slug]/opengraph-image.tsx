@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getProject } from "@/lib/projects";
 
-export const runtime = "edge";
 export const alt = "Project preview";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
