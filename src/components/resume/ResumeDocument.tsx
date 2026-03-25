@@ -3,13 +3,8 @@
 import { useRef } from 'react';
 import { gsap, useGSAP } from '@/lib/gsap';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
-import { Button } from '@/components/ui/Button';
-import { contact, experience, education, skills, projects } from '@/data/resume';
-
-function renderBold(text: string) {
-  const parts = text.split(/\*\*(.+?)\*\*/g);
-  return parts.map((part, i) => (i % 2 === 1 ? <strong key={i}>{part}</strong> : part));
-}
+import { DownloadResumeButton } from './DownloadResumeButton';
+import { contact, summary, experience, education, skills } from '@/data/resume';
 
 export function ResumeDocument() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,7 +35,15 @@ export function ResumeDocument() {
         <header data-resume-section className="mb-4">
           <h1 className="text-xl font-bold text-accent md:text-h3">{contact.name}</h1>
           <p className="mt-1 text-sm text-text-secondary md:text-base">
-            {contact.location} · {contact.email} · {contact.phone} ·{' '}
+            {contact.location} ·{' '}
+            <a href={`mailto:${contact.email}`} className="underline hover:text-accent">
+              {contact.email}
+            </a>
+            {' · '}
+            <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="underline hover:text-accent">
+              {contact.phone}
+            </a>
+            {' · '}
             <a
               href={contact.linkedin}
               target="_blank"
@@ -65,10 +68,16 @@ export function ResumeDocument() {
           </p>
         </header>
 
+        {/* Summary */}
+        <section data-resume-section className="mb-4">
+          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">Summary</h2>
+          <p className="text-sm text-text-secondary md:text-base">{summary}</p>
+        </section>
+
         {/* Experience */}
         <section data-resume-section className="mb-4">
           <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">
-            Work Experience
+            Professional Experience
           </h2>
           <div className="space-y-3">
             {experience.map(exp => (
@@ -89,7 +98,7 @@ export function ResumeDocument() {
                 {exp.highlights.length > 0 && (
                   <ul className="mt-1 list-disc space-y-0.5 pl-5 text-sm text-text-secondary md:text-base">
                     {exp.highlights.map((h, i) => (
-                      <li key={i}>{renderBold(h)}</li>
+                      <li key={i}>{h}</li>
                     ))}
                   </ul>
                 )}
@@ -100,9 +109,7 @@ export function ResumeDocument() {
 
         {/* Education */}
         <section data-resume-section className="mb-4">
-          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">
-            Education and Certifications
-          </h2>
+          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">Education</h2>
           <div className="space-y-2">
             {education.map(edu => (
               <div key={edu.institution}>
@@ -127,7 +134,8 @@ export function ResumeDocument() {
         </section>
 
         {/* Projects */}
-        <section data-resume-section className="mb-4">
+        {/* DO NOT DELETE */}
+        {/* <section data-resume-section className="mb-4">
           <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">
             Projects & Achievements
           </h2>
@@ -147,11 +155,11 @@ export function ResumeDocument() {
                   <span className="font-semibold">{proj.name}</span>
                 )}
                 <span className="ml-2 text-text-muted">{proj.year}</span>
-                <span className="ml-2 text-text-secondary">— {renderBold(proj.description)}</span>
+                <span className="ml-2 text-text-secondary">— {proj.description}</span>
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Skills */}
         <section data-resume-section className="mb-4">
@@ -161,9 +169,7 @@ export function ResumeDocument() {
         </section>
       </div>
 
-      <Button className="fixed right-6 bottom-6 print:hidden" size="sm" onClick={() => window.print()}>
-        Download PDF
-      </Button>
+      <DownloadResumeButton />
     </>
   );
 }
