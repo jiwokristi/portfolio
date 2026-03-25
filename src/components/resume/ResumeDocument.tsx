@@ -27,9 +27,10 @@ export function ResumeDocument() {
 
   return (
     <>
+      <DownloadResumeButton />
       <div
         ref={containerRef}
-        className="resume-document mx-auto w-full max-w-4xl px-6 pt-24 pb-16 md:pt-32 md:pb-20 lg:px-8"
+        className="resume-document mx-auto w-full max-w-4xl px-6 pt-8 pb-16 md:pt-12 md:pb-20 lg:px-8"
       >
         {/* Header */}
         <header data-resume-section className="mb-4">
@@ -169,7 +170,6 @@ export function ResumeDocument() {
         </section>
       </div>
 
-      <DownloadResumeButton />
     </>
   );
 }
