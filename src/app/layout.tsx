@@ -12,9 +12,6 @@ export const metadata: Metadata = {
     template: '%s | Jiwo Kristi',
   },
   description: 'Product designer and developer crafting exceptional digital experiences.',
-  twitter: {
-    card: 'summary_large_image',
-  },
 };
 
 export default function RootLayout({
@@ -23,7 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <a
@@ -33,7 +34,9 @@ export default function RootLayout({
             Skip to content
           </a>
           <Header />
-          <main id="main-content" className="flex-1 pt-16">{children}</main>
+          <main id="main-content" className="flex-1 pt-16">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
