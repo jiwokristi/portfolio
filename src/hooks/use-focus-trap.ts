@@ -1,7 +1,18 @@
 import { useEffect, type RefObject } from 'react';
 
+/** Selector matching all natively focusable elements that aren't disabled. */
 const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+/**
+ * Traps keyboard focus within a container while active.
+ *
+ * When activated, focuses the first focusable element inside the container
+ * and wraps Tab / Shift+Tab at the boundaries. On deactivation, restores
+ * focus to the previously focused element.
+ *
+ * @param containerRef - Ref to the DOM element that should trap focus.
+ * @param isActive - Whether the trap is currently enabled.
+ */
 export function useFocusTrap(containerRef: RefObject<HTMLElement | null>, isActive: boolean) {
   useEffect(() => {
     if (!isActive || !containerRef.current) return;
