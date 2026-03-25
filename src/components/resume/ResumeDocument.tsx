@@ -6,11 +6,6 @@ import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { Button } from '@/components/ui/Button';
 import { contact, experience, education, skills, projects } from '@/data/resume';
 
-function renderBold(text: string) {
-  const parts = text.split(/\*\*(.+?)\*\*/g);
-  return parts.map((part, i) => (i % 2 === 1 ? <strong key={i}>{part}</strong> : part));
-}
-
 export function ResumeDocument() {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -68,7 +63,7 @@ export function ResumeDocument() {
         {/* Experience */}
         <section data-resume-section className="mb-4">
           <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">
-            Work Experience
+            Professional Experience
           </h2>
           <div className="space-y-3">
             {experience.map(exp => (
@@ -89,7 +84,7 @@ export function ResumeDocument() {
                 {exp.highlights.length > 0 && (
                   <ul className="mt-1 list-disc space-y-0.5 pl-5 text-sm text-text-secondary md:text-base">
                     {exp.highlights.map((h, i) => (
-                      <li key={i}>{renderBold(h)}</li>
+                      <li key={i}>{h}</li>
                     ))}
                   </ul>
                 )}
@@ -147,7 +142,7 @@ export function ResumeDocument() {
                   <span className="font-semibold">{proj.name}</span>
                 )}
                 <span className="ml-2 text-text-muted">{proj.year}</span>
-                <span className="ml-2 text-text-secondary">— {renderBold(proj.description)}</span>
+                <span className="ml-2 text-text-secondary">— {proj.description}</span>
               </div>
             ))}
           </div>

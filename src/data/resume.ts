@@ -63,7 +63,7 @@ export const experience: Experience[] = [
     // Indonesia's 2nd largest bank by assets ($126B), serving ~30 million retail customers through 8,600+ branches. State-owned, MSME-focused, $31B market cap, 82,000+ employees.
     context: 'Worked with early-stage SaaS startups, agencies, and solo founders.',
     highlights: [
-      'Redesigned and rebuilt an e-commerce storefront, boosting **mobile Lighthouse performance by 216%** (25 → 79) and **desktop by 263%** (27 → 98) by leveraging **React, TypeScript, Vite, GSAP, and Material UI**.',
+      'Redesigned and rebuilt an e-commerce storefront for a peptide supplement brand, improving mobile Lighthouse score from 25 to 79 (+216%) and desktop from 27 to 98 (+263%) using React, TypeScript, Vite, GSAP, and Material UI.',
     ],
   },
   {
@@ -74,11 +74,11 @@ export const experience: Experience[] = [
     //  Mediq is a healthcare services company with 2,500+ employees across 13 European countries. Brabantia is a well-known Dutch home goods brand (founded 1919).
     context: 'AI-powered gamified onboarding SaaS, trusted by Mediq and Brabantia.',
     highlights: [
-      'Led development of the **marketing site** serving **5,000+ monthly visitors**, driving lead generation and brand awareness through a responsive, SEO-optimized experience built with **Next.js, Material UI, and GSAP**.',
-      'Delivered **10+ full-stack features** end-to-end — from UI components to REST APIs and database schemas — using **React, TypeScript, Node.js, Express, and MongoDB**, directly contributing to a scalable onboarding experience used by **1,000+ new hires** across clients.',
-      'Drove **30% increase in employee onboarding completion** by architecting activity modules (questionnaires, quizzes, goals setting) with full CRUD, form validation, and real-time progress tracking in **React and Node.js**.',
-      'Grew **user retention by 65%** by designing and shipping gamification systems — daily mission, leveling and EXP mechanics, and mini-games.',
-      'Built **5 data-driven dashboards** visualizing onboarding progress, employee overview, NPS metric, daily mission insights, and questionnaire insights, enabling stakeholders to make informed decisions using **React charting libraries and REST APIs**.',
+      'Led development of the marketing site serving 5,000+ monthly visitors, driving lead generation and brand awareness through a responsive, SEO-optimized experience built with Next.js, Material UI, and GSAP.',
+      'Delivered 10+ full-stack features — from UI components to REST APIs and database schemas — using React, TypeScript, Node.js, Express, and MongoDB, directly contributing to a scalable onboarding experience used by 1,000+ new hires across clients.',
+      'Increased employee onboarding completion by 30% by architecting activity modules (questionnaires, quizzes, goals setting) with full CRUD, form validation, and real-time progress tracking in React and Node.js.',
+      'Grew user retention by 65% by designing and shipping gamification systems — daily mission, leveling and EXP mechanics, and mini-games.',
+      'Developed 5 data-driven dashboards visualizing onboarding progress, employee overview, NPS metric, daily mission insights, and questionnaire insights, enabling stakeholders to make informed decisions using React charting libraries and REST APIs.',
     ],
   },
   {
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     name: 'Apex Peptides',
     year: '2025',
     description:
-      'Complete redesign and rebuild of an e-commerce storefront using **React, TypeScript, Vite, GSAP, and Material UI**. Improved Lighthouse **mobile performance by 216%** (25 → 79) and **desktop by 263%** (27 → 98). Simplified product navigation from **14 categories to 4 key categories**. Built an **immersive scroll-based homepage** with GSAP and implemented **URL-based filtering** for persistent, shareable product views.',
+      'Ground-up rebuild of an e-commerce storefront with React, TypeScript, Vite, and Material UI. Simplified product navigation from 14 categories to 4. Built a scroll-driven homepage with GSAP and implemented URL-based filtering for persistent, shareable product views.',
     url: 'https://apexsupps.onrender.com',
   },
 ];
