@@ -1,27 +1,23 @@
+import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
+
+import { Hills } from './Hills';
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-12">
-      <Container className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <p className="text-sm text-text-muted">&copy; {new Date().getFullYear()} Jiwo Kristi</p>
-        <div className="flex items-center gap-6">
-          <a
-            href="https://github.com/jiwokristi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-text-muted transition-colors hover:text-text-primary"
-          >
+    <footer className="relative mt-12 h-56">
+      <Hills id="footer-hill" />
+      <Container className="absolute inset-x-0 bottom-7 flex flex-col items-center justify-between gap-3 sm:flex-row">
+        <p className="text-sm font-bold text-white [text-shadow:0_1px_2px_rgba(0,50,0,.55)]">
+          &copy; {new Date().getFullYear()} Jiwo Kristi
+        </p>
+        <div className="flex items-center gap-2.5">
+          <Button href="https://github.com/jiwokristi" newTab color="default" size="sm" className="min-h-11">
             GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/jiwokristi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-text-muted transition-colors hover:text-text-primary"
-          >
+          </Button>
+          <Button href="https://www.linkedin.com/in/jiwokristi/" newTab color="default" size="sm" className="min-h-11">
             LinkedIn
-          </a>
+          </Button>
         </div>
       </Container>
     </footer>

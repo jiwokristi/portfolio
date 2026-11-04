@@ -1,13 +1,14 @@
 import { cva, type VariantProps } from "class-variance-authority";
+
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full font-medium",
+  "inline-flex items-center rounded-full font-bold",
   {
     variants: {
       variant: {
         contained: "",
-        outlined: "border bg-transparent",
+        outlined: "border",
       },
       color: {
         default: "",
@@ -26,14 +27,14 @@ const badgeVariants = cva(
       },
     },
     compoundVariants: [
-      { variant: "contained", color: "default", className: "bg-surface text-text-secondary" },
-      { variant: "contained", color: "accent", className: "bg-accent/15 text-accent" },
-      { variant: "contained", color: "success", className: "bg-success/15 text-success" },
+      { variant: "contained", color: "default", className: "chip" },
+      { variant: "contained", color: "accent", className: "chip" },
+      { variant: "contained", color: "success", className: "chip-green" },
       { variant: "contained", color: "warning", className: "bg-warning/15 text-warning" },
       { variant: "contained", color: "error", className: "bg-error/15 text-error" },
       { variant: "contained", color: "muted", className: "bg-muted/15 text-text-muted" },
-      { variant: "contained", color: "subtle", className: "bg-bg text-text-muted" },
-      { variant: "outlined", color: "default", className: "border-border text-text-secondary" },
+      { variant: "contained", color: "subtle", className: "chip" },
+      { variant: "outlined", color: "default", className: "chip" },
       { variant: "outlined", color: "accent", className: "border-accent/40 text-accent" },
       { variant: "outlined", color: "success", className: "border-success/40 text-success" },
       { variant: "outlined", color: "warning", className: "border-warning/40 text-warning" },

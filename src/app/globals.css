@@ -2,20 +2,29 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Screen-only styles. Used on the resume so the Aero look never reaches the printed version. */
+@custom-variant screen (@media screen);
+
+/* Hover styles that react only when the card's own link is hovered,
+   not when the pointer is over a non-navigating area such as "See more". */
+@custom-variant card-hover (&:where(.group:has([data-card-link]:hover) *, .group:has([data-card-link]:hover)));
+
+/* Frutiger Aero palette: sky, water, glass and leaf. */
 @theme {
-  --color-bg: #ffffff;
-  --color-bg-secondary: #f5f5f5;
-  --color-surface: #e5e5e5;
-  --color-border: #d4d4d4;
-  --color-text-primary: #0a0a0a;
-  --color-text-secondary: #525252;
-  --color-text-muted: #6b6b6b;
-  --color-accent: #1d4ed8;
-  --color-accent-hover: #1e40af;
-  --color-success: #16a34a;
-  --color-error: #dc2626;
-  --color-warning: #ca8a04;
-  --color-muted: #6b6b6b;
+  --color-bg: #eef9ff;
+  --color-bg-secondary: #e2f4fd;
+  --color-surface: #ffffff;
+  --color-border: #bfe2f5;
+  --color-text-primary: #072a49;
+  --color-text-secondary: #24506f;
+  --color-text-muted: #3d6380;
+  --color-accent: #0b62b4;
+  --color-accent-hover: #08467f;
+  --color-success: #1d6b22;
+  --color-error: #b42318;
+  --color-warning: #a15c07;
+  --color-muted: #3d6380;
+  --color-leaf: #1d6b22;
 
   --text-display: 4.5rem;
   --text-h1: 3rem;
@@ -27,24 +36,88 @@
   --spacing-section: 6rem;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: 'Nunito Sans Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Nunito Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 }
 
+/* Material values for glass, gloss and the sky (light). */
+:root {
+  --sky: linear-gradient(180deg, #4fb6ec 0px, #8fd5f7 220px, #cdeefd 520px, #eef9ff 900px);
+  --sun: radial-gradient(60rem 36rem at 85% -6rem, rgba(255, 255, 255, 0.9), rgba(255, 251, 224, 0.35) 40%, transparent 70%);
+  --sun-core: #ffffff;
+  --sun-mid: #fffbe0;
+  --sun-ray: rgba(255, 255, 255, 0.22);
+  --sun-core-a: 0.95;
+  --sun-mid-a: 0.55;
+  --streak-opacity: 0.75;
+  --bubble-opacity: 1;
+  --glass-from: rgba(255, 255, 255, 0.82);
+  --glass-to: rgba(255, 255, 255, 0.55);
+  --glass-edge: rgba(255, 255, 255, 0.95);
+  --glass-shadow: 0 14px 36px rgba(18, 92, 146, 0.18);
+  --glass-inset: inset 0 1px 0 #ffffff, inset 0 -1px 0 rgba(120, 190, 230, 0.35);
+  --gloss-light: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(236, 248, 255, 0.8) 50%, rgba(210, 238, 252, 0.75) 51%, rgba(235, 249, 255, 0.9) 100%);
+  --gloss-light-text: #0a3a63;
+  --chip-bg: linear-gradient(180deg, #ffffff 0%, #e3f4fd 50%, #cfeafa 51%, #e6f6fe 100%);
+  --chip-edge: #a9d8f2;
+  --chip-text: #0a3a63;
+  --chip-green-bg: linear-gradient(180deg, #f4fff0 0%, #d7f5c9 50%, #bdeca8 51%, #d9f6cc 100%);
+  --chip-green-edge: #9fd88a;
+  --chip-green-text: #145a1e;
+  --hill-back: #c4f3a3;
+  --hill-back-end: #6cc94f;
+  --hill-front: #9be873;
+  --hill-front-mid: #4cb83a;
+  --hill-front-end: #22812a;
+}
+
+/* Night Aero (dark). */
 .dark {
-  --color-bg: #0a0a0a;
-  --color-bg-secondary: #141414;
-  --color-surface: #1a1a1a;
-  --color-border: #2a2a2a;
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a0a0a0;
-  --color-text-muted: #666666;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #2563eb;
-  --color-success: #22c55e;
-  --color-error: #ef4444;
-  --color-warning: #eab308;
-  --color-muted: #666666;
+  --color-bg: #04182b;
+  --color-bg-secondary: #072640;
+  --color-surface: #0b3152;
+  --color-border: #1b4e78;
+  --color-text-primary: #eaf7ff;
+  --color-text-secondary: #b4d6ee;
+  --color-text-muted: #a8cce6; /* ≥4.5:1 even on glass over the bright globe */
+  --color-accent: #5cc0ff;
+  --color-accent-hover: #8ad3ff;
+  --color-success: #7fe06a;
+  --color-error: #ff8a7a;
+  --color-warning: #ffc94d;
+  --color-muted: #a8cce6;
+  --color-leaf: #7fe06a;
+
+  --sky: linear-gradient(180deg, #021226 0px, #06345c 260px, #07294a 600px, #04182b 900px);
+  --sun: radial-gradient(60rem 36rem at 85% -6rem, rgba(120, 200, 255, 0.35), rgba(60, 140, 220, 0.12) 40%, transparent 70%);
+  --sun-core: #9fd8ff;
+  --sun-mid: #4a9fe0;
+  /* Night sky stays quiet so copy keeps its contrast. */
+  --sun-ray: rgba(150, 210, 255, 0.045);
+  --sun-core-a: 0.32;
+  --sun-mid-a: 0.14;
+  --streak-opacity: 0.12;
+  --bubble-opacity: 0.4;
+  /* Denser glass so text on it never depends on what shows through. */
+  --glass-from: rgba(16, 62, 104, 0.88);
+  --glass-to: rgba(8, 40, 74, 0.8);
+  --glass-edge: rgba(150, 210, 255, 0.35);
+  --glass-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  --glass-inset: inset 0 1px 0 rgba(200, 235, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  --gloss-light: linear-gradient(180deg, rgba(120, 190, 240, 0.4) 0%, rgba(60, 130, 190, 0.35) 50%, rgba(30, 90, 150, 0.35) 51%, rgba(60, 130, 190, 0.4) 100%);
+  --gloss-light-text: #eaf7ff;
+  --chip-bg: linear-gradient(180deg, rgba(110, 180, 235, 0.35) 0%, rgba(50, 120, 180, 0.3) 50%, rgba(25, 85, 145, 0.3) 51%, rgba(50, 120, 180, 0.35) 100%);
+  --chip-edge: rgba(150, 210, 255, 0.4);
+  --chip-text: #d8efff;
+  --chip-green-bg: linear-gradient(180deg, rgba(130, 220, 110, 0.35) 0%, rgba(70, 160, 60, 0.3) 50%, rgba(40, 120, 40, 0.3) 51%, rgba(70, 160, 60, 0.35) 100%);
+  --chip-green-edge: rgba(150, 230, 130, 0.4);
+  --chip-green-text: #d6ffcb;
+  --hill-back: #1f5a2e;
+  --hill-back-end: #143f20;
+  --hill-front: #2f7a3a;
+  --hill-front-mid: #1d5a27;
+  --hill-front-end: #0f3416;
 }
 
 * {
@@ -53,8 +126,91 @@
 
 body {
   background-color: var(--color-bg);
+  background-image: var(--sun), var(--sky);
+  background-repeat: no-repeat;
+  background-size: 100% 900px;
   color: var(--color-text-primary);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+
+/* Frosted glass panel. */
+@utility glass {
+  background: linear-gradient(180deg, var(--glass-from) 0%, var(--glass-to) 100%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+  /* Raw backdrop-filter is dropped inside @utility; Tailwind's own utility survives. */
+  @apply backdrop-blur-[16px];
+}
+
+/* Glossy aqua pill: the primary action. */
+@utility gloss-aqua {
+  color: #ffffff;
+  border: 1px solid #0a559c;
+  background: linear-gradient(180deg, #59b8f0 0%, #1b80d2 48%, #0b62b4 52%, #1373c9 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), inset 0 -2px 6px rgba(120, 220, 255, 0.45), 0 8px 18px rgba(11, 98, 180, 0.35);
+  text-shadow: 0 1px 1px rgba(0, 40, 90, 0.55);
+}
+
+/* Glossy glass pill: the secondary action. */
+@utility gloss-light {
+  color: var(--gloss-light-text);
+  border: 1px solid var(--glass-edge);
+  background: var(--gloss-light);
+  box-shadow: var(--glass-inset), var(--glass-shadow);
+}
+
+@utility chip {
+  color: var(--chip-text);
+  border: 1px solid var(--chip-edge);
+  background: var(--chip-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+@utility chip-green {
+  color: var(--chip-green-text);
+  border: 1px solid var(--chip-green-edge);
+  background: var(--chip-green-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Glossy sphere used for icons and decorative bubbles. */
+@utility orb {
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 25%, #ffffff 0, #bfeaff 22%, #36a6ea 62%, #0b66b8 100%);
+  box-shadow: inset 0 -3px 8px rgba(0, 60, 120, 0.35), 0 4px 10px rgba(11, 98, 180, 0.3);
+}
+
+@utility orb-green {
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 25%, #ffffff 0, #d9fbc4 22%, #59c247 62%, #1f7a22 100%);
+  box-shadow: inset 0 -3px 8px rgba(0, 60, 0, 0.35), 0 4px 10px rgba(30, 120, 40, 0.3);
+}
+
+@utility bubble {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.98) 0, rgba(255, 255, 255, 0.98) 7%, rgba(255, 255, 255, 0.4) 16%, rgba(180, 232, 255, 0.12) 52%, rgba(70, 170, 235, 0.32) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: inset -8px -12px 22px rgba(30, 130, 205, 0.22), 0 10px 24px rgba(20, 110, 180, 0.14);
+  opacity: var(--bubble-opacity);
+}
+
+/* Gentle bob for decorative bubbles; applied with `motion-safe:` only. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
 }
 
 ::selection {
@@ -132,5 +288,12 @@ body {
 
   .resume-entry {
     break-inside: avoid;
+  }
+
+  /* The printed resume keeps its original Inter typography, independent of the Aero screen fonts. */
+  body,
+  .resume-document,
+  .resume-document * {
+    font-family: 'Inter Variable', Inter, system-ui, sans-serif !important;
   }
 }

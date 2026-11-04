@@ -1,10 +1,11 @@
 'use client';
 
 import { useRef } from 'react';
-import { Container } from '@/components/ui/Container';
+
 import { Button } from '@/components/ui/Button';
-import { gsap, useGSAP } from '@/lib/gsap';
+import { Container } from '@/components/ui/Container';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
+import { gsap, useGSAP } from '@/lib/gsap';
 
 export function AboutHero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -16,36 +17,40 @@ export function AboutHero() {
       gsap.fromTo(
         '[data-hero-text]',
         { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power3.out',
-        },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' },
       );
     },
     { scope: containerRef },
   );
 
   return (
-    <section ref={containerRef} className="flex items-center py-24 lg:min-h-[80vh]">
-      <Container>
+    <section ref={containerRef} className="relative flex items-center overflow-hidden py-20 lg:min-h-[70vh] lg:py-24">
+      {/* Bubble cluster in the empty space right of the copy (wide screens only) */}
+      <span aria-hidden="true" className="bubble top-[22%] right-[8%] h-32 w-32 motion-safe:animate-[float_9s_ease-in-out_infinite] max-lg:hidden" />
+      <span aria-hidden="true" className="bubble top-[14%] right-[20%] h-12 w-12 motion-safe:animate-[float_7s_ease-in-out_infinite_1s] max-lg:hidden" />
+      <span aria-hidden="true" className="bubble top-[52%] right-[5%] h-8 w-8 motion-safe:animate-[float_6s_ease-in-out_infinite_2s] max-lg:hidden" />
+
+      <Container className="relative">
         <div className="max-w-3xl space-y-6">
-          {/* eslint-disable */}
-          <p data-hero-text className="font-mono text-sm text-accent">
-            // about
+          <p
+            data-hero-text
+            className="chip-green inline-flex min-h-8 items-center rounded-full px-4 text-xs font-extrabold tracking-[0.12em] uppercase"
+          >
+            About me
           </p>
-          <h1 data-hero-text className="text-display font-bold leading-[1.05] tracking-tight max-lg:text-h1">
+          <h1
+            data-hero-text
+            className="text-display leading-none font-black tracking-[-0.03em] [text-shadow:0_2px_0_rgba(255,255,255,.6)] max-lg:text-h1 dark:text-shadow-none"
+          >
             I build things
             <br />
-            that work.
+            <span className="text-accent">that work.</span>
           </h1>
-          <p data-hero-text className="max-w-lg text-lg text-text-secondary leading-relaxed">
+          <p data-hero-text className="max-w-lg text-lg leading-relaxed text-text-secondary">
             For users, for businesses, for the long term. I start before I have all the answers and figure it out along
             the way.
           </p>
-          <div data-hero-text className="flex gap-4 pt-2">
+          <div data-hero-text className="flex flex-wrap gap-3.5 pt-2">
             <Button href="/#projects">View Projects</Button>
             <Button href="mailto:priyadijiwo@gmail.com" variant="outlined" color="default">
               Get in Touch

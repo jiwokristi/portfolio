@@ -22,19 +22,19 @@ export type Value = {
 
 export const philosophyCards: PhilosophyCard[] = [
   {
-    label: "// approach",
+    label: "Approach",
     title: "Start before you're ready",
     description:
       "I don't wait for perfect specs or complete information. I ship early, learn from what's real, and iterate. Shipping is how you prove your thinking works — not slide decks.",
   },
   {
-    label: "// decisions",
+    label: "Decisions",
     title: "The best features are removals",
     description:
       "The hardest UX decisions are about what you leave out. Fewer categories on the homepage, URL-based filters instead of modal dialogs, removing friction instead of adding features.",
   },
   {
-    label: "// outcomes",
+    label: "Outcomes",
     title: "Good code is invisible",
     description:
       "Users never see your architecture. They feel a fast page, a clear flow, a button that does what they expect. That's the whole point — technology that disappears behind the experience.",
@@ -50,15 +50,15 @@ export const evidenceMetrics: EvidenceMetric[] = [
 
 export const stackCategories: StackCategory[] = [
   {
-    label: "// frontend",
+    label: "Frontend",
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Material UI"],
   },
   {
-    label: "// backend",
+    label: "Backend",
     items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"],
   },
   {
-    label: "// tools",
+    label: "Tools",
     items: ["Git", "GitHub", "Figma", "Vite", "Vercel", "Linux"],
   },
 ];

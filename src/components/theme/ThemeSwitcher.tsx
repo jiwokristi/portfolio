@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
+
 import { cn } from '@/lib/utils';
+
 import { SunIcon, MoonIcon, MonitorIcon } from './ThemeIcons';
 
 const themes = [
@@ -48,14 +50,19 @@ export function ThemeSwitcher() {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-haspopup="true"
-        className="flex h-4 items-center cursor-pointer text-text-secondary transition-colors hover:text-text-primary"
+        className={cn(
+          'flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/90 transition-[filter] hover:brightness-110',
+          mounted && resolvedTheme === 'dark'
+            ? 'orb text-white'
+            : 'bg-[radial-gradient(circle_at_35%_25%,#ffffff_0,#fff6c9_30%,#ffc93a_75%,#e59a00_100%)] text-[#7a4a00] shadow-[inset_0_-3px_6px_rgba(160,90,0,.3),0_4px_10px_rgba(200,130,0,.3)]',
+        )}
         aria-label="Toggle theme"
       >
-        <ActiveIcon />
+        <ActiveIcon width={20} height={20} />
       </button>
 
       {open && (
-        <div role="menu" className="absolute right-0 z-50 mt-2 w-36 rounded-lg border border-border bg-surface py-1 shadow-lg">
+        <div role="menu" className="glass absolute right-0 z-50 mt-3 w-40 overflow-hidden rounded-2xl p-1.5">
           {themes.map(({ value, label, icon: Icon }) => (
             <button
               key={value}
@@ -65,8 +72,10 @@ export function ThemeSwitcher() {
                 setOpen(false);
               }}
               className={cn(
-                'flex w-full cursor-pointer items-center gap-2 px-3 py-1.5 text-sm transition-colors',
-                theme === value ? 'text-accent' : 'text-text-secondary hover:text-text-primary',
+                'flex min-h-10 w-full cursor-pointer items-center gap-2 rounded-xl px-3 text-sm font-bold transition-colors',
+                theme === value
+                  ? 'chip text-accent'
+                  : 'text-text-secondary hover:bg-white/50 hover:text-text-primary dark:hover:bg-white/10',
               )}
             >
               <Icon />
