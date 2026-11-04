@@ -1,14 +1,18 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { ProjectGrid } from "@/components/home/ProjectGrid";
-import { getAllProjects } from "@/lib/projects";
+import { HomeCta } from "@/components/home/HomeCta";
+
+import { getAllProjects, withSampleProjects } from "@/lib/projects";
 
 export default function Home() {
-  const projects = getAllProjects();
+  // Sample projects appear only in `next dev` with SAMPLE_PROJECTS set.
+  const projects = withSampleProjects(getAllProjects());
 
   return (
     <>
       <HeroSection />
       <ProjectGrid projects={projects} />
+      <HomeCta />
     </>
   );
 }

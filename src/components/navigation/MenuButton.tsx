@@ -17,7 +17,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(functio
       onClick={onClick}
       aria-expanded={isOpen}
       aria-controls="nav-overlay"
-      className="relative h-4 w-12 cursor-pointer overflow-hidden text-sm text-text-secondary transition-colors hover:text-text-primary"
+      className="gloss-aqua relative h-11 w-20 cursor-pointer overflow-hidden rounded-full font-display text-sm font-extrabold transition-[filter] hover:brightness-110"
     >
       <span ref={menuRef} className="absolute inset-0 flex items-center justify-center">
         Menu

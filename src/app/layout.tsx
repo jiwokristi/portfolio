@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
-import { inter, jetbrainsMono } from '@/lib/fonts';
+
+import '@/lib/fonts';
+
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SkyDecor } from '@/components/layout/SkyDecor';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -22,11 +26,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className="h-full antialiased"
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
+          <SkyDecor />
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
@@ -34,7 +39,7 @@ export default function RootLayout({
             Skip to content
           </a>
           <Header />
-          <main id="main-content" className="flex-1 pt-16">
+          <main id="main-content" className="flex-1 pt-24">
             {children}
           </main>
           <Footer />
