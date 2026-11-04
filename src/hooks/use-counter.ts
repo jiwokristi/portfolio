@@ -10,14 +10,15 @@ import { useReducedMotion } from "./use-reduced-motion";
  * Skips the animation and sets the final value immediately when the user
  * prefers reduced motion.
  *
+ * @typeParam T - Element type the returned ref attaches to (default `HTMLDivElement`).
  * @param end - The target number to count up to.
  * @param duration - Animation duration in seconds (default `2`).
  * @returns `value` — the current animated number, and `ref` — a ref to attach
  *   to the element that acts as the ScrollTrigger target.
  */
-export function useCounter(end: number, duration = 2) {
+export function useCounter<T extends HTMLElement = HTMLDivElement>(end: number, duration = 2) {
   const [value, setValue] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<T>(null);
   const reducedMotion = useReducedMotion();
 
   useGSAP(() => {

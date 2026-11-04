@@ -1,65 +1,37 @@
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
-import type { CaseStudy } from "@/types/project";
+import { Container } from '@/components/ui/Container';
+import type { CaseStudy } from '@/types/project';
 
-type CsOverviewProps = Pick<
-  CaseStudy,
-  "problem" | "solution" | "role" | "timeline" | "year" | "techStack" | "liveUrl"
->;
+type CsOverviewProps = Pick<CaseStudy, 'problem' | 'solution'>;
 
-export function CsOverview({
-  problem,
-  solution,
-  role,
-  timeline,
-  year,
-  techStack,
-  liveUrl,
-}: CsOverviewProps) {
+function OverviewCard({ label, tone, children }: { label: string; tone: 'problem' | 'solution'; children: string }) {
   return (
-    <section className="py-section">
-      <Container>
-        <div className="grid gap-12 lg:grid-cols-3">
-          <div className="lg:col-span-2 space-y-8">
-            <div>
-              <h2 className="mb-4 text-h2 font-bold">The Problem</h2>
-              <p className="text-text-secondary leading-relaxed">{problem}</p>
-            </div>
-            <div>
-              <h2 className="mb-4 text-h2 font-bold">The Solution</h2>
-              <p className="text-text-secondary leading-relaxed">{solution}</p>
-            </div>
-          </div>
+    <article className="glass flex flex-col gap-4 rounded-3xl p-7 md:p-9">
+      <div className="flex items-center gap-3">
+        <span
+          aria-hidden="true"
+          className={`${tone === 'solution' ? 'orb-green' : 'orb'} flex h-10 w-10 shrink-0 items-center justify-center`}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+            {tone === 'solution' ? <path d="M5 13l4 4L19 7" /> : <path d="M12 8v5M12 16.5v.5" />}
+          </svg>
+        </span>
+        <h2 className="text-h3 font-black">{label}</h2>
+      </div>
+      <p className="leading-relaxed text-text-secondary">{children}</p>
+    </article>
+  );
+}
 
-          <aside className="space-y-6 rounded-2xl border border-border bg-surface p-6 h-fit lg:sticky lg:top-24">
-            <div>
-              <h3 className="mb-1 text-sm font-medium text-text-muted">Role</h3>
-              <p className="text-text-primary">{role}</p>
-            </div>
-            <div>
-              <h3 className="mb-1 text-sm font-medium text-text-muted">Timeline</h3>
-              <p className="text-text-primary">{timeline}</p>
-            </div>
-            <div>
-              <h3 className="mb-1 text-sm font-medium text-text-muted">Year</h3>
-              <p className="text-text-primary">{year}</p>
-            </div>
-            <div>
-              <h3 className="mb-2 text-sm font-medium text-text-muted">Tech Stack</h3>
-              <div className="flex flex-wrap gap-2">
-                {techStack.map((tech) => (
-                  <Badge key={tech}>{tech}</Badge>
-                ))}
-              </div>
-            </div>
-            {liveUrl && (
-              <Button href={liveUrl} className="w-full" newTab>
-                View Live Site
-              </Button>
-            )}
-          </aside>
-        </div>
+export function CsOverview({ problem, solution }: CsOverviewProps) {
+  return (
+    <section className="pb-section">
+      <Container className="grid gap-6 lg:grid-cols-2">
+        <OverviewCard label="The Problem" tone="problem">
+          {problem}
+        </OverviewCard>
+        <OverviewCard label="The Solution" tone="solution">
+          {solution}
+        </OverviewCard>
       </Container>
     </section>
   );
