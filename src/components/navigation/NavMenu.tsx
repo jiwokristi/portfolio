@@ -1,6 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { useCallback, useEffect, useImperativeHandle, useRef, useState, useSyncExternalStore } from 'react';
+import { createPortal } from 'react-dom';
 import { usePathname } from 'next/navigation';
 import { gsap, useGSAP } from '@/lib/gsap';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
@@ -12,6 +13,11 @@ export type NavMenuHandle = {
   close: () => void;
 };
 
+// True only on the client, so the overlay portal is never rendered during SSR.
+const noopSubscribe = () => () => {};
+const isClient = () => true;
+const isServer = () => false;
+
 type NavMenuProps = {
   onOpenChange?: (open: boolean) => void;
   ref?: React.Ref<NavMenuHandle>;
@@ -21,6 +27,7 @@ export function NavMenu({ onOpenChange, ref }: NavMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const pathname = usePathname();
+  const mounted = useSyncExternalStore(noopSubscribe, isClient, isServer);
 
   const overlayRef = useRef<HTMLDivElement>(null);
   const menuTextRef = useRef<HTMLSpanElement>(null);
@@ -32,9 +39,9 @@ export function NavMenu({ onOpenChange, ref }: NavMenuProps) {
 
   useFocusTrap(overlayRef, isOpen);
 
-  // Build timeline once
+  // Build the timeline once the overlay exists (it is portalled in after mount)
   useGSAP(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || !mounted) return;
 
     const tl = gsap.timeline({
       paused: true,
@@ -59,7 +66,7 @@ export function NavMenu({ onOpenChange, ref }: NavMenuProps) {
     tl.fromTo('[data-nav-card]', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out' }, 0.3);
 
     timelineRef.current = tl;
-  }, { dependencies: [prefersReducedMotion] });
+  }, { dependencies: [prefersReducedMotion, mounted] });
 
   const open = useCallback(() => {
     setIsOpen(true);
@@ -134,7 +141,11 @@ export function NavMenu({ onOpenChange, ref }: NavMenuProps) {
   return (
     <>
       <MenuButton ref={buttonRef} isOpen={isOpen} onClick={toggle} menuRef={menuTextRef} closeRef={closeTextRef} />
-      <NavOverlay ref={overlayRef} onNavigate={close} />
+      {/*
+        Portalled to <body>: the header's glass pill uses backdrop-filter, which would make it the
+        containing block for this fixed overlay and squeeze the menu to the pill's width.
+      */}
+      {mounted && createPortal(<NavOverlay ref={overlayRef} onNavigate={close} />, document.body)}
     </>
   );
 }

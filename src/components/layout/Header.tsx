@@ -53,12 +53,12 @@ export function Header() {
               ))}
             </div>
 
-            {/* Mobile overlay menu — hidden on md+ */}
+            <ThemeSwitcher />
+
+            {/* Mobile overlay menu — hidden on md+; last so the hamburger sits on the outer edge */}
             <div className="flex items-center md:hidden">
               <NavMenu ref={navMenuRef} onOpenChange={setNavOpen} />
             </div>
-
-            <ThemeSwitcher />
           </nav>
         </div>
       </Container>
