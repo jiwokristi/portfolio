@@ -67,11 +67,6 @@ export function ResumeScreen() {
               </a>
             </li>
             <li>
-              <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className={`${chip} hover:text-accent`}>
-                {contact.phone}
-              </a>
-            </li>
-            <li>
               <a href={contact.linkedin} {...external} className={`${chip} hover:text-accent`}>
                 LinkedIn
               </a>

@@ -5,6 +5,9 @@ import { contact, summary, experience, education, skills } from '@/data/resume';
  * print stays exactly as it was before the Aero redesign: its sizing and colours come from the
  * `@media print` block in globals.css, which targets `.resume-document`. Hidden on screen,
  * where ResumeScreen is shown instead. Do not restyle this for screen.
+ *
+ * One deliberate change from the legacy markup: the phone number is left out, as on the web
+ * resume. It is only in the downloadable PDF (ResumePdf).
  */
 export function ResumePrint() {
   return (
@@ -18,10 +21,6 @@ export function ResumePrint() {
           {contact.location} ·{' '}
           <a href={`mailto:${contact.email}`} className="underline hover:text-accent">
             {contact.email}
-          </a>
-          {' · '}
-          <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="underline hover:text-accent">
-            {contact.phone}
           </a>
           {' · '}
           <a
