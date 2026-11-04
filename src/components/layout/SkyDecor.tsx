@@ -4,9 +4,9 @@
  */
 export function SkyDecor() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-175 overflow-hidden">
+    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-175 overflow-hidden print:hidden">
       {/* Sun rays: thin wedges around the sun, faded out with a radial mask */}
-      <div className="absolute inset-0 bg-[repeating-conic-gradient(from_-8deg_at_82%_8%,var(--sun-ray)_0deg_3deg,transparent_3deg_13deg)] [mask-image:radial-gradient(circle_at_82%_8%,#000_0,rgba(0,0,0,.5)_22%,transparent_58%)]" />
+      <div className="absolute inset-0 bg-[repeating-conic-gradient(from_-8deg_at_82%_8%,var(--sun-ray)_0deg_3deg,transparent_3deg_13deg)] mask-[radial-gradient(circle_at_82%_8%,#000_0,rgba(0,0,0,.5)_22%,transparent_58%)]" />
 
       <svg viewBox="0 0 1440 700" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
         <defs>
