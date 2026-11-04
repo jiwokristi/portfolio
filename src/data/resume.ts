@@ -1,5 +1,6 @@
 export type ContactInfo = {
   name: string;
+  /** Only shown in the downloadable PDF (ResumePdf), never on the public web or printed page. */
   phone: string;
   email: string;
   linkedin: string;
