@@ -9,17 +9,7 @@ import { NavMenu, type NavMenuHandle } from '@/components/navigation/NavMenu';
 
 import { navItems } from '@/data/navigation';
 
-function LogoMark() {
-  return (
-    <span className="orb flex h-9 w-9 shrink-0 items-center justify-center" aria-hidden="true">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M8 4v10a4 4 0 0 1-4 4" />
-        <path d="M14 4v16" />
-        <path d="M20 4l-6 8 6 8" />
-      </svg>
-    </span>
-  );
-}
+import { LogoMark } from './LogoMark';
 
 export function Header() {
   const [navOpen, setNavOpen] = useState(false);
