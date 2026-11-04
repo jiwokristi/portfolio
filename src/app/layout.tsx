@@ -34,12 +34,13 @@ export default function RootLayout({
           <SkyDecor />
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
           >
             Skip to content
           </a>
           <Header />
-          <main id="main-content" className="flex-1 pt-24">
+          {/* print:pt-16 keeps the printed resume's original top offset (the header is hidden in print) */}
+          <main id="main-content" className="flex-1 pt-24 print:pt-16">
             {children}
           </main>
           <Footer />

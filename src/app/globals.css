@@ -2,6 +2,9 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Screen-only styles. Used on the resume so the Aero look never reaches the printed version. */
+@custom-variant screen (@media screen);
+
 /* Hover styles that react only when the card's own link is hovered,
    not when the pointer is over a non-navigating area such as "See more". */
 @custom-variant card-hover (&:where(.group:has([data-card-link]:hover) *, .group:has([data-card-link]:hover)));
@@ -285,5 +288,12 @@ h3 {
 
   .resume-entry {
     break-inside: avoid;
+  }
+
+  /* The printed resume keeps its original Inter typography, independent of the Aero screen fonts. */
+  body,
+  .resume-document,
+  .resume-document * {
+    font-family: 'Inter Variable', Inter, system-ui, sans-serif !important;
   }
 }

@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 import { pdf } from '@react-pdf/renderer';
+
 import { Button } from '@/components/ui/Button';
-import { ResumePdf } from './ResumePdf';
+
 import { contact } from '@/data/resume';
+
+import { ResumePdf } from './ResumePdf';
 
 export function DownloadResumeButton() {
   const [loading, setLoading] = useState(false);
@@ -25,13 +28,27 @@ export function DownloadResumeButton() {
   }
 
   return (
-    <div className="sticky top-16 z-50 flex justify-center gap-2 border-b border-border bg-bg/80 px-6 py-3 backdrop-blur-md print:hidden">
-      <Button variant="outlined" size="sm" onClick={() => window.print()}>
-        Print
-      </Button>
-      <Button size="sm" onClick={handleDownload} disabled={loading}>
-        {loading ? 'Generating...' : 'Download PDF'}
-      </Button>
+    // Floating glass action bar, pinned just under the fixed header. Never printed.
+    <div className="sticky top-24 z-50 mx-auto w-full max-w-237 px-6 print:hidden">
+      <div className="glass flex flex-wrap items-center justify-between gap-3 rounded-[20px] py-2.5 pr-2.5 pl-5">
+        <span className="font-display text-sm font-extrabold">Resume</span>
+        <div className="flex flex-wrap gap-2.5">
+          <Button variant="outlined" size="sm" className="min-h-11" onClick={() => window.print()}>
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 9V3h12v6" />
+              <rect x="3" y="9" width="18" height="8" rx="2" />
+              <path d="M6 14h12v7H6z" />
+            </svg>
+            Print
+          </Button>
+          <Button size="sm" className="min-h-11" onClick={handleDownload} disabled={loading}>
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
+            </svg>
+            {loading ? 'Generating...' : 'Download PDF'}
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -42,6 +42,9 @@ export const contact: ContactInfo = {
   location: 'Tangerang Regency, Indonesia',
 };
 
+/** Short title under the name on the web resume (not used by the PDF or the printed version). */
+export const headline = 'Full-Stack Developer';
+
 export const summary =
   'Full-Stack Developer with 4 years of experience building performant, scalable web applications with React, TypeScript, Node.js, and MongoDB. Focused on clean architecture, performance optimization, and end-to-end feature delivery from UI to APIs. Leverages LLM-powered tooling and custom agents to accelerate development workflows. Startup background with a strong sense of ownership, product thinking, and shipping fast without sacrificing quality.';
 

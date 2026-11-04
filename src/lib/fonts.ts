@@ -3,3 +3,5 @@
 import '@fontsource-variable/nunito';
 import '@fontsource-variable/nunito-sans';
 import '@fontsource-variable/jetbrains-mono';
+// Inter is only used for the printed resume, which keeps its pre-Aero typography.
+import '@fontsource-variable/inter';
