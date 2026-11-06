@@ -9,7 +9,7 @@ import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { gsap, useGSAP } from '@/lib/gsap';
 
 /** Skill groups shown as green chips; everything else is blue (frontend and tooling). */
-const GREEN_GROUPS = new Set(['Backend', 'AI']);
+const GREEN_GROUPS = new Set(['Backend']);
 
 /** "Mar 2026 - Present" → "Mar 2026 – Present" for display. */
 const period = (p: string) => p.replace(' - ', ' – ');
