@@ -80,7 +80,7 @@ This split minimizes client-side JavaScript while enabling rich animations where
 ## Data Flow
 
 ```
-src/data/projects/apex-peptides.ts  →  src/lib/projects.ts  →  page.tsx  →  CaseStudy components
+src/data/projects/sequent.ts  →  src/lib/projects.ts  →  page.tsx  →  CaseStudy components
 src/data/projects.ts                →  page.tsx             →  ProjectGrid → ProjectCard
 src/data/about.ts                   →  page.tsx             →  About components
 src/data/resume.ts                  →  page.tsx             →  ResumeDocument

@@ -1,9 +1,25 @@
 export interface ProjectMetric {
   label: string;
   before: number;
+  /** Optional middle measurement (e.g. a first build before an optimization pass). */
+  interim?: number;
   after: number;
   unit?: string;
   description?: string;
+}
+
+/** Names for the measurement stages shown with the metrics, e.g. "Original store" → "First build" → "Final". */
+export interface MetricStages {
+  before: string;
+  interim?: string;
+  after: string;
+}
+
+/** A side-by-side fact that isn't a 0–100 score (page weight, request count…). */
+export interface MetricComparison {
+  label: string;
+  before: string;
+  after: string;
 }
 
 export interface ProjectImage {
@@ -49,6 +65,11 @@ export interface CaseStudy extends ProjectMeta {
   problem: string;
   solution: string;
   metrics: ProjectMetric[];
+  metricStages?: MetricStages;
+  /** Extra before/after facts shown under the score bars (labelled with metricStages.before / .after). */
+  metricComparisons?: MetricComparison[];
+  /** How the numbers were measured, shown as footnotes under the metrics. */
+  metricNotes?: string[];
   process: ProcessPhase[];
   features: ProjectFeature[];
   results: {

@@ -150,11 +150,11 @@ export const skills = [
 
 export const projects: Project[] = [
   {
-    name: 'Apex Peptides',
-    year: '2025',
+    name: 'Sequent',
+    year: '2026',
     description:
-      'Ground-up rebuild of an e-commerce storefront with React, TypeScript, Vite, and Material UI. Simplified product navigation from 14 categories to 4. Built a scroll-driven homepage with GSAP and implemented URL-based filtering for persistent, shareable product views.',
-    url: 'https://apexsupps.onrender.com',
+      'Concept redesign of a research-peptides storefront, built as a front end with React, TypeScript, Vite, GSAP, and Material UI. Reorganized 14 categories into 6 research areas, built a scroll-story homepage, and prerendered all 46 pages: the homepage weighs 380 KB against the original’s 13 MB and scores 83/99 on Lighthouse mobile/desktop against its 21/23.',
+    url: 'https://sequent-peptides.netlify.app',
   },
 ];
 

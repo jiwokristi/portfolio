@@ -2,7 +2,7 @@
 
 ## What is this?
 
-When you share a link like `jiwokristi.dev/projects/apex-peptides` on Twitter, LinkedIn, Slack, etc., those platforms show a **preview card** with a title, description, and image. That image is the **OG (Open Graph) image**.
+When you share a link like `jiwokristi.dev/projects/sequent` on Twitter, LinkedIn, Slack, etc., those platforms show a **preview card** with a title, description, and image. That image is the **OG (Open Graph) image**.
 
 Instead of manually creating an image for every project page, Next.js **generates one automatically** using code. Think of it like a template that gets filled in with each project's data and then "screenshotted" into a PNG.
 
@@ -38,7 +38,7 @@ This is the core file. Next.js recognises the filename `opengraph-image.tsx` as 
 
 It does three things:
 
-1. Receives the `slug` from the URL (e.g. `apex-peptides`)
+1. Receives the `slug` from the URL (e.g. `sequent`)
 2. Loads the project data via `getProject(slug)`
 3. Returns an `ImageResponse` — JSX that gets converted into a PNG
 
@@ -47,7 +47,7 @@ It does three things:
 │  (dark gradient background)                  │
 │                                              │
 │  E-Commerce              ← category (blue)  │
-│  Apex Peptides E-Commerce                    │
+│  Sequent — Storefront Redesign                 │
 │  Platform Revamp         ← title (white)     │
 │  Revamped a low-perf...  ← subtitle (gray)   │
 └──────────────────────────────────────────────┘
@@ -60,7 +60,7 @@ It does three things:
 
 Exports a `generateMetadata` function that sets the page's `<title>` and `<meta name="description">`. Next.js automatically pairs this with the OG image from the same directory — no need to manually wire them together.
 
-Also exports `generateStaticParams`, which tells Next.js to pre-build all known project slugs at build time (currently just `apex-peptides`). This means the OG image is generated once during build, not on every request.
+Also exports `generateStaticParams`, which tells Next.js to pre-build all known project slugs at build time (currently just `sequent`). This means the OG image is generated once during build, not on every request.
 
 ### 3. Root layout
 
@@ -68,13 +68,13 @@ Also exports `generateStaticParams`, which tells Next.js to pre-build all known 
 
 Sets `metadataBase: new URL('https://jiwokristi.vercel.app')`, which Next.js needs to turn relative OG image paths into absolute URLs. Without this, social platforms wouldn't know where to fetch the image from.
 
-Also defines a title template (`%s | Jiwo Kristi`) so project pages get titles like "Apex Peptides E-Commerce Platform Revamp | Jiwo Kristi".
+Also defines a title template (`%s | Jiwo Kristi`) so project pages get titles like "Sequent — Storefront Redesign Concept | Jiwo Kristi".
 
 ### 4. Data layer
 
 **`src/lib/projects.ts`** → `getProject(slug)` dynamically imports the right data file.
 
-**`src/data/projects/apex-peptides.ts`** → Contains the full `CaseStudy` object with `title`, `subtitle`, `category`, and everything else the OG image (and the page itself) needs.
+**`src/data/projects/sequent.ts`** → Contains the full `CaseStudy` object with `title`, `subtitle`, `category`, and everything else the OG image (and the page itself) needs.
 
 ---
 
@@ -82,7 +82,7 @@ Also defines a title template (`%s | Jiwo Kristi`) so project pages get titles l
 
 ```
 Browser / social-platform crawler hits:
-  https://jiwokristi.vercel.app/projects/apex-peptides
+  https://jiwokristi.vercel.app/projects/sequent
                           │
                           ▼
          Next.js matches route: /projects/[slug]
@@ -92,7 +92,7 @@ Browser / social-platform crawler hits:
      generateMetadata()      opengraph-image.tsx
               │                       │
               ▼                       ▼
-       getProject("apex-peptides")  getProject("apex-peptides")
+       getProject("sequent")  getProject("sequent")
               │                       │
               ▼                       ▼
      Returns <title> and       Renders JSX → ImageResponse
@@ -101,10 +101,10 @@ Browser / social-platform crawler hits:
               └───────────┬───────────┘
                           ▼
                 HTML <head> includes:
-      <meta property="og:title" content="Apex Peptides...">
+      <meta property="og:title" content="Sequent — Storefront Redesign Concept">
       <meta property="og:description" content="A complete...">
       <meta property="og:image" content="https://jiwokristi.vercel.app
-            /projects/apex-peptides/opengraph-image?...">
+            /projects/sequent/opengraph-image?...">
 ```
 
 ---

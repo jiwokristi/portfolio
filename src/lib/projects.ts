@@ -4,13 +4,13 @@ import { projects } from '@/data/projects';
 
 /** Lazy loaders for each project's full case study data, keyed by slug. */
 const projectModules: Record<string, () => Promise<{ [key: string]: CaseStudy }>> = {
-  'apex-peptides': () => import('@/data/projects/apex-peptides'),
+  sequent: () => import('@/data/projects/sequent'),
 };
 
 /**
  * Loads the full case study data for a project by its slug.
  *
- * @param slug - The project's URL slug (e.g. `"apex-peptides"`).
+ * @param slug - The project's URL slug (e.g. `"sequent"`).
  * @returns The case study object, or `null` if the slug is unknown.
  */
 export async function getProject(slug: string): Promise<CaseStudy | null> {
