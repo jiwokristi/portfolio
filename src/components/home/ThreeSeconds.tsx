@@ -23,6 +23,26 @@ const PARTS = [
 /** Rotation that starts arc `i` just after its gap (the arcs group is turned so 0° is 12 o'clock). */
 const arcRotation = (i: number) => ((i * CIRCUMFERENCE) / 3 + GAP / 2) / CIRCUMFERENCE * 360;
 
+/** Radius of each glass tick, and where its specular highlight sits relative to its centre. */
+const TICK_R = 7.5;
+const HIGHLIGHT = { dx: -2, dy: -3, rx: 3.2, ry: 1.8 };
+
+/**
+ * Draws tick `i` at `size` times its normal size, growing from its own centre. The pop animates
+ * these attributes rather than a transform: GSAP's SVG transform origin landed a radius off-centre,
+ * so a scaled tick slid out of its gap.
+ */
+const sizeTick = (tick: SVGGElement, i: number, size: number) => {
+  const { x, y } = tickPosition(i);
+  tick.querySelectorAll('circle').forEach(c => c.setAttribute('r', String(TICK_R * size)));
+  const hl = tick.querySelector('ellipse');
+  if (!hl) return;
+  hl.setAttribute('cx', String(x + HIGHLIGHT.dx * size));
+  hl.setAttribute('cy', String(y + HIGHLIGHT.dy * size));
+  hl.setAttribute('rx', String(HIGHLIGHT.rx * size));
+  hl.setAttribute('ry', String(HIGHLIGHT.ry * size));
+};
+
 /** Tick `i` sits in the gap where part `i`'s arc ends, measured clockwise from 12 o'clock. */
 const tickPosition = (i: number) => {
   const a = (((i + 1) * 120 - 90) * Math.PI) / 180;
@@ -80,16 +100,21 @@ export function ThreeSeconds() {
       // Matches the markup, which ships with every tick lit for the static fallback.
       const lit = [true, true, true];
       let first = true;
+      // One size per tick for the pop to animate.
+      const pops = ticks.map(() => ({ size: 1 }));
 
       const pulse = (i: number) => {
-        // Scale around the tick's exact centre in SVG units. A "50% 50%" origin is measured from the
-        // bounding box and left a stray translate behind, nudging every tick off its gap; clearing the
-        // transform at the end guarantees it settles back where the markup put it.
-        const { x, y } = tickPosition(i);
         gsap.fromTo(
-          ticks[i],
-          { scale: 1.7 },
-          { scale: 1, duration: 0.55, ease: 'back.out(3)', svgOrigin: `${x} ${y}`, overwrite: true, clearProps: 'transform' },
+          pops[i],
+          { size: 1.7 },
+          {
+            size: 1,
+            duration: 0.55,
+            ease: 'back.out(3)',
+            overwrite: true,
+            onUpdate: () => sizeTick(ticks[i], i, pops[i].size),
+            onComplete: () => sizeTick(ticks[i], i, 1),
+          },
         );
         gsap.fromTo(bubbleRef.current, { scale: 1 }, { scale: 1.05, duration: 0.16, ease: 'sine.out', yoyo: true, repeat: 1, overwrite: true });
         gsap.fromTo(pulseRef.current, { opacity: 0.9 }, { opacity: 0, duration: 0.7, ease: 'power2.out', overwrite: true });
@@ -144,6 +169,7 @@ export function ThreeSeconds() {
         render(1);
         spans.forEach(s => s.classList.remove('now'));
         paras.forEach(el => delete el.dataset.state);
+        ticks.forEach((t, i) => sizeTick(t, i, 1));
       };
     },
     { scope: ref, dependencies: [reducedMotion], revertOnUpdate: true },
@@ -215,7 +241,7 @@ export function ThreeSeconds() {
                     <circle
                       cx={x}
                       cy={y}
-                      r="7.5"
+                      r={TICK_R}
                       fill="url(#three-seconds-tick)"
                       stroke="#ffffff"
                       strokeWidth="1.5"
@@ -224,13 +250,13 @@ export function ThreeSeconds() {
                     <circle
                       cx={x}
                       cy={y}
-                      r="7.5"
+                      r={TICK_R}
                       fill="url(#three-seconds-tick-lit)"
                       stroke="#ffffff"
                       strokeWidth="1.5"
                       className="opacity-0 transition-opacity duration-300 group-data-lit:opacity-100"
                     />
-                    <ellipse cx={x - 2} cy={y - 3} rx="3.2" ry="1.8" fill="#ffffff" opacity=".85" />
+                    <ellipse cx={x + HIGHLIGHT.dx} cy={y + HIGHLIGHT.dy} rx={HIGHLIGHT.rx} ry={HIGHLIGHT.ry} fill="#ffffff" opacity=".85" />
                   </g>
                 );
               })}
