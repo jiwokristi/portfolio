@@ -75,7 +75,7 @@ export function AboutEvidence() {
             <p className="text-[13px] font-extrabold tracking-[0.14em] text-accent uppercase">Results</p>
             <h2 className="text-h2 font-black tracking-[-0.02em]">What I&apos;ve Built</h2>
             <p className="leading-relaxed text-text-secondary">
-              Sequent is my concept redesign of a slow research-peptides store. I restructured the catalog, built a
+              Sequent is a freelance redesign of a slow research-peptides store. I restructured the catalog, built a
               scroll-story homepage, then audited and tuned the front end until it weighed 380 KB instead of the
               original&apos;s 13 MB. It&apos;s a front end without a backend, so the scores compare front ends, not
               finished stores. The real win is a site that feels fast and makes sense to visitors.

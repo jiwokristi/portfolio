@@ -1,8 +1,9 @@
 import type { CaseStudy } from '@/types/project';
 
 /*
- * Sequent is a personal concept project: a front-end redesign of a real research-peptides storefront,
- * rebranded so the original store isn't named. It has no backend (mock catalog data, no payments,
+ * Sequent is paid freelance work, subcontracted through a client: a front-end redesign of a real
+ * research-peptides storefront. The end client didn't adopt it, so the live store is unchanged; it's
+ * shown as "Sequent" so the original store isn't named. It has no backend (mock catalog data, no payments,
  * accounts or analytics), so claims stay to front-end performance, design and engineering.
  *
  * Measurements (Lighthouse 12.8.2, default settings, homepage, median of 3 runs):
@@ -12,12 +13,12 @@ import type { CaseStudy } from '@/types/project';
  */
 export const sequent: CaseStudy = {
   slug: 'sequent',
-  title: 'Sequent — Storefront Redesign Concept',
+  title: 'Sequent — Storefront Redesign',
   subtitle:
     'A front-end redesign of a slow research-peptides store: a scroll-story homepage, a clearer catalog, and pages that load in a fraction of the original’s weight.',
   description:
-    'A personal concept project: I redesigned and rebuilt the front end of an existing research-peptides storefront, then audited and tuned it until every page scored 99–100 on desktop.',
-  category: 'E-Commerce · Concept',
+    'Paid freelance work, subcontracted through a client: I redesigned and rebuilt the front end of an existing research-peptides storefront, then audited and tuned it until every page scored 99–100 on desktop.',
+  category: 'E-Commerce · Freelance',
   role: 'Designer & Front-end Developer',
   timeline: '8 weeks + performance pass',
   year: 2026,
@@ -35,7 +36,7 @@ export const sequent: CaseStudy = {
   problem:
     'The starting point was a live research-peptides store built with Blazor WebAssembly. Its homepage weighed 13.2 MB across 292 requests and scored 21 on mobile and 23 on desktop in Lighthouse. Most of that was its own front end: about 10 MB of .NET runtime, scripts and images before any of its 29 third-party services loaded. Navigation spread the catalog across 14 categories, the visual identity didn’t match a premium brand, and on phones key journeys were slow and hard to follow.',
   solution:
-    'I redesigned the store and rebuilt the front end in React and TypeScript as a concept, rebranded as Sequent. The homepage tells the product story in three scroll chapters, while the shop, product and checkout pages stay quick and focused. The catalog is reorganized into six research areas with filters kept in the URL, so filtered views can be shared. A performance pass then prerendered all 46 pages at build time, fixed layout shift and font loading, and loaded heavy libraries only where they’re used. Sequent has no backend: products are mock data and there are no payments, accounts or tracking scripts, so the comparison is between front ends, not finished stores.',
+    'I redesigned the store and rebuilt the front end in React and TypeScript, shown here as Sequent. The homepage tells the product story in three scroll chapters, while the shop, product and checkout pages stay quick and focused. The catalog is reorganized into six research areas with filters kept in the URL, so filtered views can be shared. A performance pass then prerendered all 46 pages at build time, fixed layout shift and font loading, and loaded heavy libraries only where they’re used. Sequent has no backend: products are mock data and there are no payments, accounts or tracking scripts, so the comparison is between front ends, not finished stores.',
   metricStages: {
     before: 'Original store',
     interim: 'First build',
@@ -81,7 +82,7 @@ export const sequent: CaseStudy = {
   ],
   metricNotes: [
     'Homepage, Lighthouse 12.8.2 with default settings, median of 3 runs. The original store and the final build were measured side by side on the same day and machine; the first build comes from the performance audit before its fixes.',
-    'Sequent is a front-end concept with mock data and no analytics or marketing scripts. The original also loads 29 third-party services (about 2.9 MB), but even counting only its own code it ships about 10 MB.',
+    'Sequent is a front-end build with mock data and no analytics or marketing scripts. The original also loads 29 third-party services (about 2.9 MB), but even counting only its own code it ships about 10 MB.',
   ],
   process: [
     {
@@ -120,7 +121,7 @@ export const sequent: CaseStudy = {
     {
       title: 'Front-end Build',
       description:
-        'Built the concept in React and TypeScript with reusable components, mock catalog data and route-level code splitting.',
+        'Built the front end in React and TypeScript with reusable components, mock catalog data and route-level code splitting.',
       highlights: [
         '37 products across 6 research areas, with search, cart and checkout flows',
         'Each route ships as its own chunk, 0.9–25 KB',
@@ -180,7 +181,7 @@ export const sequent: CaseStudy = {
   ],
   results: {
     summary:
-      'Sequent shows what the same store could feel like with a modern front end: a homepage that tells a story, a catalog that’s easier to navigate, and pages a fraction of the original’s weight. It’s a front-end concept, so these results compare front ends, not live stores.',
+      'Sequent shows what the same store could feel like with a modern front end: a homepage that tells a story, a catalog that’s easier to navigate, and pages a fraction of the original’s weight. The end client went another way and kept their current store, so these results compare front ends, not live stores.',
     outcomes: [
       'Homepage Lighthouse score: 21 → 83 on mobile and 23 → 99 on desktop, measured side by side with the original',
       'Homepage weight: 13.2 MB → 380 KB, and requests: 292 → 16',
@@ -194,7 +195,7 @@ export const sequent: CaseStudy = {
       'A hidden element can still count as layout shift. Check what Chrome measures, not only what you see',
       'Prerendering moves work rather than removing it; hydration cost shows up in blocking time and is the next target',
       'Expressive animation and speed can coexist when heavy libraries load only on the pages that use them',
-      'Be precise about what a number compares: a concept without a backend isn’t a finished store',
+      'Be precise about what a number compares: a front end without a backend isn’t a finished store',
     ],
   },
 };
