@@ -41,11 +41,15 @@ export const philosophyCards: PhilosophyCard[] = [
   },
 ];
 
+/**
+ * Sequent vs the original store it redesigns: homepage Lighthouse scores, measured side by side
+ * (Lighthouse 12.8.2, default settings, median of 3 runs, 2026-11-06). Also used by the home hero.
+ */
 export const evidenceMetrics: EvidenceMetric[] = [
-  { label: "Mobile Performance", before: 25, after: 79 },
-  { label: "Desktop Performance", before: 27, after: 98 },
-  { label: "Accessibility", before: 76, after: 87 },
-  { label: "Best Practices", before: 50, after: 100 },
+  { label: "Mobile Performance", before: 21, after: 83 },
+  { label: "Desktop Performance", before: 23, after: 99 },
+  { label: "Accessibility", before: 85, after: 91 },
+  { label: "Best Practices", before: 57, after: 100 },
 ];
 
 export const stackCategories: StackCategory[] = [
