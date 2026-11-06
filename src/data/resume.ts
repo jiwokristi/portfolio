@@ -47,12 +47,12 @@ export const contact: ContactInfo = {
 };
 
 /** Target titles under the name, on the web resume, the printed page and the PDF (ATS title match). */
-export const headline = 'Middle Frontend Engineer · Full-Stack Engineer';
+export const headline = 'Middle Frontend Engineer · Mid-level Frontend Engineer · Full-Stack Engineer';
 
 export type SkillGroup = { label: string; items: string[] };
 
 export const summary =
-  'Frontend Engineer with 4 years of experience building fast, responsive web applications with React.js, Next.js, and TypeScript, and full-stack features with Node.js, Express, and MongoDB. Experienced across banking, healthcare, and SaaS: maker-checker approval workflows, micro-frontends, data dashboards, and SEO-optimized marketing sites, backed by Jest and React Testing Library. Works in Agile/Scrum teams with designers, product managers, and backend engineers, from Figma handoff to code review. Automates team workflows with LLM agents and sweats the details that make users trust a product.';
+  'Frontend Engineer with 4 years of experience building fast, responsive web apps with React.js, Next.js, and TypeScript, plus full-stack features in Node.js, Express, and MongoDB. Built for banking, healthcare, and SaaS, from maker-checker workflows and micro-frontends to dashboards and SEO-optimized sites. Works in Agile/Scrum teams from Figma handoff to code review, automates workflows with LLM agents, and sweats the details that earn user trust.';
 
 /**
  * Bullets lead with a strong verb and follow action, context, result; when there's a number,
@@ -68,8 +68,8 @@ export const experience: Experience[] = [
     context:
       "In-house at PT Bank Rakyat Indonesia (Persero) Tbk, Indonesia's 2nd largest bank by assets ($126B), 30M+ customers.",
     highlights: [
-      'Cut sprint unit-test documentation from 5 hours to 15 minutes (95% faster) by building an LLM-agent workflow that turns git diffs into test scenarios, runs each flow, and updates Confluence via its REST API behind human review; caught a real bug before release and presented it to the team.',
-      "Delivered the maker flow for configuring consumer-credit pre-screening rules in BRI's loan origination system (LOS), a Next.js micro-frontend, with React Hook Form and Yup validation, resilient document uploads, change-request diffs, and PDF preview.",
+      'Cut sprint unit-test documentation from 5 hours to 15 minutes (95% faster) with an LLM-agent workflow that turns git diffs into test scenarios and fills Confluence via its REST API; caught a real bug and shared it team-wide.',
+      "Delivered the maker flow for BRI's loan origination system (LOS), a Next.js micro-frontend that lets the bank configure consumer-credit pre-screening rules as parameters under maker-checker-signer approval.",
       'Owned and completed the checker and signer approval and activity-log pages after a teammate left, integrating backend services via TanStack Query into one end-to-end maker-checker-signer workflow.',
       'Strengthened code quality ahead of architecture review by writing 12 Jest and React Testing Library suites and resolving SonarQube issues (cognitive complexity, type-dependent bugs).',
     ],
@@ -82,8 +82,8 @@ export const experience: Experience[] = [
     // numbers compare the rebuild against their live site rather than claiming a shipped improvement.
     context: 'Subcontracted website redesign and rebuild work for end clients.',
     highlights: [
-      'Cut homepage weight from 13 MB to 380 KB and lifted Lighthouse mobile/desktop from 21/23 to 83/99 against the live site by rebuilding a research-peptides storefront with React.js, TypeScript, Vite, GSAP, and Material UI, with all 46 pages statically prerendered.',
-      'Improved Core Web Vitals in a dedicated performance pass on the rebuild: mobile LCP from 6.8 s to 2.2 s and desktop CLS from 0.598 to 0.',
+      'Cut homepage weight from 13 MB to 380 KB and raised Lighthouse mobile/desktop from 21/23 to 83/99 vs. the live site by rebuilding a research-peptides storefront in React.js, TypeScript, and Vite.',
+      'Prerendered all 46 pages and improved Core Web Vitals in a performance pass on the rebuild: mobile LCP from 6.8 s to 2.2 s and desktop CLS from 0.598 to 0.',
       'Restructured 14 product categories into 6 research areas and built a scroll-driven storytelling homepage, delivered as a live demo (sequent-peptides.netlify.app).',
     ],
   },
@@ -108,7 +108,7 @@ export const experience: Experience[] = [
     role: 'Frontend Developer',
     period: 'Aug 2023 - Apr 2024',
     context:
-      "Healthcare IT company building NOTES, a hospital management system (SIMRS) supporting Indonesia's nationwide EMR mandate.",
+      "Healthcare IT company building NOTES, a hospital management system (SIMRS) for Indonesia's EMR mandate.",
     highlights: [],
   },
   {
@@ -118,7 +118,7 @@ export const experience: Experience[] = [
     period: 'Aug 2022 - Aug 2023',
     // Indonesia's #1 mortgage bank — 39% market share in home ownership loans, 83% in subsidized segment, 5.5M customers, 470T IDR in assets.
     context:
-      "Worked on IT projects for PT Bank Tabungan Negara (Persero) Tbk, Indonesia's #1 mortgage bank (39% home loan market share).",
+      "IT projects for PT Bank Tabungan Negara (Persero) Tbk, Indonesia's #1 mortgage bank (39% home loan share).",
     highlights: [],
   },
 ];
@@ -127,7 +127,7 @@ export const education: Education[] = [
   {
     institution: 'Universitas Terbuka',
     credential: 'Bachelor of Information Systems (S.Kom)',
-    period: 'Jun 2026 - Present',
+    period: 'Jun 2026 - 2030 (expected)',
   },
   // ! DO NOT DELETE
   // {
@@ -143,21 +143,29 @@ export const education: Education[] = [
   // },
 ];
 
-/** Grouped so ATS parsers and recruiters can scan them by area. */
+/** Grouped so ATS parsers and recruiters can scan them by area; kept to the keywords job ads search for. */
 export const skills: SkillGroup[] = [
   {
     label: 'Frontend',
-    items: ['JavaScript', 'TypeScript', 'React.js', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'Material UI', 'GSAP', 'Micro-frontends', 'Responsive Design', 'Accessibility', 'Performance Optimization'],
+    items: ['JavaScript', 'TypeScript', 'React.js', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'Material UI', 'GSAP', 'Micro-frontends'],
   },
   { label: 'State & Forms', items: ['TanStack Query (React Query)', 'React Hook Form', 'Zod', 'Yup'] },
   { label: 'Testing & Quality', items: ['Jest', 'React Testing Library', 'SonarQube'] },
   { label: 'Backend', items: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'PostgreSQL'] },
-  { label: 'Tools & DevOps', items: ['Git', 'Docker', 'CI/CD', 'Vite', 'Figma', 'Jira', 'ClickUp', 'Confluence'] },
-  { label: 'Ways of Working', items: ['Agile/Scrum', 'Code Review', 'Cross-functional Collaboration'] },
-  { label: 'AI', items: ['LLM Orchestration', 'AI Agents', 'Browser Automation'] },
+  { label: 'Tools & DevOps', items: ['Git', 'Docker', 'CI/CD', 'Vite', 'Figma', 'Jira', 'ClickUp', 'Confluence', 'LLM Agents'] },
 ];
 
 /** Personal projects, shown on screen, in print and in the PDF when there are any. */
-export const projects: Project[] = [];
+// Lighthouse 12.8.2 on the production build, homepage, 3 runs each (2026-11-06): mobile 92, desktop 100,
+// Accessibility, Best Practices and SEO 100, CLS 0.
+export const projects: Project[] = [
+  {
+    name: 'Portfolio',
+    year: '2026',
+    description:
+      'Scored Lighthouse 92/100 on mobile/desktop and 100 on accessibility with a Frutiger Aero portfolio built in Next.js 16, Tailwind CSS v4, and GSAP: scroll-pinned storytelling, dark mode, reduced-motion fallbacks, and an ATS-friendly PDF resume generated in the browser.',
+    url: 'https://jiwokristi.vercel.app',
+  },
+];
 
 export const languages = ['English (Professional working proficiency)', 'Indonesian (Native)'];

@@ -6,6 +6,24 @@ import { contact, displayUrl, headline, summary, experience, education, skills, 
 // Never split words across lines: an ATS reads "Respon-sive" as two words and misses the keyword.
 Font.registerHyphenationCallback(word => [word]);
 
+/**
+ * Inter, embedded, so the PDF looks the same in every viewer and matches the printed resume.
+ * (The built-in Helvetica isn't embedded, so each viewer swapped in its own lookalike.)
+ * In the browser react-pdf fetches the files from /public; when rendered in Node, it reads them from disk.
+ */
+const fontSrc = (file: string) =>
+  typeof window === 'undefined' ? `${process.cwd()}/public/fonts/resume/${file}` : `/fonts/resume/${file}`;
+
+Font.register({
+  family: 'Inter',
+  fonts: [
+    { src: fontSrc('inter-400-normal.woff'), fontWeight: 400 },
+    { src: fontSrc('inter-400-italic.woff'), fontWeight: 400, fontStyle: 'italic' },
+    { src: fontSrc('inter-600-normal.woff'), fontWeight: 600 },
+    { src: fontSrc('inter-700-normal.woff'), fontWeight: 700 },
+  ],
+});
+
 const TEXT = '#111827';
 const TEXT_SECONDARY = '#374151';
 const TEXT_MUTED = '#6b7280';
@@ -13,30 +31,35 @@ const BORDER = '#d1d5db';
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 36,
-    paddingBottom: 36,
-    paddingHorizontal: 40,
-    fontFamily: 'Helvetica',
-    fontSize: 9.5,
-    color: TEXT,
-    lineHeight: 1.4,
+    paddingTop: 38,
+    paddingBottom: 38,
+    paddingHorizontal: 42,
+    fontFamily: 'Inter',
+    fontSize: 9,
+    color: TEXT_SECONDARY,
+    lineHeight: 1.45,
   },
 
   // Header
   name: {
-    fontSize: 18,
-    fontFamily: 'Helvetica-Bold',
+    fontSize: 20,
+    fontWeight: 700,
     color: TEXT,
+    lineHeight: 1.15,
   },
   headline: {
-    marginTop: 3,
-    fontSize: 11,
+    marginTop: 8,
+    fontSize: 10.5,
+    fontWeight: 600,
     color: TEXT_SECONDARY,
   },
   contactRow: {
-    marginTop: 6,
-    fontSize: 9,
-    color: TEXT_SECONDARY,
+    marginTop: 9,
+    fontSize: 8.5,
+  },
+  linksRow: {
+    marginTop: 1,
+    fontSize: 8.5,
   },
   link: {
     color: TEXT_SECONDARY,
@@ -45,79 +68,79 @@ const styles = StyleSheet.create({
 
   // Section
   section: {
-    marginTop: 10,
+    marginTop: 13,
   },
   sectionTitle: {
-    fontSize: 12,
-    fontFamily: 'Helvetica-Bold',
+    fontSize: 10.5,
+    fontWeight: 700,
     color: TEXT,
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
     paddingBottom: 3,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.75,
     borderBottomColor: BORDER,
     marginBottom: 6,
   },
 
   // Experience entry
+  entry: {
+    marginTop: 9,
+  },
   entryRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
   },
   company: {
-    fontFamily: 'Helvetica-Bold',
-    fontSize: 10,
+    fontSize: 9.5,
+    fontWeight: 700,
+    color: TEXT,
   },
   role: {
-    color: TEXT_SECONDARY,
-    fontSize: 10,
+    fontSize: 9.5,
   },
   period: {
     color: TEXT_MUTED,
-    fontSize: 9,
+    fontSize: 8.5,
     flexShrink: 0,
+    marginLeft: 12,
   },
   context: {
-    color: TEXT_SECONDARY,
     marginTop: 1,
+    color: TEXT_MUTED,
   },
   bulletList: {
     marginTop: 3,
-    paddingLeft: 12,
   },
   bulletItem: {
     flexDirection: 'row',
-    marginBottom: 2,
+    marginTop: 2,
   },
   bullet: {
-    width: 8,
-    color: TEXT_SECONDARY,
+    width: 10,
+    paddingLeft: 2,
   },
   bulletText: {
     flex: 1,
-    color: TEXT_SECONDARY,
   },
 
   // Education
   institution: {
-    fontFamily: 'Helvetica-Bold',
-    fontSize: 10,
+    fontSize: 9.5,
+    fontWeight: 700,
+    color: TEXT,
   },
   credential: {
-    color: TEXT_SECONDARY,
     fontStyle: 'italic',
   },
 
   // Skills
-  skillsText: {
-    color: TEXT_SECONDARY,
+  skillsRow: {
+    marginTop: 1.5,
   },
   skillsLabel: {
-    fontFamily: 'Helvetica-Bold',
-  },
-
-  // Spacing
-  entrySpacing: {
-    marginTop: 6,
+    fontWeight: 600,
+    color: TEXT,
   },
 });
 
@@ -134,16 +157,18 @@ export function ResumePdf() {
         <View>
           <Text style={styles.name}>{contact.name}</Text>
           <Text style={styles.headline}>{headline}</Text>
+          {/* Where and how to reach me, then the links on their own line */}
           <Text style={styles.contactRow}>
             {contact.location} ·{' '}
             <Link src={`mailto:${contact.email}`} style={styles.link}>
               {contact.email}
             </Link>
             {' · '}
-            <Link src={`tel:${contact.phone.replace(/\s/g, '')}`} style={styles.link}>
+            <Link src={`tel:${contact.phone.replace(/s/g, '')}`} style={styles.link}>
               {contact.phone}
             </Link>
-            {' · '}
+          </Text>
+          <Text style={styles.linksRow}>
             <Link src={contact.linkedin} style={styles.link}>
               {displayUrl(contact.linkedin)}
             </Link>
@@ -161,29 +186,31 @@ export function ResumePdf() {
         {/* Summary */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Summary</Text>
-          <Text style={styles.skillsText}>{summary}</Text>
+          <Text>{summary}</Text>
         </View>
 
         {/* Skills */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Skills</Text>
           {skills.map(group => (
-            <Text key={group.label} style={[styles.skillsText, { marginBottom: 1 }]}>
+            <Text key={group.label} style={styles.skillsRow}>
               <Text style={styles.skillsLabel}>{group.label}: </Text>
               {group.items.join(', ')}
             </Text>
           ))}
-          <Text style={styles.skillsText}>
+          <Text style={styles.skillsRow}>
             <Text style={styles.skillsLabel}>Languages: </Text>
             {languages.join(', ')}
           </Text>
         </View>
+
         {/* Professional Experience */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Professional Experience</Text>
           {experience.map((exp, idx) => (
-            <View key={exp.company} style={idx > 0 ? styles.entrySpacing : undefined}>
-              <View style={styles.entryRow}>
+            <View key={exp.company} style={idx > 0 ? styles.entry : undefined}>
+              {/* Never leave a job title alone at the bottom of a page */}
+              <View style={styles.entryRow} minPresenceAhead={36}>
                 <Text>
                   <Text style={styles.company}>{exp.company}</Text>
                   <Text style={styles.role}> · {exp.role}</Text>
@@ -197,7 +224,7 @@ export function ResumePdf() {
               {exp.highlights.length > 0 && (
                 <View style={styles.bulletList}>
                   {exp.highlights.map((h, i) => (
-                    <View key={i} style={styles.bulletItem}>
+                    <View key={i} style={styles.bulletItem} wrap={false}>
                       <Text style={styles.bullet}>•</Text>
                       <Text style={styles.bulletText}>{h}</Text>
                     </View>
@@ -213,7 +240,7 @@ export function ResumePdf() {
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Projects</Text>
             {projects.map((proj, idx) => (
-              <View key={proj.name} style={idx > 0 ? styles.entrySpacing : undefined}>
+              <View key={proj.name} style={idx > 0 ? styles.entry : undefined} wrap={false}>
                 <View style={styles.entryRow}>
                   <Text>
                     <Text style={styles.company}>{proj.name}</Text>
@@ -235,16 +262,14 @@ export function ResumePdf() {
         )}
 
         {/* Education */}
-        <View style={styles.section}>
+        <View style={styles.section} wrap={false}>
           <Text style={styles.sectionTitle}>Education</Text>
           {education.map((edu, idx) => (
-            <View key={edu.institution} style={idx > 0 ? styles.entrySpacing : undefined}>
+            <View key={edu.institution} style={idx > 0 ? styles.entry : undefined}>
               <View style={styles.entryRow}>
                 <Text style={styles.institution}>
                   {edu.institution}
-                  {edu.location && (
-                    <Text style={{ fontFamily: 'Helvetica', color: TEXT_SECONDARY }}> — {edu.location}</Text>
-                  )}
+                  {edu.location && <Text style={{ fontWeight: 400, color: TEXT_SECONDARY }}> — {edu.location}</Text>}
                 </Text>
                 <Text style={styles.period}>{edu.period}</Text>
               </View>
@@ -252,7 +277,7 @@ export function ResumePdf() {
               {edu.highlights && edu.highlights.length > 0 && (
                 <View style={styles.bulletList}>
                   {edu.highlights.map((h, i) => (
-                    <View key={i} style={styles.bulletItem}>
+                    <View key={i} style={styles.bulletItem} wrap={false}>
                       <Text style={styles.bullet}>•</Text>
                       <Text style={styles.bulletText}>{h}</Text>
                     </View>
@@ -262,7 +287,6 @@ export function ResumePdf() {
             </View>
           ))}
         </View>
-
       </Page>
     </Document>
   );
