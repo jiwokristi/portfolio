@@ -8,7 +8,7 @@ import { AboutCta } from '@/components/about/AboutCta';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'How I think about building software — approach, philosophy, and the evidence behind it.',
+  description: 'How I work: why the details matter, the philosophy behind them, and the values I build by.',
 };
 
 export default function AboutPage() {

@@ -2,14 +2,14 @@
 
 import { useRef } from 'react';
 
-import { contact, education, experience, headline, languages, projects, skills, summary } from '@/data/resume';
+import { contact, displayUrl, education, experience, headline, languages, projects, skills, summary } from '@/data/resume';
 
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 import { gsap, useGSAP } from '@/lib/gsap';
 
-/** Skills shown as green chips; everything else is blue (frontend and tooling). */
-const BACKEND_SKILLS = new Set(['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'System Design', 'REST APIs']);
+/** Skill groups shown as green chips; everything else is blue (frontend and tooling). */
+const GREEN_GROUPS = new Set(['Backend']);
 
 /** "Mar 2026 - Present" → "Mar 2026 – Present" for display. */
 const period = (p: string) => p.replace(' - ', ' – ');
@@ -68,17 +68,17 @@ export function ResumeScreen() {
             </li>
             <li>
               <a href={contact.linkedin} {...external} className={`${chip} hover:text-accent`}>
-                LinkedIn
+                {displayUrl(contact.linkedin)}
               </a>
             </li>
             <li>
               <a href={contact.github} {...external} className={`${chip} hover:text-accent`}>
-                GitHub
+                {displayUrl(contact.github)}
               </a>
             </li>
             <li>
               <a href={contact.portfolio} {...external} className={`${chip} hover:text-accent`}>
-                Portfolio
+                {displayUrl(contact.portfolio)}
               </a>
             </li>
           </ul>
@@ -88,6 +88,27 @@ export function ResumeScreen() {
         <section data-resume-section className="flex flex-col gap-3.5">
           <SectionTitle>Summary</SectionTitle>
           <p className="text-[15px] leading-[1.7] text-text-secondary">{summary}</p>
+        </section>
+
+        {/* Skills */}
+        <section data-resume-section className="flex flex-col gap-3.5">
+          <SectionTitle leaf>Skills</SectionTitle>
+          <dl className="grid gap-x-6 gap-y-3 sm:grid-cols-[max-content_minmax(0,1fr)] sm:items-baseline">
+            {skills.map(group => (
+              <div key={group.label} className="contents">
+                <dt className="text-sm font-black text-text-muted">{group.label}</dt>
+                <dd>
+                  <ul className="flex flex-wrap gap-1.5">
+                    {group.items.map(skill => (
+                      <li key={skill} className={`${GREEN_GROUPS.has(group.label) ? 'chip-green' : 'chip'} inline-flex min-h-8 items-center rounded-full px-3 text-[13px] font-bold`}>
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         {/* Experience */}
@@ -122,7 +143,7 @@ export function ResumeScreen() {
           </ol>
         </section>
 
-        {/* Projects (screen only; the printed resume leaves them out) */}
+        {/* Projects */}
         {projects.length > 0 && (
           <section data-resume-section className="flex flex-col gap-3.5">
             <SectionTitle leaf>Projects</SectionTitle>
@@ -146,18 +167,6 @@ export function ResumeScreen() {
             ))}
           </section>
         )}
-
-        {/* Skills */}
-        <section data-resume-section className="flex flex-col gap-3.5">
-          <SectionTitle leaf>Skills</SectionTitle>
-          <ul className="flex flex-wrap gap-1.5">
-            {skills.map(skill => (
-              <li key={skill} className={`${BACKEND_SKILLS.has(skill) ? 'chip-green' : 'chip'} inline-flex min-h-8 items-center rounded-full px-3 text-[13px] font-bold`}>
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </section>
 
         {/* Education + Languages side by side */}
         <div data-resume-section className="grid gap-8 sm:grid-cols-2">

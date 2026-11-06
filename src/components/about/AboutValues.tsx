@@ -47,6 +47,9 @@ export function AboutValues() {
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div className="space-y-2">
+                <p className={`text-xs font-extrabold tracking-[0.12em] uppercase ${i % 2 ? 'text-leaf' : 'text-accent'}`}>
+                  {value.eyebrow}
+                </p>
                 <h3 className="text-xl leading-snug font-black">{value.title}</h3>
                 <p className="text-[15px] leading-relaxed text-text-secondary">{value.description}</p>
               </div>
