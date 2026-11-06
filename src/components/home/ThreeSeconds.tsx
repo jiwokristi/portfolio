@@ -82,7 +82,15 @@ export function ThreeSeconds() {
       let first = true;
 
       const pulse = (i: number) => {
-        gsap.fromTo(ticks[i], { scale: 1.7 }, { scale: 1, duration: 0.55, ease: 'back.out(3)', transformOrigin: '50% 50%', overwrite: true });
+        // Scale around the tick's exact centre in SVG units. A "50% 50%" origin is measured from the
+        // bounding box and left a stray translate behind, nudging every tick off its gap; clearing the
+        // transform at the end guarantees it settles back where the markup put it.
+        const { x, y } = tickPosition(i);
+        gsap.fromTo(
+          ticks[i],
+          { scale: 1.7 },
+          { scale: 1, duration: 0.55, ease: 'back.out(3)', svgOrigin: `${x} ${y}`, overwrite: true, clearProps: 'transform' },
+        );
         gsap.fromTo(bubbleRef.current, { scale: 1 }, { scale: 1.05, duration: 0.16, ease: 'sine.out', yoyo: true, repeat: 1, overwrite: true });
         gsap.fromTo(pulseRef.current, { opacity: 0.9 }, { opacity: 0, duration: 0.7, ease: 'power2.out', overwrite: true });
       };
