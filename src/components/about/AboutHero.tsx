@@ -42,13 +42,14 @@ export function AboutHero() {
             data-hero-text
             className="text-display leading-none font-black tracking-[-0.03em] [text-shadow:0_2px_0_rgba(255,255,255,.6)] max-lg:text-h1 dark:text-shadow-none"
           >
-            I build things
+            The details
             <br />
-            <span className="text-accent">that work.</span>
+            <span className="text-accent">are the work.</span>
           </h1>
           <p data-hero-text className="max-w-lg text-lg leading-relaxed text-text-secondary">
-            For users, for businesses, for the long term. I start before I have all the answers and figure it out along
-            the way.
+            I&apos;m a frontend developer who sometimes goes full stack. If you&apos;re looking for someone to build the
+            part of your product people see and touch, I start with why it exists, build it on foundations that can
+            grow, and care about the details that make someone stay, trust the brand, and come back.
           </p>
           <div data-hero-text className="flex flex-wrap gap-3.5 pt-2">
             <Button href="/#projects">View Projects</Button>

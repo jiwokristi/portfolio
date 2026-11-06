@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { ProjectGrid } from "@/components/home/ProjectGrid";
 import { HomeCta } from "@/components/home/HomeCta";
+import { ThreeSeconds } from "@/components/home/ThreeSeconds";
 
 import { getAllProjects, withSampleProjects } from "@/lib/projects";
 
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <ThreeSeconds />
       <ProjectGrid projects={projects} />
       <HomeCta />
     </>

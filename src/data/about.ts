@@ -16,34 +16,36 @@ export type StackCategory = {
 };
 
 export type Value = {
+  /** Short uppercase line above the title, e.g. "Ask better questions". */
+  eyebrow: string;
   title: string;
   description: string;
 };
 
 export const philosophyCards: PhilosophyCard[] = [
   {
-    label: "Approach",
-    title: "Start before you're ready",
+    label: "Purpose",
+    title: "Understand the why before the what",
     description:
-      "I don't wait for perfect specs or complete information. I ship early, learn from what's real, and iterate. Shipping is how you prove your thinking works — not slide decks.",
+      "A feature is only worth the problem it solves. Before any layout or component, I learn the business, its goals and the people it's for. Good engineering isn't building more. It's building what matters.",
   },
   {
-    label: "Decisions",
-    title: "The best features are removals",
+    label: "Foundations",
+    title: "Great experiences start beneath the surface",
     description:
-      "The hardest UX decisions are about what you leave out. Fewer categories on the homepage, URL-based filters instead of modal dialogs, removing friction instead of adding features.",
+      "A beautiful interface is only half of it. The architecture underneath decides how easily a product evolves, how reliably it performs and how confidently a team can build on it. I choose what makes today better without limiting tomorrow.",
   },
   {
-    label: "Outcomes",
-    title: "Good code is invisible",
+    label: "Detail",
+    title: "Every detail shapes the experience",
     description:
-      "Users never see your architecture. They feel a fast page, a clear flow, a button that does what they expect. That's the whole point — technology that disappears behind the experience.",
+      "How something responds. How clearly it speaks. The rhythm of an interaction. Small details decide whether someone feels comfortable, confident or curious enough to continue. They're never just details: they're how people experience a product and see a brand.",
   },
 ];
 
 /**
  * Sequent vs the original store it redesigns: homepage Lighthouse scores, measured side by side
- * (Lighthouse 12.8.2, default settings, median of 3 runs, 2026-11-06). Also used by the home hero.
+ * (Lighthouse 12.8.2, default settings, median of 3 runs, 2026-11-06). Shown on the About page.
  */
 export const evidenceMetrics: EvidenceMetric[] = [
   { label: "Mobile Performance", before: 21, after: 83 },
@@ -69,23 +71,27 @@ export const stackCategories: StackCategory[] = [
 
 export const values: Value[] = [
   {
-    title: "Ship first, polish in flight",
+    eyebrow: "Ask better questions",
+    title: "Curiosity before assumptions",
     description:
-      "Bias toward action over analysis paralysis. Get something real in front of users, then refine based on what actually matters — not what you imagined would matter.",
+      "I don't jump straight into code. I take time to understand the context, challenge assumptions and find the real problem. Better questions lead to better decisions.",
   },
   {
-    title: "Details compound",
+    eyebrow: "Keep it intentional",
+    title: "Clarity over complexity",
     description:
-      "A better hover state, a clearer label, a faster transition. None of these matter alone. Together, they're the difference between a product that feels right and one that feels off.",
+      "Complex problems don't need complicated solutions. I aim for clear architecture, readable code and interfaces that make sense. A good solution makes things easier, not more layered.",
   },
   {
-    title: "Performance is a feature",
+    eyebrow: "Sweat the small stuff",
+    title: "Craft in every detail",
     description:
-      "Not an afterthought, not a metric you check at the end. Every architectural decision either makes the page faster or slower. I choose faster by default.",
+      "I care about what people notice and what they don't, from app structure and performance to spacing, transitions and interaction states. Every decision adds up to the quality of the whole.",
   },
   {
-    title: "Business context matters",
+    eyebrow: "Think like a partner",
+    title: "Ownership beyond implementation",
     description:
-      "Code that solves the wrong problem is waste. I care about why something needs to exist, who it's for, and what success looks like — before writing a single line.",
+      "My job doesn't end when the code works. I care how the product performs in the real world, how it serves its users and how it moves the business forward, and I bring that to every collaboration.",
   },
 ];
