@@ -3,12 +3,12 @@ import type { ProjectSummary } from '@/types/project';
 export const projects: ProjectSummary[] = [
   {
     slug: 'sequent',
-    title: 'Sequent — Storefront Redesign Concept',
+    title: 'Sequent — Storefront Redesign',
     subtitle:
       'A front-end redesign of a slow research-peptides store: a scroll-story homepage, a clearer catalog, and pages that load in a fraction of the original’s weight.',
     description:
-      'A personal concept project: I redesigned and rebuilt the front end of an existing research-peptides storefront, then audited and tuned it until every page scored 99–100 on desktop.',
-    category: 'E-Commerce · Concept',
+      'Paid freelance work, subcontracted through a client: I redesigned and rebuilt the front end of an existing research-peptides storefront, then audited and tuned it until every page scored 99–100 on desktop.',
+    category: 'E-Commerce · Freelance',
     role: 'Designer & Front-end Developer',
     timeline: '8 weeks + performance pass',
     year: 2026,

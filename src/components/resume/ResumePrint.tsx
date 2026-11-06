@@ -1,4 +1,4 @@
-import { contact, summary, experience, education, skills } from '@/data/resume';
+import { contact, displayUrl, headline, summary, experience, education, skills, projects, languages } from '@/data/resume';
 
 /**
  * The printed resume (what `window.print()` outputs). This is the legacy markup, kept verbatim so
@@ -17,6 +17,7 @@ export function ResumePrint() {
       {/* Header */}
       <header data-resume-section className="mb-4">
         <h1 className="text-xl font-bold text-accent md:text-h3">{contact.name}</h1>
+        <p className="text-base font-semibold text-text-secondary md:text-lg">{headline}</p>
         <p className="mt-1 text-sm text-text-secondary md:text-base">
           {contact.location} ·{' '}
           <a href={`mailto:${contact.email}`} className="underline hover:text-accent">
@@ -29,11 +30,11 @@ export function ResumePrint() {
             rel="noopener noreferrer"
             className="underline hover:text-accent"
           >
-            LinkedIn
+            {displayUrl(contact.linkedin)}
           </a>{' '}
           ·{' '}
           <a href={contact.github} target="_blank" rel="noopener noreferrer" className="underline hover:text-accent">
-            GitHub
+            {displayUrl(contact.github)}
           </a>{' '}
           ·{' '}
           <a
@@ -42,7 +43,7 @@ export function ResumePrint() {
             rel="noopener noreferrer"
             className="underline hover:text-accent"
           >
-            Portfolio
+            {displayUrl(contact.portfolio)}
           </a>
         </p>
       </header>
@@ -53,6 +54,18 @@ export function ResumePrint() {
         <p className="text-sm text-text-secondary md:text-base">{summary}</p>
       </section>
 
+      {/* Skills */}
+      <section data-resume-section className="mb-4">
+        <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">Skills</h2>
+        {skills.map(group => (
+          <p key={group.label} className="text-sm text-text-secondary md:text-base">
+            <strong>{group.label}:</strong> {group.items.join(', ')}
+          </p>
+        ))}
+        <p className="text-sm text-text-secondary md:text-base">
+          <strong>Languages:</strong> {languages.join(', ')}
+        </p>
+      </section>
       {/* Experience */}
       <section data-resume-section className="mb-4">
         <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">
@@ -85,6 +98,34 @@ export function ResumePrint() {
           ))}
         </div>
       </section>
+
+      {/* Projects */}
+      {projects.length > 0 && (
+        <section data-resume-section className="mb-4">
+          <h2 className="mb-2 border-b border-border pb-1 text-base font-bold text-accent md:text-lg">Projects</h2>
+          <div className="space-y-2">
+            {projects.map(proj => (
+              <div key={proj.name} className="resume-entry">
+                <div className="resume-inline flex flex-col gap-0.5 md:flex-row md:items-baseline md:justify-between md:gap-4">
+                  <p className="text-sm md:text-base">
+                    <span className="font-bold">{proj.name}</span>
+                    {proj.url && (
+                      <>
+                        <span className="mx-1 text-text-muted">·</span>
+                        <a href={proj.url} target="_blank" rel="noopener noreferrer" className="text-text-secondary underline hover:text-accent">
+                          {displayUrl(proj.url)}
+                        </a>
+                      </>
+                    )}
+                  </p>
+                  <p className="text-sm text-text-muted md:shrink-0 md:text-base">{proj.year}</p>
+                </div>
+                <p className="text-sm text-text-secondary md:text-base">{proj.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Education */}
       <section data-resume-section className="mb-4">
@@ -140,12 +181,6 @@ export function ResumePrint() {
         </div>
       </section> */}
 
-      {/* Skills */}
-      <section data-resume-section className="mb-4">
-        <p className="text-sm text-text-secondary md:text-base">
-          <strong>Skills:</strong> {skills.join(' · ')}
-        </p>
-      </section>
     </div>
   );
 }

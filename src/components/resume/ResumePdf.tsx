@@ -1,7 +1,10 @@
 'use client';
 
-import { Document, Page, Text, View, Link, StyleSheet } from '@react-pdf/renderer';
-import { contact, summary, experience, education, skills } from '@/data/resume';
+import { Document, Font, Page, Text, View, Link, StyleSheet } from '@react-pdf/renderer';
+import { contact, displayUrl, headline, summary, experience, education, skills, projects, languages } from '@/data/resume';
+
+// Never split words across lines: an ATS reads "Respon-sive" as two words and misses the keyword.
+Font.registerHyphenationCallback(word => [word]);
 
 const TEXT = '#111827';
 const TEXT_SECONDARY = '#374151';
@@ -25,8 +28,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica-Bold',
     color: TEXT,
   },
+  headline: {
+    marginTop: 3,
+    fontSize: 11,
+    color: TEXT_SECONDARY,
+  },
   contactRow: {
-    marginTop: 10,
+    marginTop: 6,
     fontSize: 9,
     color: TEXT_SECONDARY,
   },
@@ -115,11 +123,17 @@ const styles = StyleSheet.create({
 
 export function ResumePdf() {
   return (
-    <Document title={`${contact.name} - Resume`} author={contact.name}>
+    <Document
+      title={`${contact.name} - Resume`}
+      author={contact.name}
+      subject={headline}
+      keywords={skills.flatMap(group => group.items).join(', ')}
+    >
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View>
           <Text style={styles.name}>{contact.name}</Text>
+          <Text style={styles.headline}>{headline}</Text>
           <Text style={styles.contactRow}>
             {contact.location} ·{' '}
             <Link src={`mailto:${contact.email}`} style={styles.link}>
@@ -131,15 +145,15 @@ export function ResumePdf() {
             </Link>
             {' · '}
             <Link src={contact.linkedin} style={styles.link}>
-              LinkedIn
+              {displayUrl(contact.linkedin)}
             </Link>
             {' · '}
             <Link src={contact.github} style={styles.link}>
-              GitHub
+              {displayUrl(contact.github)}
             </Link>
             {' · '}
             <Link src={contact.portfolio} style={styles.link}>
-              Portfolio
+              {displayUrl(contact.portfolio)}
             </Link>
           </Text>
         </View>
@@ -150,6 +164,20 @@ export function ResumePdf() {
           <Text style={styles.skillsText}>{summary}</Text>
         </View>
 
+        {/* Skills */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Skills</Text>
+          {skills.map(group => (
+            <Text key={group.label} style={[styles.skillsText, { marginBottom: 1 }]}>
+              <Text style={styles.skillsLabel}>{group.label}: </Text>
+              {group.items.join(', ')}
+            </Text>
+          ))}
+          <Text style={styles.skillsText}>
+            <Text style={styles.skillsLabel}>Languages: </Text>
+            {languages.join(', ')}
+          </Text>
+        </View>
         {/* Professional Experience */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Professional Experience</Text>
@@ -180,6 +208,32 @@ export function ResumePdf() {
           ))}
         </View>
 
+        {/* Projects */}
+        {projects.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Projects</Text>
+            {projects.map((proj, idx) => (
+              <View key={proj.name} style={idx > 0 ? styles.entrySpacing : undefined}>
+                <View style={styles.entryRow}>
+                  <Text>
+                    <Text style={styles.company}>{proj.name}</Text>
+                    {proj.url && (
+                      <Text style={styles.role}>
+                        {' · '}
+                        <Link src={proj.url} style={styles.link}>
+                          {displayUrl(proj.url)}
+                        </Link>
+                      </Text>
+                    )}
+                  </Text>
+                  <Text style={styles.period}>{proj.year}</Text>
+                </View>
+                <Text style={styles.context}>{proj.description}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+
         {/* Education */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Education</Text>
@@ -209,13 +263,6 @@ export function ResumePdf() {
           ))}
         </View>
 
-        {/* Skills */}
-        <View style={styles.section}>
-          <Text style={styles.skillsText}>
-            <Text style={styles.skillsLabel}>Skills: </Text>
-            {skills.join(' · ')}
-          </Text>
-        </View>
       </Page>
     </Document>
   );
