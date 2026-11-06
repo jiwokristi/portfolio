@@ -15,7 +15,8 @@ export function HomeCta() {
               Start a conversation
             </h2>
             <p className="text-[17px] leading-relaxed text-white">
-              Have a project that needs to be fast, clear and accessible? Let&apos;s talk.
+              Building something people should trust, choose, or come back to? Let&apos;s make the first three seconds
+              count.
             </p>
           </div>
           <Button href="mailto:priyadijiwo@gmail.com" variant="outlined" color="default" className="relative">

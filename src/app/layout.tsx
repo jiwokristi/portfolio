@@ -15,7 +15,8 @@ export const metadata: Metadata = {
     default: 'Jiwo Kristi | Portfolio',
     template: '%s | Jiwo Kristi',
   },
-  description: 'Product designer and developer crafting exceptional digital experiences.',
+  description:
+    'Jiwo Kristi, frontend developer. Websites that look right, feel right, and do the job the business needs.',
 };
 
 export default function RootLayout({

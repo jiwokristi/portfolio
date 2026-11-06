@@ -54,6 +54,7 @@ export default async function CaseStudyPage({
         year={project.year}
         techStack={project.techStack}
         liveUrl={project.liveUrl}
+        metrics={project.metrics}
       />
       <CsOverview problem={project.problem} solution={project.solution} />
       <CsMetrics

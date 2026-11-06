@@ -11,11 +11,11 @@ export function AboutCta() {
           <span aria-hidden="true" className="bubble right-[10%] bottom-5 h-14 w-14 opacity-70 motion-safe:animate-[float_8s_ease-in-out_infinite_1.5s] max-md:hidden" />
 
           <h2 className="relative text-[clamp(2rem,3.4vw,2.7rem)] leading-tight font-black text-white [text-shadow:0_2px_4px_rgba(0,40,80,.35)]">
-            Let&apos;s build something.
+            Let&apos;s make it worth staying for.
           </h2>
           <p className="relative max-w-xl text-[17px] leading-relaxed text-white">
-            I&apos;m always interested in projects where good thinking leads to real impact. If you&apos;ve got something
-            worth building, let&apos;s talk.
+            If you&apos;re building something people should trust, choose, or come back to, I&apos;d love to hear about
+            it, from the first sketch to the last detail.
           </p>
           <div className="relative flex flex-wrap justify-center gap-3.5 pt-2">
             <Button href="mailto:priyadijiwo@gmail.com" variant="outlined" color="default">

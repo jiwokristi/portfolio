@@ -9,12 +9,30 @@ import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { gsap, useGSAP } from '@/lib/gsap';
-import type { CaseStudy } from '@/types/project';
+import type { CaseStudy, ProjectMetric } from '@/types/project';
 
 type CsHeroProps = Pick<
   CaseStudy,
   'title' | 'subtitle' | 'category' | 'heroImage' | 'role' | 'timeline' | 'year' | 'techStack' | 'liveUrl'
->;
+> & {
+  /** Up to three metrics float around the hero image as glass stat cards. */
+  metrics?: ProjectMetric[];
+};
+
+/** Where each floating stat sits around the frame, and how far it drifts on scroll (px). */
+const STAT_SLOTS = [
+  { pos: '-left-5 top-[14%]', drift: 70, leaf: true },
+  { pos: '-right-5 top-[44%]', drift: 40, leaf: false },
+  { pos: 'left-[16%] -bottom-7', drift: 95, leaf: true },
+];
+
+function StatIcon({ leaf }: { leaf: boolean }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth={leaf ? 3 : 2.6} strokeLinecap="round" strokeLinejoin="round">
+      {leaf ? <path d="M5 13l4 4L19 7" /> : <path d="M13 2L4 14h7l-1 8 9-12h-7z" />}
+    </svg>
+  );
+}
 
 function MetaItem({ label, value }: { label: string; value: React.ReactNode }) {
   return (
@@ -25,7 +43,19 @@ function MetaItem({ label, value }: { label: string; value: React.ReactNode }) {
   );
 }
 
-export function CsHero({ title, subtitle, category, heroImage, role, timeline, year, techStack, liveUrl }: CsHeroProps) {
+export function CsHero({
+  title,
+  subtitle,
+  category,
+  heroImage,
+  role,
+  timeline,
+  year,
+  techStack,
+  liveUrl,
+  metrics = [],
+}: CsHeroProps) {
+  const stats = metrics.slice(0, STAT_SLOTS.length);
   const containerRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
 
@@ -50,6 +80,20 @@ export function CsHero({ title, subtitle, category, heroImage, role, timeline, y
             scrollTrigger: { trigger: '[data-hero-frame]', start: 'top bottom', end: 'bottom top', scrub: true },
           },
         );
+
+        // Floating stats drift at different speeds for a little depth.
+        gsap.utils.toArray<HTMLElement>('[data-float-stat]').forEach(el => {
+          const drift = Number(el.dataset.drift ?? 50);
+          gsap.fromTo(
+            el,
+            { y: drift },
+            {
+              y: -drift,
+              ease: 'none',
+              scrollTrigger: { trigger: '[data-hero-frame]', start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+            },
+          );
+        });
       }
     },
     { scope: containerRef },
@@ -122,6 +166,36 @@ export function CsHero({ title, subtitle, category, heroImage, role, timeline, y
 
       {/* Hero image in a glass frame */}
       <Container className="relative pb-section">
+        <div className="relative">
+          {/* Floating stat cards (wide screens only; the same numbers are in Key Metrics below) */}
+          {stats.map((m, i) => {
+            const slot = STAT_SLOTS[i];
+            return (
+              <div
+                key={m.label}
+                data-float-stat
+                data-drift={slot.drift}
+                aria-hidden="true"
+                className={`absolute z-10 hidden lg:block ${slot.pos}`}
+              >
+                <div
+                  className="glass flex items-center gap-3 rounded-[20px] px-[18px] py-3.5 motion-safe:animate-[float_8s_ease-in-out_infinite]"
+                  style={{ animationDelay: `${i * 1.3}s` }}
+                >
+                  <span className={`${slot.leaf ? 'orb-green' : 'orb'} flex h-9 w-9 items-center justify-center`}>
+                    <StatIcon leaf={slot.leaf} />
+                  </span>
+                  <div className="flex flex-col">
+                    <span className="font-display text-2xl font-black">
+                      {m.before} → {m.after}
+                    </span>
+                    <span className="text-xs font-bold text-text-muted">{m.label}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
         <div className="glass rounded-[26px] p-2.5">
           <div data-hero-frame className="relative aspect-video overflow-hidden rounded-[18px]">
             <Image
@@ -135,6 +209,7 @@ export function CsHero({ title, subtitle, category, heroImage, role, timeline, y
             />
             <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,.26)_0%,rgba(255,255,255,0)_40%)]" />
           </div>
+        </div>
         </div>
       </Container>
     </section>

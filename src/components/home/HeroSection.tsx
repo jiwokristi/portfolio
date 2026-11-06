@@ -13,18 +13,17 @@ export function HeroSection() {
       <Container className="relative flex flex-wrap items-center gap-12">
         <div className="min-w-0 flex-[1_1_520px] space-y-6">
           <p className="chip-green inline-flex min-h-8 items-center rounded-full px-4 text-xs font-extrabold uppercase tracking-[0.12em]">
-            Full-stack Engineer
+            Frontend Developer
           </p>
           <h1 className="text-display font-black leading-[1.02] tracking-[-0.025em] [text-shadow:0_2px_0_rgba(255,255,255,.6)] max-lg:text-[2.7rem] dark:text-shadow-none">
-            Crafting digital
+            The details
             <br />
-            experiences that
+            that make
             <br />
-            <span className="text-accent">perform.</span>
+            <span className="text-accent">people stay.</span>
           </h1>
           <p className="max-w-lg text-lg leading-relaxed text-text-secondary">
-            I design and build high-performance websites and web applications with a focus on user experience,
-            accessibility, scalability, and measurable results.
+            I build the part of your website people notice first, on foundations that keep it doing its job.
           </p>
           <div className="relative flex flex-wrap gap-3.5 pt-2">
             {/* Decorative bubbles anchored below the buttons, so they never sit behind copy */}
