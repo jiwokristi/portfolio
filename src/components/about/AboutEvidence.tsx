@@ -73,30 +73,36 @@ export function AboutEvidence() {
         <div className="glass grid items-center gap-10 rounded-[30px] p-7 md:p-11 lg:grid-cols-2">
           <div data-evidence-text className="space-y-5">
             <p className="text-[13px] font-extrabold tracking-[0.14em] text-accent uppercase">Results</p>
-            <h2 className="text-h2 font-black tracking-[-0.02em]">What I&apos;ve Shipped</h2>
+            <h2 className="text-h2 font-black tracking-[-0.02em]">What I&apos;ve Built</h2>
             <p className="leading-relaxed text-text-secondary">
-              I redesigned the Apex Peptides e-commerce platform from scratch — restructured the information
-              architecture, built a purposeful animation system, and optimized every layer of the frontend. The
-              Lighthouse scores tell the story, but the real win is a site that feels fast and makes sense to users.
+              Sequent is my concept redesign of a slow research-peptides store. I restructured the catalog, built a
+              scroll-story homepage, then audited and tuned the front end until it weighed 380 KB instead of the
+              original&apos;s 13 MB. It&apos;s a front end without a backend, so the scores compare front ends, not
+              finished stores. The real win is a site that feels fast and makes sense to visitors.
             </p>
-            <Button href="/projects/apex-peptides" variant="ghost" color="accent">
+            <Button href="/projects/sequent" variant="ghost" color="accent">
               Read the full case study
               <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </Button>
           </div>
-          <div className="grid grid-cols-2 justify-items-center gap-x-6 gap-y-8">
-            {evidenceMetrics.map((metric, i) => (
-              <MetricGauge
-                key={metric.label}
-                label={metric.label}
-                before={metric.before}
-                after={metric.after}
-                leaf={i === evidenceMetrics.length - 1}
-              />
-            ))}
-          </div>
+          <figure className="flex flex-col items-center gap-6">
+            <div className="grid grid-cols-2 justify-items-center gap-x-6 gap-y-8">
+              {evidenceMetrics.map((metric, i) => (
+                <MetricGauge
+                  key={metric.label}
+                  label={metric.label}
+                  before={metric.before}
+                  after={metric.after}
+                  leaf={i === evidenceMetrics.length - 1}
+                />
+              ))}
+            </div>
+            <figcaption className="max-w-xs text-center text-[13px] leading-relaxed text-text-muted">
+              Lighthouse, homepage: the original store (“from”) and Sequent, measured side by side.
+            </figcaption>
+          </figure>
         </div>
       </Container>
     </section>

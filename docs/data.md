@@ -95,7 +95,7 @@ type Project     = { name, year, description, url? }
 | File | Exports | Description |
 |---|---|---|
 | `src/data/projects.ts` | `projects: ProjectSummary[]` | Summary data for the home page grid |
-| `src/data/projects/apex-peptides.ts` | `apexSupps: CaseStudy` | Full case study for Apex Peptides |
+| `src/data/projects/sequent.ts` | `sequent: CaseStudy` | Full case study for Sequent (concept project) |
 | `src/data/about.ts` | `philosophyCards`, `evidenceMetrics`, `stackCategories`, `values` | All about page section data |
 | `src/data/resume.ts` | `contact`, `experience`, `education`, `projects`, `skills`, `languages` | Resume content |
 
@@ -147,5 +147,5 @@ Resume data is in `src/data/resume.ts`. Highlights support `**bold**` syntax whi
 Current data:
 - **Experience**: 4 roles (BRI, Enboq, Notes, BTN) with company context descriptions
 - **Education**: 1 entry (Universitas Terbuka)
-- **Projects**: 1 entry (Apex Peptides with live URL)
+- **Projects**: 1 entry (Sequent, with live URL)
 - **Skills**: 18 items displayed as inline dot-separated list
