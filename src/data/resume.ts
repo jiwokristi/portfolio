@@ -170,14 +170,14 @@ export const skills: SkillGroup[] = [
 ];
 
 /** Personal projects, shown on screen, in print and in the PDF when there are any. */
-// Lighthouse 12.8.2 on the production build, homepage, 3 runs each (2026-11-06): mobile 92, desktop 100,
-// Accessibility, Best Practices and SEO 100, CLS 0.
+// Lighthouse 12.8.2 on the live site (jiwokristi.vercel.app), homepage, median of 3 runs each (2026-11-13):
+// mobile 93, desktop 100, Accessibility, Best Practices and SEO 100, CLS 0.
 export const projects: Project[] = [
   {
     name: 'Portfolio',
     year: '2026',
     description:
-      'Scored Lighthouse 92/100 on mobile/desktop and 100 on accessibility with a Frutiger Aero portfolio built in Next.js 16, Tailwind CSS v4, and GSAP: scroll-pinned storytelling, dark mode, reduced-motion fallbacks, and an ATS-friendly PDF resume generated in the browser.',
+      'Scored Lighthouse 93/100 on mobile/desktop and 100 on accessibility with a Frutiger Aero portfolio built in Next.js 16, Tailwind CSS v4, and GSAP: scroll-pinned storytelling, dark mode, reduced-motion fallbacks, and an ATS-friendly PDF resume generated in the browser.',
     url: 'https://jiwokristi.vercel.app',
   },
 ];
