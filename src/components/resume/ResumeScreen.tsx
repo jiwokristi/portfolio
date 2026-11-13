@@ -9,7 +9,7 @@ import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { gsap, useGSAP } from '@/lib/gsap';
 
 /** Skill groups shown as green chips; everything else is blue (frontend and tooling). */
-const GREEN_GROUPS = new Set(['Backend']);
+const GREEN_GROUPS = new Set(['Backend', 'AI']);
 
 /** "Mar 2026 - Present" → "Mar 2026 – Present" for display. */
 const period = (p: string) => p.replace(' - ', ' – ');
@@ -108,6 +108,19 @@ export function ResumeScreen() {
                 </dd>
               </div>
             ))}
+            {/* Languages close the Skills section, as on the PDF and printed resume */}
+            <div className="contents">
+              <dt className="text-sm font-black text-text-muted">Languages</dt>
+              <dd>
+                <ul className="flex flex-wrap gap-1.5">
+                  {languages.map(lang => (
+                    <li key={lang} className={chip}>
+                      {lang}
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
           </dl>
         </section>
 
@@ -168,32 +181,20 @@ export function ResumeScreen() {
           </section>
         )}
 
-        {/* Education + Languages side by side */}
-        <div data-resume-section className="grid gap-8 sm:grid-cols-2">
-          <section className="flex flex-col gap-3.5">
-            <SectionTitle>Education</SectionTitle>
-            {education.map(edu => (
-              <div key={edu.institution} className="flex flex-col gap-1">
-                <h3 className="text-base font-black">
-                  {edu.institution}
-                  {edu.location && <span className="font-normal text-text-secondary"> — {edu.location}</span>}
-                </h3>
-                <span className="text-sm text-text-secondary">{edu.credential}</span>
-                <span className="text-sm font-bold text-text-muted">{period(edu.period)}</span>
-              </div>
-            ))}
-          </section>
-          <section className="flex flex-col gap-3.5">
-            <SectionTitle>Languages</SectionTitle>
-            <ul className="flex flex-wrap gap-1.5">
-              {languages.map(lang => (
-                <li key={lang} className={chip}>
-                  {lang}
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+        {/* Education */}
+        <section data-resume-section className="flex flex-col gap-3.5">
+          <SectionTitle>Education</SectionTitle>
+          {education.map(edu => (
+            <div key={edu.institution} className="flex flex-col gap-1">
+              <h3 className="text-base font-black">
+                {edu.institution}
+                {edu.location && <span className="font-normal text-text-secondary"> — {edu.location}</span>}
+              </h3>
+              <span className="text-sm text-text-secondary">{edu.credential}</span>
+              <span className="text-sm font-bold text-text-muted">{period(edu.period)}</span>
+            </div>
+          ))}
+        </section>
       </article>
     </div>
   );
