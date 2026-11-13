@@ -1,23 +1,29 @@
 import type { CaseStudy } from '@/types/project';
 
 /*
- * Sequent is paid freelance work, subcontracted through a client: a front-end redesign of a real
- * research-peptides storefront. The end client didn't adopt it, so the live store is unchanged; it's
- * shown as "Sequent" so the original store isn't named. It has no backend (mock catalog data, no payments,
- * accounts or analytics), so claims stay to front-end performance, design and engineering.
+ * Sequent is paid freelance work commissioned through a client: a redesign proposal for a real
+ * research-peptides store, designed directly in code so the deliverable was a working front end. The
+ * store went another way; it's rebranded as "Sequent" to keep the original brand private. It runs on mock
+ * data with no backend, payments or tracking scripts, and its product visuals (generated vials) are
+ * placeholders for real photography, so claims stay to the front end only.
  *
  * Measurements (Lighthouse 12.8.2, default settings, homepage, median of 3 runs):
- * - Original store and Final: measured side by side on 2026-11-06, alternating runs, same machine.
+ * - Original front end and Final: measured side by side on 2026-11-13, alternating runs, same machine.
+ *   The original was measured with its marketing, tracking and payment scripts blocked and without
+ *   product photos (Blazor runtime and app fully loaded, no console errors), so both sides compare
+ *   front-end code only. Its unblocked live homepage scores 21 mobile / 23 desktop.
  * - First build: the same homepage before the performance pass, from the Sequent performance audit
  *   (live site, 2026-11-06, before fixes).
+ * - Requests and SEO are left out: request counts mostly reflect architecture (Blazor loads 140 .wasm
+ *   files), and SEO showed no meaningful difference.
  */
 export const sequent: CaseStudy = {
   slug: 'sequent',
   title: 'Sequent — Storefront Redesign',
   subtitle:
-    'A front-end redesign of a slow research-peptides store: a scroll-story homepage, a clearer catalog, and pages that load in a fraction of the original’s weight.',
+    'A redesign built to make people stay: a scroll story that earns trust in the first few seconds, a catalog that’s easy to explore, and a front end that loads fast.',
   description:
-    'Paid freelance work, subcontracted through a client: I redesigned and rebuilt the front end of an existing research-peptides storefront, then audited and tuned it until every page scored 99–100 on desktop.',
+    'Paid freelance work commissioned through a client: a redesign proposal for a research-peptides store, designed directly in code as a working front end, then audited and tuned until every page scored 99–100 on desktop.',
   category: 'E-Commerce · Freelance',
   role: 'Designer & Front-end Developer',
   timeline: '8 weeks + performance pass',
@@ -34,55 +40,52 @@ export const sequent: CaseStudy = {
     height: 1080,
   },
   problem:
-    'The starting point was a live research-peptides store built with Blazor WebAssembly. Its homepage weighed 13.2 MB across 292 requests and scored 21 on mobile and 23 on desktop in Lighthouse. Most of that was its own front end: about 10 MB of .NET runtime, scripts and images before any of its 29 third-party services loaded. Navigation spread the catalog across 14 categories, the visual identity didn’t match a premium brand, and on phones key journeys were slow and hard to follow.',
+    'The starting point was a live research-peptides store built with Blazor WebAssembly. Before a single product photo, its homepage shipped about 9.3 MB of front-end code, mostly a 6.6 MB .NET WebAssembly runtime and a 2.5 MB icon script, and on a phone it kept the page busy for seconds before it responded. Navigation spread the catalog across 14 categories, the visual identity didn’t match a premium brand, and nothing on the homepage made me want to learn more about it.',
   solution:
-    'I redesigned the store and rebuilt the front end in React and TypeScript, shown here as Sequent. The homepage tells the product story in three scroll chapters, while the shop, product and checkout pages stay quick and focused. The catalog is reorganized into six research areas with filters kept in the URL, so filtered views can be shared. A performance pass then prerendered all 46 pages at build time, fixed layout shift and font loading, and loaded heavy libraries only where they’re used. Sequent has no backend: products are mock data and there are no payments, accounts or tracking scripts, so the comparison is between front ends, not finished stores.',
+    'Commissioned through a client as paid freelance work, Sequent is a redesign proposal I designed directly in code, so the deliverable was a working front end you can click through. The store went another way, so I rebranded it as Sequent to keep the original brand private. The homepage tells the brand’s story in three scroll chapters, built to earn trust in the first few seconds, while the shop, product and checkout pages stay quick and focused. The catalog is reorganized into eight research areas with filters kept in the URL, so filtered views can be shared. A performance pass then prerendered all 46 pages at build time, fixed layout shift and font loading, and loaded heavy libraries only where they’re used. It runs on mock data, with no backend, payments or tracking scripts, and placeholder visuals where product photos would go, so the comparison covers the front end only.',
   metricStages: {
-    before: 'Original store',
+    before: 'Original front end',
     interim: 'First build',
     after: 'Final',
   },
   metrics: [
     {
       label: 'Mobile Performance',
-      before: 21,
+      before: 28,
       interim: 61,
-      after: 83,
+      after: 91,
       description: 'Lighthouse performance score on a simulated mid-range phone',
     },
     {
       label: 'Desktop Performance',
-      before: 23,
+      before: 28,
       interim: 72,
-      after: 99,
+      after: 100,
       description: 'Lighthouse performance score on desktop',
     },
     {
       label: 'Best Practices',
-      before: 57,
+      before: 79,
       interim: 100,
       after: 100,
       description: 'Security, modern APIs and console errors',
     },
     {
-      label: 'SEO',
-      before: 85,
-      interim: 90,
+      label: 'Accessibility',
+      before: 84,
       after: 91,
-      description: 'Crawlability and metadata basics',
+      description: 'Lighthouse accessibility score on the homepage',
     },
   ],
   metricComparisons: [
-    { label: 'Page weight', before: '13.2 MB', after: '380 KB' },
-    { label: 'Requests', before: '292', after: '16' },
-    { label: 'Mobile blocking time', before: '22.2 s', after: '0.36 s' },
+    { label: 'Front-end code', before: '9.3 MB', after: '220 KB' },
+    { label: 'Mobile blocking time', before: '6.9 s', after: '0.23 s' },
     { label: 'Layout shift (mobile)', before: '0.138', after: '0' },
-    { label: 'Accessibility', before: '85', after: '91' },
-    { label: 'Third-party services', before: '29', after: '0' },
   ],
   metricNotes: [
-    'Homepage, Lighthouse 12.8.2 with default settings, median of 3 runs. The original store and the final build were measured side by side on the same day and machine; the first build comes from the performance audit before its fixes.',
-    'Sequent is a front-end build with mock data and no analytics or marketing scripts. The original also loads 29 third-party services (about 2.9 MB), but even counting only its own code it ships about 10 MB.',
+    'Homepage, Lighthouse 12.8.2 with default settings, median of 3 runs. The original and the final build were measured side by side on 13 November 2026, alternating runs on the same machine; the first build comes from the performance audit before its fixes.',
+    'Both front ends measured the same way: the original without its marketing scripts and product photos, so the comparison covers front-end code only.',
+    'Sequent’s product visuals are placeholders for real photography, which would add weight and slow its largest paint once added.',
   ],
   process: [
     {
@@ -90,8 +93,8 @@ export const sequent: CaseStudy = {
       description:
         'Reviewed the original store for performance, visual hierarchy and user flow, especially on mobile, and measured where its weight came from.',
       highlights: [
-        'Lighthouse put the homepage at 21 on mobile and 23 on desktop',
-        '13.2 MB per homepage load: about 10 MB of its own .NET runtime, scripts and images, plus 29 third-party services',
+        'Lighthouse put the homepage front end at 28 on mobile and 28 on desktop',
+        'About 9.3 MB of front-end code per homepage load, most of it a .NET WebAssembly runtime and an icon script',
         'Catalog spread across 14 categories, with no clear starting point on the homepage',
         'Set the focus areas: performance, mobile UX, and a clearer path to products',
       ],
@@ -101,7 +104,7 @@ export const sequent: CaseStudy = {
       description:
         'Restructured the catalog and the homepage so visitors reach the right products with fewer decisions.',
       highlights: [
-        'Reorganized the catalog into 6 research areas, featured on the homepage',
+        'Reorganized the catalog into 8 research areas, featured on the homepage',
         'Dedicated categories page for browsing every area',
         'Filters kept in the URL, so filtered views can be shared and survive a refresh',
         'Clearer call-to-action hierarchy from homepage to product',
@@ -123,9 +126,9 @@ export const sequent: CaseStudy = {
       description:
         'Built the front end in React and TypeScript with reusable components, mock catalog data and route-level code splitting.',
       highlights: [
-        '37 products across 6 research areas, with search, cart and checkout flows',
+        '37 products across 8 research areas, with search, cart and checkout flows',
         'Each route ships as its own chunk, 0.9–25 KB',
-        'No third-party scripts: about 340 KB per page in 16–18 requests',
+        'Generated product vials as placeholders until real photography is added',
         'Responsive across phone, tablet and desktop',
       ],
     },
@@ -151,7 +154,7 @@ export const sequent: CaseStudy = {
     {
       title: 'Clearer Catalog',
       description:
-        'The original’s 14 categories are reorganized into 6 research areas, featured on the homepage with a dedicated page for browsing them all.',
+        'The original’s 14 categories are reorganized into 8 research areas, featured on the homepage with a dedicated page for browsing them all.',
       tags: ['UX Strategy', 'Navigation', 'Information Architecture'],
     },
     {
@@ -175,20 +178,20 @@ export const sequent: CaseStudy = {
     {
       title: 'Light by Design',
       description:
-        'Route-level code splitting, no third-party scripts and libraries loaded only where needed keep each page around 340 KB.',
+        'Route-level code splitting and libraries loaded only where they’re needed keep the homepage’s code to about 220 KB.',
       tags: ['Code Splitting', 'Vite', 'Bundle Size'],
     },
   ],
   results: {
     summary:
-      'Sequent shows what the same store could feel like with a modern front end: a homepage that tells a story, a catalog that’s easier to navigate, and pages a fraction of the original’s weight. The end client went another way and kept their current store, so these results compare front ends, not live stores.',
+      'Sequent is a redesign built to make people stay: a homepage that tells the brand’s story, a catalog that’s easier to explore, and a front end that loads fast. The store went another way, so it never went live, and the numbers compare front-end code only.',
     outcomes: [
-      'Homepage Lighthouse score: 21 → 83 on mobile and 23 → 99 on desktop, measured side by side with the original',
-      'Homepage weight: 13.2 MB → 380 KB, and requests: 292 → 16',
-      'Performance pass on my own build: desktop 72 → 99, with every route now 99–100',
+      'Front-end Lighthouse score: 28 → 91 on mobile and 28 → 100 on desktop, measured side by side with the original',
+      'Front-end code: 9.3 MB → 220 KB, and mobile blocking time: 6.9 s → 0.23 s',
+      'Performance pass on my own build: desktop 72 → 100, with every route now 99–100',
       'Layout shift eliminated (desktop CLS 0.598 → 0) and every route reachable by direct link',
       'Best Practices 100 and Accessibility 91–98 across all routes',
-      'Scroll animation at 60 fps on desktop; add to cart responds in 128 ms',
+      'Scroll animation at 60 fps on desktop',
     ],
     lessonsLearned: [
       'Measure where the weight comes from before redesigning; most of the original’s cost was its own runtime, not its images',

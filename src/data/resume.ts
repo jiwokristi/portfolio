@@ -80,11 +80,11 @@ export const experience: Experience[] = [
     period: 'Dec 2025 - Present',
     // Sequent is a paid subcontract: the end client (shown as "Sequent") bought a redesign but didn't adopt it, so the
     // numbers compare the rebuild against their live site rather than claiming a shipped improvement.
-    context: 'Subcontracted website redesign and rebuild work for end clients.',
+    context: 'Paid, subcontracted front-end redesign work, designed and prototyped directly in code.',
     highlights: [
-      'Cut homepage weight from 13 MB to 380 KB and raised Lighthouse mobile/desktop from 21/23 to 83/99 vs. the live site by rebuilding a research-peptides storefront in React.js, TypeScript, and Vite.',
+      'Designed and built a redesign proposal for a research-peptides store in React.js, TypeScript, and Vite, cutting front-end code from 9.3 MB to 220 KB and lifting Lighthouse mobile/desktop from 28/28 to 91/100 vs. the original front end.',
       'Prerendered all 46 pages and improved Core Web Vitals in a performance pass on the rebuild: mobile LCP from 6.8 s to 2.2 s and desktop CLS from 0.598 to 0.',
-      'Restructured 14 product categories into 6 research areas and built a scroll-driven storytelling homepage, delivered as a live demo (sequent-peptides.netlify.app).',
+      'Restructured 14 product categories into 8 research areas and built a scroll-driven storytelling homepage, delivered as a live demo (sequent-peptides.netlify.app).',
     ],
   },
   {
@@ -107,8 +107,7 @@ export const experience: Experience[] = [
     location: 'Sleman, Indonesia',
     role: 'Frontend Developer',
     period: 'Aug 2023 - Apr 2024',
-    context:
-      "Healthcare IT company building NOTES, a hospital management system (SIMRS) for Indonesia's EMR mandate.",
+    context: "Healthcare IT company building NOTES, a hospital management system (SIMRS) for Indonesia's EMR mandate.",
     highlights: [],
   },
   {
@@ -147,12 +146,27 @@ export const education: Education[] = [
 export const skills: SkillGroup[] = [
   {
     label: 'Frontend',
-    items: ['JavaScript', 'TypeScript', 'React.js', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'Material UI', 'GSAP', 'Micro-frontends'],
+    items: [
+      'JavaScript',
+      'TypeScript',
+      'React.js',
+      'Next.js',
+      'HTML',
+      'CSS',
+      'Tailwind CSS',
+      'Material UI',
+      'GSAP',
+      'Micro-frontends',
+    ],
   },
-  { label: 'State & Forms', items: ['TanStack Query (React Query)', 'React Hook Form', 'Zod', 'Yup'] },
-  { label: 'Testing & Quality', items: ['Jest', 'React Testing Library', 'SonarQube'] },
-  { label: 'Backend', items: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'PostgreSQL'] },
-  { label: 'Tools & DevOps', items: ['Git', 'Docker', 'CI/CD', 'Vite', 'Figma', 'Jira', 'ClickUp', 'Confluence', 'LLM Agents'] },
+  { label: 'State & Forms', items: ['Redux Toolkit', 'TanStack Query (React Query)', 'React Hook Form', 'Zod', 'Yup'] },
+  {
+    label: 'Testing & Quality',
+    items: ['Jest', 'React Testing Library', 'SonarQube', 'Web Accessibility', 'Web Performance'],
+  },
+  { label: 'Backend', items: ['Node.js', 'Express', 'REST APIs', 'MongoDB'] },
+  { label: 'Tools & DevOps', items: ['Git', 'Docker', 'CI/CD', 'Vite', 'Figma', 'Jira', 'Confluence'] },
+  { label: 'AI', items: ['AI-Assisted Programming', 'Generative AI', 'Prompt Engineering', 'LLM Agents'] },
 ];
 
 /** Personal projects, shown on screen, in print and in the PDF when there are any. */

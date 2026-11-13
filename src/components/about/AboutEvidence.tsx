@@ -75,10 +75,11 @@ export function AboutEvidence() {
             <p className="text-[13px] font-extrabold tracking-[0.14em] text-accent uppercase">Results</p>
             <h2 className="text-h2 font-black tracking-[-0.02em]">What I&apos;ve Built</h2>
             <p className="leading-relaxed text-text-secondary">
-              Sequent is a freelance redesign of a slow research-peptides store. I restructured the catalog, built a
-              scroll-story homepage, then audited and tuned the front end until it weighed 380 KB instead of the
-              original&apos;s 13 MB. It&apos;s a front end without a backend, so the scores compare front ends, not
-              finished stores. The real win is a site that feels fast and makes sense to visitors.
+              Sequent is a paid redesign proposal for a research-peptides store, designed directly in code and built to
+              make people stay. I restructured the catalog, built a scroll-story homepage that tells the brand&apos;s
+              story, then tuned the front end until its code weighed 220 KB instead of the original&apos;s 9.3 MB.
+              It&apos;s a working front end on mock data, so the scores compare front-end code only, not finished
+              stores.
             </p>
             <Button href="/projects/sequent" variant="ghost" color="accent">
               Read the full case study
@@ -100,7 +101,7 @@ export function AboutEvidence() {
               ))}
             </div>
             <figcaption className="max-w-xs text-center text-[13px] leading-relaxed text-text-muted">
-              Lighthouse, homepage: the original store (“from”) and Sequent, measured side by side.
+              Lighthouse, homepage, front end only: the original store (“from”) and Sequent, measured side by side.
             </figcaption>
           </figure>
         </div>
