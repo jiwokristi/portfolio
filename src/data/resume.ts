@@ -52,7 +52,7 @@ export const headline = 'Middle Frontend Engineer · Mid-level Frontend Engineer
 export type SkillGroup = { label: string; items: string[] };
 
 export const summary =
-  'Frontend Engineer with 4 years of experience building fast, responsive web apps with React.js, Next.js, and TypeScript, plus full-stack features in Node.js, Express, and MongoDB. Built for banking, healthcare, and SaaS, from maker-checker workflows and micro-frontends to dashboards and SEO-optimized sites. Works in Agile/Scrum teams from Figma handoff to code review, automates workflows with LLM agents, and sweats the details that earn user trust.';
+  'Frontend Engineer with 4 years of experience building fast, responsive web apps with React.js, Next.js, and TypeScript, plus full-stack features in Node.js, Express.js, and MongoDB. Built for banking, healthcare, and SaaS, from maker-checker workflows and micro-frontends to dashboards and SEO-optimized sites. Works in Agile/Scrum teams from Figma handoff to code review, automates workflows with LLM agents, and sweats the details that earn user trust.';
 
 /**
  * Bullets lead with a strong verb and follow action, context, result; when there's a number,
@@ -98,7 +98,7 @@ export const experience: Experience[] = [
       'Increased employee onboarding completion by 30% by architecting activity modules (questionnaires, quizzes, goal setting) with full CRUD, form validation, and real-time progress tracking in React.js and Node.js.',
       'Grew user retention by 65% by designing and shipping gamification systems: daily missions, leveling and EXP mechanics, and mini-games.',
       'Led development of the marketing site serving 5,000+ monthly visitors, driving lead generation through a responsive, SEO-optimized experience built with Next.js, Material UI, and GSAP.',
-      'Delivered 10+ full-stack features, from UI components to REST APIs and database schemas, with React.js, TypeScript, Node.js, Express, and MongoDB for an onboarding platform used by 1,000+ new hires.',
+      'Delivered 10+ full-stack features, from UI components to REST APIs and database schemas, with React.js, TypeScript, Node.js, Express.js, and MongoDB for an onboarding platform used by 1,000+ new hires.',
       'Built 5 data-driven dashboards (onboarding progress, employee overview, NPS, daily missions, questionnaire insights) with React.js charting libraries and REST APIs, giving stakeholders the data to steer onboarding.',
     ],
   },
@@ -159,25 +159,25 @@ export const skills: SkillGroup[] = [
       'Micro-frontends',
     ],
   },
-  { label: 'State & Forms', items: ['Redux Toolkit', 'TanStack Query (React Query)', 'React Hook Form', 'Zod', 'Yup'] },
+  { label: 'State & Forms', items: ['Redux Toolkit (RTK Query)', 'TanStack Query (React Query)', 'React Hook Form', 'Zod', 'Yup'] },
   {
     label: 'Testing & Quality',
     items: ['Jest', 'React Testing Library', 'SonarQube', 'Web Accessibility', 'Web Performance'],
   },
-  { label: 'Backend', items: ['Node.js', 'Express', 'REST APIs', 'MongoDB'] },
+  { label: 'Backend', items: ['Node.js', 'Express.js', 'REST APIs', 'MongoDB', 'Mongoose'] },
   { label: 'Tools & DevOps', items: ['Git', 'Docker', 'CI/CD', 'Vite', 'Figma', 'Jira', 'Confluence'] },
   { label: 'AI', items: ['AI-Assisted Programming', 'Generative AI', 'Prompt Engineering', 'LLM Agents'] },
 ];
 
 /** Personal projects, shown on screen, in print and in the PDF when there are any. */
-// Lighthouse 12.8.2 on the production build, homepage, 3 runs each (2026-11-06): mobile 92, desktop 100,
-// Accessibility, Best Practices and SEO 100, CLS 0.
+// Lighthouse 12.8.2 on the live site (jiwokristi.vercel.app), homepage, median of 3 runs each (2026-11-13):
+// mobile 93, desktop 100, Accessibility, Best Practices and SEO 100, CLS 0.
 export const projects: Project[] = [
   {
     name: 'Portfolio',
     year: '2026',
     description:
-      'Scored Lighthouse 92/100 on mobile/desktop and 100 on accessibility with a Frutiger Aero portfolio built in Next.js 16, Tailwind CSS v4, and GSAP: scroll-pinned storytelling, dark mode, reduced-motion fallbacks, and an ATS-friendly PDF resume generated in the browser.',
+      'Scored Lighthouse 93/100 on mobile/desktop and 100 on accessibility with a Frutiger Aero portfolio built in Next.js 16, Tailwind CSS v4, and GSAP: scroll-pinned storytelling, dark mode, reduced-motion fallbacks, and an ATS-friendly PDF resume generated in the browser.',
     url: 'https://jiwokristi.vercel.app',
   },
 ];

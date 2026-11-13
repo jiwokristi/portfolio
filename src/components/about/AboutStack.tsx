@@ -9,11 +9,15 @@ import { stackCategories } from '@/data/about';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap';
 
-/** Icons in data order: frontend (window), backend (database), tools (wrench). */
+/** Icons in data order: frontend (window), state & testing (checklist), backend (database), tools (wrench). */
 const ICONS = [
   <g key="f">
     <rect x="3" y="4" width="18" height="14" rx="2" />
     <path d="M3 9h18" />
+  </g>,
+  <g key="s">
+    <path d="M9 6h11M9 12h11M9 18h11" />
+    <path d="M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5L7.5 11M3.5 18l1.5 1.5L7.5 17" />
   </g>,
   <g key="b">
     <ellipse cx="12" cy="6" rx="8" ry="3" />
@@ -47,7 +51,7 @@ export function AboutStack() {
       <span aria-hidden="true" className="bubble top-6 right-[2%] h-14 w-14 motion-safe:animate-[float_8s_ease-in-out_infinite_1s] max-xl:hidden" />
       <Container className="relative">
         <SectionHeading eyebrow="Stack" title="Tech Stack" />
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {stackCategories.map((category, i) => {
             const leaf = i % 2 === 1;
             return (
@@ -75,8 +79,8 @@ export function AboutStack() {
             );
           })}
 
-          {/* The note on tools spans the row under the three categories */}
-          <aside data-stack-group className="glass flex flex-col gap-3 rounded-3xl p-6 md:col-span-3 md:flex-row md:items-start md:gap-6">
+          {/* The note on tools spans the row under the categories */}
+          <aside data-stack-group className="glass flex flex-col gap-3 rounded-3xl p-6 md:col-span-2 md:flex-row md:items-start md:gap-6 xl:col-span-4">
             <p className="shrink-0 text-xs font-extrabold tracking-[0.12em] text-text-muted uppercase md:w-36 md:pt-1">
               A note on tools
             </p>

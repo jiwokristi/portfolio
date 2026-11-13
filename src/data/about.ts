@@ -55,18 +55,23 @@ export const evidenceMetrics: EvidenceMetric[] = [
   { label: "Best Practices", before: 79, after: 100 },
 ];
 
+/** Kept in step with the resume's skills: a short, human-readable version of the same stack. */
 export const stackCategories: StackCategory[] = [
   {
     label: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Material UI"],
+    items: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Material UI"],
+  },
+  {
+    label: "State & Testing",
+    items: ["TanStack Query", "Redux Toolkit", "RTK Query", "React Hook Form", "Zod", "Jest", "React Testing Library"],
   },
   {
     label: "Backend",
-    items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"],
+    items: ["Node.js", "Express.js", "REST APIs", "MongoDB", "Mongoose"],
   },
   {
     label: "Tools",
-    items: ["Git", "GitHub", "Figma", "Vite", "Vercel", "Linux"],
+    items: ["Git", "GitHub", "Figma", "Vite", "Vercel", "Docker"],
   },
 ];
 
