@@ -44,14 +44,15 @@ export const philosophyCards: PhilosophyCard[] = [
 ];
 
 /**
- * Sequent vs the original store it redesigns: homepage Lighthouse scores, measured side by side
- * (Lighthouse 12.8.2, default settings, median of 3 runs, 2026-11-06). Shown on the About page.
+ * Sequent vs the original store's front end: homepage Lighthouse scores, measured side by side
+ * (Lighthouse 12.8.2, default settings, median of 3 runs, 2026-11-13). The original was measured without
+ * its marketing scripts and product photos, so both sides compare front-end code only. Shown on the About page.
  */
 export const evidenceMetrics: EvidenceMetric[] = [
-  { label: "Mobile Performance", before: 21, after: 83 },
-  { label: "Desktop Performance", before: 23, after: 99 },
-  { label: "Accessibility", before: 85, after: 91 },
-  { label: "Best Practices", before: 57, after: 100 },
+  { label: "Mobile Performance", before: 28, after: 91 },
+  { label: "Desktop Performance", before: 28, after: 100 },
+  { label: "Accessibility", before: 84, after: 91 },
+  { label: "Best Practices", before: 79, after: 100 },
 ];
 
 export const stackCategories: StackCategory[] = [
